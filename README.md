@@ -1,2 +1,2 @@
 # KidTherapy
-Kid Therapy Game
+Kid Therapy Game!
