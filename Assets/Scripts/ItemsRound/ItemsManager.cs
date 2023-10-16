@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -34,7 +35,7 @@ public class ItemsManager : MonoBehaviour
         };
     }
 
-    private async void RunItemsRound()
+    private async UniTask RunItemsRound()
     {
         while (_itemCategories.Count > 0)
         {
