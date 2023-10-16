@@ -1,0 +1,51 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Bb]uilds
+[Bb]uildReports
+[Ll]ibrary/
+[Ll]ogs/
+sysinfo.txt
+[Bb]uildReports.meta
+ServerData/
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+.vs/
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+
+# ============== #
+# Build Products #
+# ============== #
+[.idea]
+.idea/
+.apk
+
+# Firebase SDK
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-9_6_0.bundle
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-9_6_0.bundle.meta
+
+# More Unity Stuff
+MemoryCaptures/
