@@ -1,9 +1,12 @@
 using System;
 using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _testText;
+    
     private void OnEnable()
     {
         DoAsync().Forget();
@@ -11,8 +14,10 @@ public class Test : MonoBehaviour
     
     private async UniTask DoAsync()
     {
-        Debug.Log("HELLO!");
-        await UniTask.Delay(TimeSpan.FromSeconds(2f));
-        Debug.Log("HELLO ASYNC..");
+        _testText.text = "Kid";
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        _testText.text += " Therapy";
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        _testText.text += " Game";
     }
 }
