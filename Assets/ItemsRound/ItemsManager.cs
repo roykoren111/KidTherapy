@@ -102,6 +102,12 @@ public class ItemsManager : MonoBehaviour
         return possibleItemLocations;
     }
 
+    public void OnItemSelected(GameObject item)
+    {
+        _itemsOnScreen.Remove(item);
+        //Move item to character
+    }
+
 #if UNITY_EDITOR
     public void SkipToNextTrial()
     {
