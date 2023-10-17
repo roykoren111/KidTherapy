@@ -22,7 +22,7 @@ public class ItemsManager : MonoBehaviour
 
     private EItemCategory _currentItemCategory;
 
-    private List<GameObject> _itemsOnScreen = new List<GameObject>();
+    private readonly List<GameObject> _itemsOnScreen = new List<GameObject>();
 
     private void Awake()
     {
@@ -79,14 +79,7 @@ public class ItemsManager : MonoBehaviour
         List<ItemData> itemsToSelectFrom = _itemsDataByCategory[_currentItemCategory];
         while (numberOfItemsToAppear > 0)
         {
-            int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
-            int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
-            GameObject selectedItem =
-                Instantiate(itemsToSelectFrom[itemIndex].ItemPrefab, possibleItemLocations[itemLocationIndex]);
-            _itemsOnScreen.Add(selectedItem);
-
-            itemsToSelectFrom.RemoveAt(itemIndex);
-            possibleItemLocations.RemoveAt(itemLocationIndex);
+            InstantiateItem(itemsToSelectFrom, possibleItemLocations);
             numberOfItemsToAppear--;
         }
     }
@@ -100,6 +93,19 @@ public class ItemsManager : MonoBehaviour
         }
 
         return possibleItemLocations;
+    }
+
+    private void InstantiateItem(List<ItemData> itemsToSelectFrom, List<Transform> possibleItemLocations)
+    {
+        int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
+        int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
+
+        GameObject selectedItem =
+            Instantiate(itemsToSelectFrom[itemIndex].ItemPrefab, possibleItemLocations[itemLocationIndex]);
+        _itemsOnScreen.Add(selectedItem);
+
+        itemsToSelectFrom.RemoveAt(itemIndex);
+        possibleItemLocations.RemoveAt(itemLocationIndex);
     }
 
     public void OnItemSelected(GameObject item)

@@ -25,6 +25,7 @@ public static class ItemCategoryExtensions
             { EItemCategory.Touch, 8 }
         };
 
+    //For example, select 4 blue items.
     public static int GetNumberOfItemsToSelect(this EItemCategory itemCategory)
     {
         return _numberOfItemsToSelectByCategory[itemCategory];
