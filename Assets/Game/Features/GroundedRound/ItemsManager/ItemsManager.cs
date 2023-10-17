@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Game.Common.Scripts.Controllers;
+using Game.Common.Scripts.Enums;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,6 +28,7 @@ public class ItemsManager : MonoBehaviour
 
     private void Awake()
     {
+        DependencyManager.SetDependency(this);
         InitializeItemsByCategoryDictionary();
     }
 
@@ -48,6 +51,9 @@ public class ItemsManager : MonoBehaviour
 
     private async UniTask RunItemsRound()
     {
+        GameStateController gameStateController = FindObjectOfType<GameStateController>(); // todo: temp solution!
+        gameStateController.SetGameState(GameState.Grounding);
+
         // while (_itemCategories.Count > 0)
         // {
         await RunNextTrial();
@@ -111,7 +117,8 @@ public class ItemsManager : MonoBehaviour
     public void OnItemSelected(GameObject item)
     {
         _itemsOnScreen.Remove(item);
-        //Move item to character
+        DependencyManager.GetDependency(out CharacterSlots characterSlots);
+        characterSlots.AddItemToRandomSlot(item);
     }
 
 #if UNITY_EDITOR
