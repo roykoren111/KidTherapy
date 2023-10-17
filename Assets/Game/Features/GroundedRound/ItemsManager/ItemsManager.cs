@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Cysharp.Threading.Tasks;
-using Game.Common.Scripts.Controllers;
-using Game.Common.Scripts.Enums;
+using Game.Common.Scripts.Data;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -61,12 +62,25 @@ public class ItemsManager : MonoBehaviour
 
     private async UniTask RunNextTrial()
     {
+        RemoveItemsFromScreen();
+
         _currentItemCategory = GetNextItemCategory();
         InstantiateItems();
+
+        //Whenever the player clicks on an item, we remove it from the items on screen list.
         bool finishedSelectingItems = _currentItemCategory.GetNumberOfItemsToAppear() - _itemsOnScreen.Count >=
                                       _currentItemCategory.GetNumberOfItemsToSelect();
         await UniTask.WaitUntil(() => finishedSelectingItems);
-        //TODO: whenever the player clicks on an item, remove it from the items on screen list.
+    }
+
+    private void RemoveItemsFromScreen()
+    {
+        foreach (GameObject item in _itemsOnScreen)
+        {
+            Destroy(item);
+        }
+
+        _itemsOnScreen.Clear();
     }
 
     private EItemCategory GetNextItemCategory()
@@ -123,13 +137,26 @@ public class ItemsManager : MonoBehaviour
 #if UNITY_EDITOR
     public void SkipToNextTrial()
     {
-        foreach (GameObject item in _itemsOnScreen)
-        {
-            Destroy(item);
-        }
-
-        _itemsOnScreen.Clear();
         RunNextTrial().Forget();
+    }
+
+    public void PopulateItemsDataLists()
+    {
+        PopulateItemsDataList(_seeItemsData, "See");
+        PopulateItemsDataList(_tasteItemsData, "Taste");
+        PopulateItemsDataList(_hearItemsData, "Hear");
+        PopulateItemsDataList(_smellItemsData, "Smell");
+        PopulateItemsDataList(_touchItemsData, "Touch");
+    }
+
+    private void PopulateItemsDataList(List<ItemData> itemsData, string itemsFolderName)
+    {
+        itemsData.Clear();
+        string[] files = Directory.GetFiles(FolderPaths.ItemsDataPath + "/" + itemsFolderName, "*.asset");
+        foreach (string file in files)
+        {
+            itemsData.Add(AssetDatabase.LoadAssetAtPath(file, typeof(ItemData)) as ItemData);
+        }
     }
 #endif
 }

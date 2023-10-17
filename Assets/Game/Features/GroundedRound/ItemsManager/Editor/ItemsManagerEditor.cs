@@ -12,6 +12,12 @@ public class ItemsManagerEditor : Editor
         ItemsManager itemsManager = target as ItemsManager;
 
         GUILayout.Space(10);
+        if (GUILayout.Button("Populate items data lists"))
+        {
+            itemsManager.PopulateItemsDataLists();
+        }
+
+        GUILayout.Space(10);
         GUILayout.Label("Play mode utilities:");
         if (GUILayout.Button("Skip to next trial"))
         {

@@ -407,6 +407,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4787190481495142193, guid: 83dd2522b0c2744438727106ec93d3ef, type: 3}
+      propertyPath: _hearItemsData.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787190481495142193, guid: 83dd2522b0c2744438727106ec93d3ef, type: 3}
+      propertyPath: _smellItemsData.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787190481495142193, guid: 83dd2522b0c2744438727106ec93d3ef, type: 3}
+      propertyPath: _tasteItemsData.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787190481495142193, guid: 83dd2522b0c2744438727106ec93d3ef, type: 3}
+      propertyPath: _touchItemsData.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4787190481495142198, guid: 83dd2522b0c2744438727106ec93d3ef, type: 3}
       propertyPath: m_Name
       value: GroundedRound
