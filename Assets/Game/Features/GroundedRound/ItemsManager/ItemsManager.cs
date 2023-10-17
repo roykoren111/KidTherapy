@@ -51,8 +51,7 @@ public class ItemsManager : MonoBehaviour
 
     private async UniTask RunItemsRound()
     {
-        GameStateController gameStateController = FindObjectOfType<GameStateController>(); // todo: temp solution!
-        gameStateController.SetGameState(GameState.Grounding);
+        // gameStateController.SetGameState(GameState.Grounding);
 
         // while (_itemCategories.Count > 0)
         // {
