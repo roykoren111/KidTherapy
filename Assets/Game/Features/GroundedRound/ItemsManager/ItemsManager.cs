@@ -8,14 +8,14 @@ using Random = UnityEngine.Random;
 public class ItemsManager : MonoBehaviour
 {
     [Header("Item prefabs")] [SerializeField]
-    private List<GameObject> _seeItemsPrefabs;
+    private List<ItemData> _seeItemsData;
 
-    [SerializeField] private List<GameObject> _hearItemsPrefabs;
-    [SerializeField] private List<GameObject> _smellItemsPrefabs;
-    [SerializeField] private List<GameObject> _tasteItemsPrefabs;
-    [SerializeField] private List<GameObject> _touchItemsPrefabs;
+    [SerializeField] private List<ItemData> _hearItemsData;
+    [SerializeField] private List<ItemData> _smellItemsData;
+    [SerializeField] private List<ItemData> _tasteItemsData;
+    [SerializeField] private List<ItemData> _touchItemsData;
 
-    private Dictionary<EItemCategory, List<GameObject>> _itemsPrefabsByCategory;
+    private Dictionary<EItemCategory, List<ItemData>> _itemsDataByCategory;
 
     [Space(10)] [SerializeField] private List<EItemCategory> _itemCategories;
     [SerializeField] private GameObject _itemLocationsParent;
@@ -32,11 +32,11 @@ public class ItemsManager : MonoBehaviour
 
     private void InitializeItemsByCategoryDictionary()
     {
-        _itemsPrefabsByCategory = new Dictionary<EItemCategory, List<GameObject>>()
+        _itemsDataByCategory = new Dictionary<EItemCategory, List<ItemData>>()
         {
-            { EItemCategory.See, _seeItemsPrefabs }, { EItemCategory.Hear, _hearItemsPrefabs },
-            { EItemCategory.Smell, _smellItemsPrefabs },
-            { EItemCategory.Taste, _tasteItemsPrefabs }, { EItemCategory.Touch, _touchItemsPrefabs }
+            { EItemCategory.See, _seeItemsData }, { EItemCategory.Hear, _hearItemsData },
+            { EItemCategory.Smell, _smellItemsData },
+            { EItemCategory.Taste, _tasteItemsData }, { EItemCategory.Touch, _touchItemsData }
         };
     }
 
@@ -76,13 +76,13 @@ public class ItemsManager : MonoBehaviour
     {
         List<Transform> possibleItemLocations = GetPossibleItemLocations();
         int numberOfItemsToAppear = _currentItemCategory.GetNumberOfItemsToAppear();
-        List<GameObject> itemsToSelectFrom = _itemsPrefabsByCategory[_currentItemCategory];
+        List<ItemData> itemsToSelectFrom = _itemsDataByCategory[_currentItemCategory];
         while (numberOfItemsToAppear > 0)
         {
             int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
             int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
             GameObject selectedItem =
-                Instantiate(itemsToSelectFrom[itemIndex], possibleItemLocations[itemLocationIndex]);
+                Instantiate(itemsToSelectFrom[itemIndex].ItemPrefab, possibleItemLocations[itemLocationIndex]);
             _itemsOnScreen.Add(selectedItem);
 
             itemsToSelectFrom.RemoveAt(itemIndex);
