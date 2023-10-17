@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class ItemsManager : MonoBehaviour
@@ -15,11 +14,13 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] private List<GameObject> _smellItemsPrefabs;
     [SerializeField] private List<GameObject> _tasteItemsPrefabs;
     [SerializeField] private List<GameObject> _touchItemsPrefabs;
+
     private Dictionary<EItemCategory, List<GameObject>> _itemsPrefabsByCategory;
 
     [Space(10)] [SerializeField] private List<EItemCategory> _itemCategories;
+    [SerializeField] private GameObject _itemLocationsParent;
+
     private EItemCategory _currentItemCategory;
-    private int _numberOfItemsToSelect;
 
     private List<GameObject> _itemsOnScreen = new List<GameObject>();
 
@@ -28,10 +29,6 @@ public class ItemsManager : MonoBehaviour
         InitializeItemsByCategoryDictionary();
     }
 
-    private void Start()
-    {
-        RunItemsRound().Forget();
-    }
 
     private void InitializeItemsByCategoryDictionary()
     {
@@ -41,6 +38,12 @@ public class ItemsManager : MonoBehaviour
             { EItemCategory.Smell, _smellItemsPrefabs },
             { EItemCategory.Taste, _tasteItemsPrefabs }, { EItemCategory.Touch, _touchItemsPrefabs }
         };
+    }
+
+    //TODO: remove when integrating with full project, start round in relevant place in flow.
+    private void Start()
+    {
+        RunItemsRound().Forget();
     }
 
     private async UniTask RunItemsRound()
@@ -54,8 +57,11 @@ public class ItemsManager : MonoBehaviour
     private async UniTask RunNextTrial()
     {
         _currentItemCategory = GetNextItemCategory();
-        _numberOfItemsToSelect = _currentItemCategory.GetNumberOfItemsInCategory();
         InstantiateItems();
+        bool finishedSelectingItems = _currentItemCategory.GetNumberOfItemsToAppear() - _itemsOnScreen.Count >=
+                                      _currentItemCategory.GetNumberOfItemsToSelect();
+        await UniTask.WaitUntil(() => finishedSelectingItems);
+        //TODO: whenever the player clicks on an item, remove it from the items on screen list.
     }
 
     private EItemCategory GetNextItemCategory()
@@ -68,16 +74,32 @@ public class ItemsManager : MonoBehaviour
 
     private void InstantiateItems()
     {
-        int numberOfItemsSelected = 0;
+        List<Transform> possibleItemLocations = GetPossibleItemLocations();
+        int numberOfItemsToAppear = _currentItemCategory.GetNumberOfItemsToAppear();
         List<GameObject> itemsToSelectFrom = _itemsPrefabsByCategory[_currentItemCategory];
-        while (numberOfItemsSelected < _numberOfItemsToSelect)
+        while (numberOfItemsToAppear > 0)
         {
             int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
-            GameObject selectedItem = Instantiate(itemsToSelectFrom[itemIndex]);
-            itemsToSelectFrom.RemoveAt(itemIndex);
+            int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
+            GameObject selectedItem =
+                Instantiate(itemsToSelectFrom[itemIndex], possibleItemLocations[itemLocationIndex]);
             _itemsOnScreen.Add(selectedItem);
-            numberOfItemsSelected++;
+
+            itemsToSelectFrom.RemoveAt(itemIndex);
+            possibleItemLocations.RemoveAt(itemLocationIndex);
+            numberOfItemsToAppear--;
         }
+    }
+
+    private List<Transform> GetPossibleItemLocations()
+    {
+        List<Transform> possibleItemLocations = new List<Transform>();
+        foreach (Transform possibleItemLocation in _itemLocationsParent.transform)
+        {
+            possibleItemLocations.Add(possibleItemLocation);
+        }
+
+        return possibleItemLocations;
     }
 
 #if UNITY_EDITOR
