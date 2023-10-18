@@ -310,6 +310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 3534710865238434367, guid: d27f54408d9a58b41b4044bc13dcbd37, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5521491265559636411, guid: d27f54408d9a58b41b4044bc13dcbd37, type: 3}
       propertyPath: m_RootOrder
       value: 2
