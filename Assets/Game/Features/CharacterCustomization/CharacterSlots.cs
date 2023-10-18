@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CharacterSlots : MonoBehaviour
 {
-    [SerializeField]
-    private List<CharacterSlot> slots;
+    [SerializeField] private List<CharacterSlot> slots;
 
     private int _nextFreeSlotIndex = 0;
 
@@ -19,15 +18,15 @@ public class CharacterSlots : MonoBehaviour
         //Debug.Log("Test");
     }
 
-    public void AddItemToRandomSlot(GameObject item)
+    public void AddItemToRandomSlot(ItemData itemData)
     {
-        if(_nextFreeSlotIndex == slots.Count - 1)
+        if (_nextFreeSlotIndex == slots.Count - 1)
         {
             Debug.LogError("All slots full!");
             return;
         }
 
-        slots[_nextFreeSlotIndex].ChangeItemInSlot(item);
+        slots[_nextFreeSlotIndex].ChangeItemInSlot(itemData);
         _nextFreeSlotIndex++;
     }
 }

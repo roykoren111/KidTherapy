@@ -6,16 +6,15 @@ public class CharacterSlot : MonoBehaviour
 {
     private void Start()
     {
-        if(DependencyManager.GetDependency(out CharacterSlots charSlots))
+        if (DependencyManager.GetDependency(out CharacterSlots charSlots))
         {
             charSlots.Test();
         }
     }
 
-    public void ChangeItemInSlot(GameObject newItem)
+    public void ChangeItemInSlot(ItemData itemData)
     {
-        newItem.transform.parent = transform;
-        newItem.transform.position = transform.position;
-        newItem.transform.rotation = transform.rotation;
+        GameObject createdItem = Instantiate(itemData.Prefab, transform);
+        createdItem.tag = "Untagged";
     }
 }

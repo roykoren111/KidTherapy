@@ -17,34 +17,20 @@ public class ItemsManager : MonoBehaviour
 
     private EItemCategory _currentItemCategory;
 
-    private readonly List<GameObject> _itemsOnScreen = new List<GameObject>();
+    private readonly Dictionary<GameObject, ItemData> _itemsOnScreen = new Dictionary<GameObject, ItemData>();
 
     private void Awake()
     {
         DependencyManager.SetDependency(this);
     }
 
-    private List<ItemData> GetItemsDataByCategory(EItemCategory itemCategory)
-    {
-        List<ItemData> itemsData = new List<ItemData>();
-        foreach (ItemData itemData in _itemsData)
-        {
-            if (itemData.Categorey == itemCategory)
-            {
-                itemsData.Add(itemData);
-            }
-        }
-
-        return itemsData;
-    }
-
     //TODO: remove when integrating with full project, start round in relevant place in flow.
     private void Start()
     {
-        RunItemsRound().Forget();
+        RunGroundedRound().Forget();
     }
 
-    private async UniTask RunItemsRound()
+    private async UniTask RunGroundedRound()
     {
         // gameStateController.SetGameState(GameState.Grounding);
 
@@ -52,6 +38,8 @@ public class ItemsManager : MonoBehaviour
         {
             await RunNextTrial();
         }
+
+        Debug.Log("Finished Grounded round");
     }
 
     private async UniTask RunNextTrial()
@@ -68,12 +56,12 @@ public class ItemsManager : MonoBehaviour
             return finishedSelectingItems;
         });
 
-        Debug.Log("finished trial");
+        Debug.Log("Finished " + _currentItemCategory + " category");
     }
 
     private void RemoveItemsFromScreen()
     {
-        foreach (GameObject item in _itemsOnScreen)
+        foreach (GameObject item in _itemsOnScreen.Keys)
         {
             Destroy(item);
         }
@@ -112,14 +100,31 @@ public class ItemsManager : MonoBehaviour
         return possibleItemLocations;
     }
 
+
+    private List<ItemData> GetItemsDataByCategory(EItemCategory itemCategory)
+    {
+        List<ItemData> itemsData = new List<ItemData>();
+        foreach (ItemData itemData in _itemsData)
+        {
+            if (itemData.Categorey == itemCategory)
+            {
+                itemsData.Add(itemData);
+            }
+        }
+
+        return itemsData;
+    }
+
     private void InstantiateItem(List<ItemData> itemsToSelectFrom, List<Transform> possibleItemLocations)
     {
         int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
+        ItemData selectedItemData = itemsToSelectFrom[itemIndex];
+
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
 
-        GameObject selectedItem =
-            Instantiate(itemsToSelectFrom[itemIndex].Prefab, possibleItemLocations[itemLocationIndex]);
-        _itemsOnScreen.Add(selectedItem);
+        GameObject selectedItem = Instantiate(selectedItemData.Prefab, possibleItemLocations[itemLocationIndex]);
+
+        _itemsOnScreen.Add(selectedItem, selectedItemData);
 
         itemsToSelectFrom.RemoveAt(itemIndex);
         possibleItemLocations.RemoveAt(itemLocationIndex);
@@ -138,11 +143,12 @@ public class ItemsManager : MonoBehaviour
         }
     }
 
-    public void SelectItem(GameObject item)
+    private void SelectItem(GameObject item)
     {
-        _itemsOnScreen.Remove(item);
         DependencyManager.GetDependency(out CharacterSlots characterSlots);
-        characterSlots.AddItemToRandomSlot(item);
+        characterSlots.AddItemToRandomSlot(_itemsOnScreen[item]);
+        _itemsOnScreen.Remove(item);
+        Destroy(item);
     }
 
 #if UNITY_EDITOR
@@ -151,21 +157,20 @@ public class ItemsManager : MonoBehaviour
         RunNextTrial().Forget();
     }
 
-    //TODO: refactor
     public void PopulateItemsDataList()
     {
         _itemsData.Clear();
-        PopulateItemsData("See");
-        PopulateItemsData("Taste");
-        PopulateItemsData("Hear");
-        PopulateItemsData("Smell");
-        PopulateItemsData("Touch");
+        AddItemsDataInCategory("See");
+        AddItemsDataInCategory("Taste");
+        AddItemsDataInCategory("Hear");
+        AddItemsDataInCategory("Smell");
+        AddItemsDataInCategory("Touch");
         EditorUtility.SetDirty(this);
     }
 
-    private void PopulateItemsData(string itemsFolderName)
+    private void AddItemsDataInCategory(string categoryFolderName)
     {
-        string[] files = Directory.GetFiles(FolderPaths.ItemsDataPath + "/" + itemsFolderName, "*.asset");
+        string[] files = Directory.GetFiles(FolderPaths.ItemsDataPath + "/" + categoryFolderName, "*.asset");
         foreach (string file in files)
         {
             _itemsData.Add(AssetDatabase.LoadAssetAtPath(file, typeof(ItemData)) as ItemData);
