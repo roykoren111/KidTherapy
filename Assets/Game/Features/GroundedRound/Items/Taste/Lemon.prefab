@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 688767924039219342}
   - component: {fileID: 688767924039219343}
   - component: {fileID: -4898780782155248889}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lemon
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

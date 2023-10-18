@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8119090727385424804}
   - component: {fileID: 8119090727385424807}
   - component: {fileID: 9097183772253214372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chocolate
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

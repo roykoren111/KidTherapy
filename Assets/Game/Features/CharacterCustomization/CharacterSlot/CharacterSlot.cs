@@ -15,6 +15,6 @@ public class CharacterSlot : MonoBehaviour
     public void ChangeItemInSlot(ItemData itemData)
     {
         GameObject createdItem = Instantiate(itemData.Prefab, transform);
-        createdItem.tag = "Untagged";
+        createdItem.layer = 0;
     }
 }

@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 
 public class ItemsManager : MonoBehaviour
 {
+    [SerializeField] private LayerMask _selectableLayerMask;
+
     [SerializeField] private List<ItemData> _itemsData;
 
     [Space(10)] [SerializeField] private List<EItemCategory> _itemCategories;
@@ -18,6 +20,7 @@ public class ItemsManager : MonoBehaviour
     private EItemCategory _currentItemCategory;
 
     private readonly Dictionary<GameObject, ItemData> _itemsOnScreen = new Dictionary<GameObject, ItemData>();
+
 
     private void Awake()
     {
@@ -49,14 +52,16 @@ public class ItemsManager : MonoBehaviour
         _currentItemCategory = GetNextItemCategory();
         InstantiateItems();
 
-        await UniTask.WaitUntil(() =>
-        {
-            int numberOfItemsSelected = _currentItemCategory.GetNumberOfItemsToAppear() - _itemsOnScreen.Count;
-            bool finishedSelectingItems = numberOfItemsSelected >= _currentItemCategory.GetNumberOfItemsToSelect();
-            return finishedSelectingItems;
-        });
+        await UniTask.WaitUntil(FinishedSelectingItems);
 
         Debug.Log("Finished " + _currentItemCategory + " category");
+    }
+
+    private bool FinishedSelectingItems()
+    {
+        int numberOfItemsSelected = _currentItemCategory.GetNumberOfItemsToAppear() - _itemsOnScreen.Count;
+        bool finishedSelectingItems = numberOfItemsSelected >= _currentItemCategory.GetNumberOfItemsToSelect();
+        return finishedSelectingItems;
     }
 
     private void RemoveItemsFromScreen()
@@ -121,7 +126,6 @@ public class ItemsManager : MonoBehaviour
         ItemData selectedItemData = itemsToSelectFrom[itemIndex];
 
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
-
         GameObject selectedItem = Instantiate(selectedItemData.Prefab, possibleItemLocations[itemLocationIndex]);
 
         _itemsOnScreen.Add(selectedItem, selectedItemData);
@@ -135,11 +139,8 @@ public class ItemsManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (!Physics.Raycast(ray, out RaycastHit raycastHit, 100f)) return;
-            if (raycastHit.transform.CompareTag("Item"))
-            {
-                SelectItem(raycastHit.transform.gameObject);
-            }
+            if (!Physics.Raycast(ray, out RaycastHit raycastHit, 100f, _selectableLayerMask)) return;
+            SelectItem(raycastHit.transform.gameObject);
         }
     }
 

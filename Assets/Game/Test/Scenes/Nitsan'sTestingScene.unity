@@ -628,6 +628,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4787190481495142193, guid: 83dd2522b0c2744438727106ec93d3ef, type: 3}
+      propertyPath: _selectableLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787190481495142193, guid: 83dd2522b0c2744438727106ec93d3ef, type: 3}
       propertyPath: _touchItemsData.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: f6647784f0acc774fa920d5f8f2ff39a, type: 2}

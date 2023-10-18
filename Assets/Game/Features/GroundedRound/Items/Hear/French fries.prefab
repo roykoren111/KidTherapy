@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6299937771590182003}
   - component: {fileID: 6299937771590182002}
   - component: {fileID: -4668407492761458796}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: French fries
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

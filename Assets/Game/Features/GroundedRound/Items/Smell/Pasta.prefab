@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8510908744872015816}
   - component: {fileID: 8510908744872015817}
   - component: {fileID: 1390030492589465528}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pasta
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
