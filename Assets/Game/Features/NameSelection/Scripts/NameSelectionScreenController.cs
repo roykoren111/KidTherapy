@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Game.Common.Scripts.Controllers;
+using Game.Common.Scripts.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +23,7 @@ namespace Game.Features.NameSelection.Scripts
         private void ChangePlayerName()
         {
 #if UNITY_EDITOR
-            // todo: move to the next screen
+            GoToNextScreen();
 #elif UNITY_ANDROID || UNITY_IOS
             ChangePlayerNameAsync().Forget();
 #endif
@@ -42,7 +44,8 @@ namespace Game.Features.NameSelection.Scripts
             _currentPlayerNameText.text = newName;
             
             // todo: select gender
-            // todo: save user name in a global context & move to the next screen
+            // todo: save user name in a global context
+            GoToNextScreen();
         }
         
         private async UniTask<string> GetKeyboardInput(string startingText,
@@ -52,6 +55,14 @@ namespace Game.Features.NameSelection.Scripts
             await UniTask.WaitUntil(() => statusesToAwait.Contains(keyboard.status));
             var textInputInKeyboard = keyboard.text;
             return textInputInKeyboard;
+        }
+        
+        private void GoToNextScreen()
+        {
+            if (DependencyManager.GetDependency(out GameStateController gameStateController))
+            {
+                gameStateController.SetGameState(GameState.Breathing);
+            }
         }
         
         private void OnDestroy()
