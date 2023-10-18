@@ -127,7 +127,20 @@ public class ItemsManager : MonoBehaviour
         possibleItemLocations.RemoveAt(itemLocationIndex);
     }
 
-    public void OnItemSelected(GameObject item)
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (!Physics.Raycast(ray, out RaycastHit raycastHit, 100f)) return;
+            if (raycastHit.transform.CompareTag("Item"))
+            {
+                SelectItem(raycastHit.transform.gameObject);
+            }
+        }
+    }
+
+    public void SelectItem(GameObject item)
     {
         _itemsOnScreen.Remove(item);
         DependencyManager.GetDependency(out CharacterSlots characterSlots);
@@ -147,6 +160,7 @@ public class ItemsManager : MonoBehaviour
         PopulateItemsDataList(_hearItemsData, "Hear");
         PopulateItemsDataList(_smellItemsData, "Smell");
         PopulateItemsDataList(_touchItemsData, "Touch");
+        EditorUtility.SetDirty(this);
     }
 
     private void PopulateItemsDataList(List<ItemData> itemsData, string itemsFolderName)
