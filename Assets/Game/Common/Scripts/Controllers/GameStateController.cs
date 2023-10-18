@@ -14,8 +14,9 @@ namespace Game.Common.Scripts.Controllers
         
         public GameState CurrentGameState { get; private set; }
         
-        private void OnEnable()
+        private void Awake()
         {
+            DependencyManager.SetDependency(this);
             CurrentGameState = GameState.Intro;
             SetGameState(CurrentGameState);
         }
