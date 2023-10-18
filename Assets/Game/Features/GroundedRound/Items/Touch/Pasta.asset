@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: Pasta
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 8510908744872015818, guid: 400e0c7f7e0fe394a94503becd5187d7, type: 3}
-  ItemName: Pasta
+  Prefab: {fileID: 8510908744872015818, guid: 400e0c7f7e0fe394a94503becd5187d7, type: 3}
+  Name: Pasta
+  Categorey: 4

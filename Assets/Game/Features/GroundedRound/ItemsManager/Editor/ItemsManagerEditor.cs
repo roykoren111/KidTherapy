@@ -12,9 +12,9 @@ public class ItemsManagerEditor : Editor
         ItemsManager itemsManager = target as ItemsManager;
 
         GUILayout.Space(10);
-        if (GUILayout.Button("Populate items data lists"))
+        if (GUILayout.Button("Populate items data list"))
         {
-            itemsManager.PopulateItemsDataLists();
+            itemsManager.PopulateItemsDataList();
         }
 
         GUILayout.Space(10);

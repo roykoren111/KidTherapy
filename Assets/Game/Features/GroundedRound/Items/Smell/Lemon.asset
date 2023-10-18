@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: Lemon
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 688767924039219340, guid: e3b0a369fb32eae418553b80a5182bae, type: 3}
-  ItemName: Lemon
+  Prefab: {fileID: 688767924039219340, guid: e3b0a369fb32eae418553b80a5182bae, type: 3}
+  Name: Lemon
+  Categorey: 2

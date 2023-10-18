@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: Chocolate
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 8119090727385424802, guid: fd3abf98c8228d34f927589b1bcec97e, type: 3}
-  ItemName: Chocolate
+  Prefab: {fileID: 8119090727385424802, guid: fd3abf98c8228d34f927589b1bcec97e, type: 3}
+  Name: Chocolate
+  Categorey: 4

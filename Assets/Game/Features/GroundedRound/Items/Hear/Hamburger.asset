@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: Hamburger
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 4126969570069019106, guid: 05d32a0eeaa7a184980653c4ec8c5f66, type: 3}
-  ItemName: Hamburger
+  Prefab: {fileID: 4126969570069019106, guid: 05d32a0eeaa7a184980653c4ec8c5f66, type: 3}
+  Name: Hamburger
+  Categorey: 1

@@ -10,15 +10,7 @@ using Random = UnityEngine.Random;
 
 public class ItemsManager : MonoBehaviour
 {
-    [Header("Item prefabs")] [SerializeField]
-    private List<ItemData> _seeItemsData;
-
-    [SerializeField] private List<ItemData> _hearItemsData;
-    [SerializeField] private List<ItemData> _smellItemsData;
-    [SerializeField] private List<ItemData> _tasteItemsData;
-    [SerializeField] private List<ItemData> _touchItemsData;
-
-    private Dictionary<EItemCategory, List<ItemData>> _itemsDataByCategory;
+    [SerializeField] private List<ItemData> _itemsData;
 
     [Space(10)] [SerializeField] private List<EItemCategory> _itemCategories;
     [SerializeField] private GameObject _itemLocationsParent;
@@ -30,18 +22,20 @@ public class ItemsManager : MonoBehaviour
     private void Awake()
     {
         DependencyManager.SetDependency(this);
-        InitializeItemsByCategoryDictionary();
     }
 
-
-    private void InitializeItemsByCategoryDictionary()
+    private List<ItemData> GetItemsDataByCategory(EItemCategory itemCategory)
     {
-        _itemsDataByCategory = new Dictionary<EItemCategory, List<ItemData>>()
+        List<ItemData> itemsData = new List<ItemData>();
+        foreach (ItemData itemData in _itemsData)
         {
-            { EItemCategory.See, _seeItemsData }, { EItemCategory.Hear, _hearItemsData },
-            { EItemCategory.Smell, _smellItemsData },
-            { EItemCategory.Taste, _tasteItemsData }, { EItemCategory.Touch, _touchItemsData }
-        };
+            if (itemData.Categorey == itemCategory)
+            {
+                itemsData.Add(itemData);
+            }
+        }
+
+        return itemsData;
     }
 
     //TODO: remove when integrating with full project, start round in relevant place in flow.
@@ -54,10 +48,10 @@ public class ItemsManager : MonoBehaviour
     {
         // gameStateController.SetGameState(GameState.Grounding);
 
-        // while (_itemCategories.Count > 0)
-        // {
-        await RunNextTrial();
-        // }
+        while (_itemCategories.Count > 0)
+        {
+            await RunNextTrial();
+        }
     }
 
     private async UniTask RunNextTrial()
@@ -67,10 +61,14 @@ public class ItemsManager : MonoBehaviour
         _currentItemCategory = GetNextItemCategory();
         InstantiateItems();
 
-        //Whenever the player clicks on an item, we remove it from the items on screen list.
-        bool finishedSelectingItems = _currentItemCategory.GetNumberOfItemsToAppear() - _itemsOnScreen.Count >=
-                                      _currentItemCategory.GetNumberOfItemsToSelect();
-        await UniTask.WaitUntil(() => finishedSelectingItems);
+        await UniTask.WaitUntil(() =>
+        {
+            int numberOfItemsSelected = _currentItemCategory.GetNumberOfItemsToAppear() - _itemsOnScreen.Count;
+            bool finishedSelectingItems = numberOfItemsSelected >= _currentItemCategory.GetNumberOfItemsToSelect();
+            return finishedSelectingItems;
+        });
+
+        Debug.Log("finished trial");
     }
 
     private void RemoveItemsFromScreen()
@@ -95,7 +93,7 @@ public class ItemsManager : MonoBehaviour
     {
         List<Transform> possibleItemLocations = GetPossibleItemLocations();
         int numberOfItemsToAppear = _currentItemCategory.GetNumberOfItemsToAppear();
-        List<ItemData> itemsToSelectFrom = _itemsDataByCategory[_currentItemCategory];
+        List<ItemData> itemsToSelectFrom = GetItemsDataByCategory(_currentItemCategory);
         while (numberOfItemsToAppear > 0)
         {
             InstantiateItem(itemsToSelectFrom, possibleItemLocations);
@@ -120,7 +118,7 @@ public class ItemsManager : MonoBehaviour
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
 
         GameObject selectedItem =
-            Instantiate(itemsToSelectFrom[itemIndex].ItemPrefab, possibleItemLocations[itemLocationIndex]);
+            Instantiate(itemsToSelectFrom[itemIndex].Prefab, possibleItemLocations[itemLocationIndex]);
         _itemsOnScreen.Add(selectedItem);
 
         itemsToSelectFrom.RemoveAt(itemIndex);
@@ -153,23 +151,24 @@ public class ItemsManager : MonoBehaviour
         RunNextTrial().Forget();
     }
 
-    public void PopulateItemsDataLists()
+    //TODO: refactor
+    public void PopulateItemsDataList()
     {
-        PopulateItemsDataList(_seeItemsData, "See");
-        PopulateItemsDataList(_tasteItemsData, "Taste");
-        PopulateItemsDataList(_hearItemsData, "Hear");
-        PopulateItemsDataList(_smellItemsData, "Smell");
-        PopulateItemsDataList(_touchItemsData, "Touch");
+        _itemsData.Clear();
+        PopulateItemsData("See");
+        PopulateItemsData("Taste");
+        PopulateItemsData("Hear");
+        PopulateItemsData("Smell");
+        PopulateItemsData("Touch");
         EditorUtility.SetDirty(this);
     }
 
-    private void PopulateItemsDataList(List<ItemData> itemsData, string itemsFolderName)
+    private void PopulateItemsData(string itemsFolderName)
     {
-        itemsData.Clear();
         string[] files = Directory.GetFiles(FolderPaths.ItemsDataPath + "/" + itemsFolderName, "*.asset");
         foreach (string file in files)
         {
-            itemsData.Add(AssetDatabase.LoadAssetAtPath(file, typeof(ItemData)) as ItemData);
+            _itemsData.Add(AssetDatabase.LoadAssetAtPath(file, typeof(ItemData)) as ItemData);
         }
     }
 #endif
