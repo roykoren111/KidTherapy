@@ -12,8 +12,10 @@ public class CharacterSlot : MonoBehaviour
         }
     }
 
-    public void ChangeItemInSlot(object newItem)
+    public void ChangeItemInSlot(GameObject newItem)
     {
-        //slot change logic
+        newItem.transform.parent = transform;
+        newItem.transform.position = transform.position;
+        newItem.transform.rotation = transform.rotation;
     }
 }
