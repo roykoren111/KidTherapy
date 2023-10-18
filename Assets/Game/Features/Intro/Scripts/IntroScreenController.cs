@@ -3,22 +3,35 @@ using Cysharp.Threading.Tasks;
 using Game.Common.Scripts.Controllers;
 using Game.Common.Scripts.Enums;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Features.Intro.Scripts
 {
     public class IntroScreenController : MonoBehaviour
     {
-        private void OnEnable()
+        [SerializeField] private Button _tapToContinueButton;
+        
+        private const float SecondsBeforeEnableUserInput = 2f;
+        
+        private void Awake()
         {
-            TapToContinue().Forget();
+            WaitAndListenToButtonClick().Forget();
         }
-
-        private async UniTask TapToContinue()
+        
+        private async UniTask WaitAndListenToButtonClick()
         {
-            // todo: temp code..
-            await UniTask.Delay(TimeSpan.FromSeconds(2f));
-            var gameStateController = FindObjectOfType<GameStateController>(); // todo: temp solution!
-            gameStateController.SetGameState(GameState.NameSelection);
+            await UniTask.Delay(TimeSpan.FromSeconds(SecondsBeforeEnableUserInput));
+            _tapToContinueButton.onClick.AddListener(OnButtonClicked);
+        }
+        
+        private void OnButtonClicked()
+        {
+            _tapToContinueButton.onClick.RemoveListener(OnButtonClicked);
+            
+            if (DependencyManager.GetDependency(out GameStateController gameStateController))
+            {
+                gameStateController.SetGameState(GameState.NameSelection);
+            }
         }
     }
 }
