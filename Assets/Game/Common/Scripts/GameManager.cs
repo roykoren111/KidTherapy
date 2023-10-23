@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     RoundManager _roundManager;
     void Start()
     {
-
+        RunGameLoop().Forget();
     }
 
 

@@ -668,7 +668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e950bb4f32efe44aea22f2dbd3828d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _screenTransitionDuration: 1
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,15 +731,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rounds:
-  - GameState: 0
+  - RoundType: 0
     UIPrefab: {fileID: 0}
     CameraTransform: {fileID: 1511124456718751065}
-  - GameState: 1
+    CameraLerpDuration: 0
+  - RoundType: 1
     UIPrefab: {fileID: 0}
     CameraTransform: {fileID: 32758485}
-  - GameState: 3
+    CameraLerpDuration: 0
+  - RoundType: 3
     UIPrefab: {fileID: 0}
     CameraTransform: {fileID: 585243306}
+    CameraLerpDuration: 0
 --- !u!4 &988128626
 Transform:
   m_ObjectHideFlags: 0
@@ -840,6 +842,18 @@ PrefabInstance:
     - target: {fileID: 890391235936351101, guid: cd733a47368cd43f2973726f7a7e7f73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805115232658751631, guid: cd733a47368cd43f2973726f7a7e7f73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805115232658751631, guid: cd733a47368cd43f2973726f7a7e7f73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805115232658751631, guid: cd733a47368cd43f2973726f7a7e7f73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0093
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd733a47368cd43f2973726f7a7e7f73, type: 3}
