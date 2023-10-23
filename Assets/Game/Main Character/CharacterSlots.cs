@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterSlots : MonoBehaviour
 {
-    [SerializeField] private List<CharacterSlot> slots;
+    [SerializeField] private List<CharacterItemSlot> slots;
 
     private int _nextFreeSlotIndex = 0;
 
