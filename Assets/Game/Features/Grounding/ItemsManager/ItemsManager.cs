@@ -14,17 +14,52 @@ public class ItemsManager : MonoBehaviour
 
     [SerializeField] private List<ItemData> _itemsData;
 
-    [Space(10)] [SerializeField] private List<EItemCategory> _itemCategories;
+    [Space(10)][SerializeField] private List<EItemCategory> _itemCategories;
     [SerializeField] private GameObject _itemLocationsParent;
 
     private EItemCategory _currentItemCategory;
 
     private readonly Dictionary<GameObject, ItemData> _itemsOnScreen = new Dictionary<GameObject, ItemData>();
 
+    public static ItemsManager Instance;
+
+    public async UniTask SpawnItems(EItemCategory itemCategory)
+    {
+
+    }
+
+
+    public Action ItemCollected; // invoke when Item is collected
+    
+    // TODO: should be set in a serialized ItemManager configuration.
+    public int GetRequiredItemsCount(EItemCategory itemCategory)
+    {
+        return itemCategory.GetNumberOfItemsToSelect();
+    }
+
+    public async UniTask DestroyRemainingItems()
+    {
+
+    }
+
 
     private void Awake()
     {
         DependencyManager.SetDependency(this);
+        SingletonValidation();
+
+    }
+
+    private void SingletonValidation()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     //TODO: remove when integrating with full project, start round in relevant place in flow.
