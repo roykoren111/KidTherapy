@@ -31,7 +31,6 @@ public class ItemsManager : MonoBehaviour
 
     public Action ItemCollected; // invoke when Item is collected
     
-    // TODO: should be set in a serialized ItemManager configuration.
     public int GetRequiredItemsCount(EItemCategory itemCategory)
     {
         return itemCategory.GetNumberOfItemsToSelect();

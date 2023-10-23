@@ -28,5 +28,6 @@ public class TrialManagerGrounding
     {
         _collectedItemsCount++;
         UIController.Instance.UpdateCollectedItems(_collectedItemsCount);
+        // character controller - update item slot: Tal
     }
 }
