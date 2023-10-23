@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Game.Common.Scripts.Controllers;
-using Game.Common.Scripts.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,7 +60,7 @@ namespace Game.Features.NameSelection.Scripts
         {
             if (DependencyManager.GetDependency(out GameStateController gameStateController))
             {
-                gameStateController.SetGameState(GameState.Breathing);
+                gameStateController.SetGameState(RoundType.Breathing);
             }
         }
         

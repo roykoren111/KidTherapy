@@ -1,7 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Game.Common.Scripts.Controllers;
-using Game.Common.Scripts.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +29,7 @@ namespace Game.Features.Intro.Scripts
             
             if (DependencyManager.GetDependency(out GameStateController gameStateController))
             {
-                gameStateController.SetGameState(GameState.NameSelection);
+                gameStateController.SetGameState(RoundType.NameSelection);
             }
         }
     }
