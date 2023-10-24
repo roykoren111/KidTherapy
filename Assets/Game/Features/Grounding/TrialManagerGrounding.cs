@@ -2,29 +2,27 @@ using Cysharp.Threading.Tasks;
 
 public class TrialManagerGrounding
 {
-    int _collectedItemsCount;
+    private int _collectedItemsCount = 0;
+    private ItemsManager _itemsManager;
 
     public async UniTask RunTrialFlow(EItemCategory itemCategory)
     {
-        _collectedItemsCount = 0;
-        int requiredItemsCount = ItemsManager.Instance.GetRequiredItemsCount(itemCategory);
+        _itemsManager = ItemsManager.Instance;
+        int requiredItemsCount = _itemsManager.GetRequiredItemsCount(itemCategory);
 
         UIController.Instance.ResetGroundingTrialUI(itemCategory, requiredItemsCount);
-        await ItemsManager.Instance.SpawnItems(itemCategory);
-
-        ItemsManager.Instance.ItemCollected += OnItemCollected;
+        await _itemsManager.SpawnItems(itemCategory);
 
         while (_collectedItemsCount < requiredItemsCount)
         {
-            await UniTask.Yield();
+            ItemData collectedItemData = await _itemsManager.WaitForItemCollection();
+            OnItemCollected(collectedItemData);
         }
 
-        ItemsManager.Instance.ItemCollected -= OnItemCollected;
-
-        await ItemsManager.Instance.DestroyRemainingItems();
+        await _itemsManager.DestroyRemainingItems();
     }
 
-    private void OnItemCollected()
+    private void OnItemCollected(ItemData collectedItemData)
     {
         _collectedItemsCount++;
         UIController.Instance.UpdateCollectedItems(_collectedItemsCount);

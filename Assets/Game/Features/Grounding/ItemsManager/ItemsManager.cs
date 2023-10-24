@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using Game.Common.Scripts.Data;
 using UnityEditor;
@@ -14,31 +15,87 @@ public class ItemsManager : MonoBehaviour
 
     [SerializeField] private List<ItemData> _itemsData;
 
-    [Space(10)][SerializeField] private List<EItemCategory> _itemCategories;
+    [Space(10)] [SerializeField] private List<EItemCategory> _itemCategories;
     [SerializeField] private GameObject _itemLocationsParent;
 
     private EItemCategory _currentItemCategory;
+    public ItemData _collectedItem;
 
     private readonly Dictionary<GameObject, ItemData> _itemsOnScreen = new Dictionary<GameObject, ItemData>();
 
     public static ItemsManager Instance;
 
+    private static readonly Dictionary<EItemCategory, int> _numberOfItemsToSelectByCategory =
+        new Dictionary<EItemCategory, int>
+        {
+            { EItemCategory.See, 5 }, { EItemCategory.Hear, 4 }, { EItemCategory.Smell, 3 }, { EItemCategory.Taste, 2 },
+            { EItemCategory.Touch, 1 }
+        };
+
+    private static readonly Dictionary<EItemCategory, int> _numberOfItemsToSpawnByCategory =
+        new Dictionary<EItemCategory, int>
+        {
+            { EItemCategory.See, 8 }, { EItemCategory.Hear, 8 }, { EItemCategory.Smell, 8 }, { EItemCategory.Taste, 8 },
+            { EItemCategory.Touch, 8 }
+        };
+
     public async UniTask SpawnItems(EItemCategory itemCategory)
     {
-
+        List<Transform> possibleItemLocations = GetPossibleItemLocations();
+        int numberOfItemsToSpawn = _numberOfItemsToSpawnByCategory[itemCategory];
+        List<ItemData> itemsToSelectFrom = GetItemsDataByCategory(itemCategory);
+        while (numberOfItemsToSpawn > 0)
+        {
+            SpawnItem(itemsToSelectFrom, possibleItemLocations);
+            numberOfItemsToSpawn--;
+        }
     }
 
+    private List<Transform> GetPossibleItemLocations()
+    {
+        List<Transform> possibleItemLocations = new List<Transform>();
+        foreach (Transform possibleItemLocation in _itemLocationsParent.transform)
+        {
+            possibleItemLocations.Add(possibleItemLocation);
+        }
 
-    public Action ItemCollected; // invoke when Item is collected
-    
+        return possibleItemLocations;
+    }
+
+    private List<ItemData> GetItemsDataByCategory(EItemCategory itemCategory)
+    {
+        return _itemsData.Where(itemData => itemData.Categorey == itemCategory).ToList();
+    }
+
+    private void SpawnItem(List<ItemData> itemsToSelectFrom, List<Transform> possibleItemLocations)
+    {
+        int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
+        ItemData selectedItemData = itemsToSelectFrom[itemIndex];
+
+        int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
+        GameObject selectedItem = Instantiate(selectedItemData.Prefab, possibleItemLocations[itemLocationIndex]);
+
+        _itemsOnScreen.Add(selectedItem, selectedItemData);
+
+        itemsToSelectFrom.RemoveAt(itemIndex);
+        possibleItemLocations.RemoveAt(itemLocationIndex);
+    }
+
     public int GetRequiredItemsCount(EItemCategory itemCategory)
     {
-        return itemCategory.GetNumberOfItemsToSelect();
+        return _numberOfItemsToSelectByCategory[itemCategory];
     }
+
+    public Action ItemCollected; // invoke when Item is collected
 
     public async UniTask DestroyRemainingItems()
     {
+        foreach (GameObject item in _itemsOnScreen.Keys)
+        {
+            Destroy(item);
+        }
 
+        _itemsOnScreen.Clear();
     }
 
 
@@ -46,7 +103,6 @@ public class ItemsManager : MonoBehaviour
     {
         DependencyManager.SetDependency(this);
         SingletonValidation();
-
     }
 
     private void SingletonValidation()
@@ -64,9 +120,12 @@ public class ItemsManager : MonoBehaviour
     //TODO: remove when integrating with full project, start round in relevant place in flow.
     private void Start()
     {
+        // RoundManagerGrounding roundManagerGrounding = gameObject.AddComponent<RoundManagerGrounding>();
+        // roundManagerGrounding.RunRoundFlow();
         RunGroundedRound().Forget();
     }
 
+    //TODO: remove when integrating with full project.
     private async UniTask RunGroundedRound()
     {
         // gameStateController.SetGameState(GameState.Grounding);
@@ -79,33 +138,46 @@ public class ItemsManager : MonoBehaviour
         Debug.Log("Finished Grounded round");
     }
 
+    //TODO: remove when integrating with full project.
     private async UniTask RunNextTrial()
     {
-        RemoveItemsFromScreen();
+        DestroyRemainingItems().Forget();
 
         _currentItemCategory = GetNextItemCategory();
-        InstantiateItems();
+        SpawnItems(_currentItemCategory);
 
-        await UniTask.WaitUntil(FinishedSelectingItems);
+        // await UniTask.WaitUntil(FinishedSelectingItems);
 
         Debug.Log("Finished " + _currentItemCategory + " category");
     }
 
-    private bool FinishedSelectingItems()
+    public async UniTask<ItemData> WaitForItemCollection()
     {
-        int numberOfItemsSelected = _currentItemCategory.GetNumberOfItemsToAppear() - _itemsOnScreen.Count;
-        bool finishedSelectingItems = numberOfItemsSelected >= _currentItemCategory.GetNumberOfItemsToSelect();
-        return finishedSelectingItems;
+        while (true)
+        {
+            if (!Input.GetMouseButtonDown(0)) continue;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, 100f, _selectableLayerMask))
+            {
+                GameObject collectedItem = raycastHit.transform.gameObject;
+                ItemData collectedItemData = _itemsOnScreen[collectedItem];
+
+                _itemsOnScreen.Remove(collectedItem);
+                Destroy(collectedItem);
+
+                return _itemsOnScreen[raycastHit.transform.gameObject];
+            }
+
+            await UniTask.Yield();
+        }
     }
 
-    private void RemoveItemsFromScreen()
+    private void SelectItem(GameObject item)
     {
-        foreach (GameObject item in _itemsOnScreen.Keys)
-        {
-            Destroy(item);
-        }
-
-        _itemsOnScreen.Clear();
+        DependencyManager.GetDependency(out CharacterSlots characterSlots);
+        characterSlots.AddItemToRandomSlot(_itemsOnScreen[item]);
+        Destroy(item);
     }
 
     private EItemCategory GetNextItemCategory()
@@ -116,75 +188,6 @@ public class ItemsManager : MonoBehaviour
         return itemCategory;
     }
 
-    private void InstantiateItems()
-    {
-        List<Transform> possibleItemLocations = GetPossibleItemLocations();
-        int numberOfItemsToAppear = _currentItemCategory.GetNumberOfItemsToAppear();
-        List<ItemData> itemsToSelectFrom = GetItemsDataByCategory(_currentItemCategory);
-        while (numberOfItemsToAppear > 0)
-        {
-            InstantiateItem(itemsToSelectFrom, possibleItemLocations);
-            numberOfItemsToAppear--;
-        }
-    }
-
-    private List<Transform> GetPossibleItemLocations()
-    {
-        List<Transform> possibleItemLocations = new List<Transform>();
-        foreach (Transform possibleItemLocation in _itemLocationsParent.transform)
-        {
-            possibleItemLocations.Add(possibleItemLocation);
-        }
-
-        return possibleItemLocations;
-    }
-
-
-    private List<ItemData> GetItemsDataByCategory(EItemCategory itemCategory)
-    {
-        List<ItemData> itemsData = new List<ItemData>();
-        foreach (ItemData itemData in _itemsData)
-        {
-            if (itemData.Categorey == itemCategory)
-            {
-                itemsData.Add(itemData);
-            }
-        }
-
-        return itemsData;
-    }
-
-    private void InstantiateItem(List<ItemData> itemsToSelectFrom, List<Transform> possibleItemLocations)
-    {
-        int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
-        ItemData selectedItemData = itemsToSelectFrom[itemIndex];
-
-        int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
-        GameObject selectedItem = Instantiate(selectedItemData.Prefab, possibleItemLocations[itemLocationIndex]);
-
-        _itemsOnScreen.Add(selectedItem, selectedItemData);
-
-        itemsToSelectFrom.RemoveAt(itemIndex);
-        possibleItemLocations.RemoveAt(itemLocationIndex);
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (!Physics.Raycast(ray, out RaycastHit raycastHit, 100f, _selectableLayerMask)) return;
-            SelectItem(raycastHit.transform.gameObject);
-        }
-    }
-
-    private void SelectItem(GameObject item)
-    {
-        DependencyManager.GetDependency(out CharacterSlots characterSlots);
-        characterSlots.AddItemToRandomSlot(_itemsOnScreen[item]);
-        _itemsOnScreen.Remove(item);
-        Destroy(item);
-    }
 
 #if UNITY_EDITOR
     public void SkipToNextTrial()
