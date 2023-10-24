@@ -26,10 +26,10 @@ public class WordsSpawner : MonoBehaviour
         // tell all words to disappear
         foreach (InnerTalkWord word in sentenceWords)
         {
-            word.Remove(3f);
+            word.Remove(2f);
         }
 
-        await UniTask.Delay(TimeSpan.FromSeconds(4f));
+        await UniTask.Delay(TimeSpan.FromSeconds(2.5f));
     }
 
     public async UniTask SpawnSentence(InnerTalkData innerTalkData)
