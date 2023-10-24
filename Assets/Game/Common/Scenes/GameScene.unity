@@ -256,6 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 272405194}
+  - component: {fileID: 272405195}
   m_Layer: 0
   m_Name: Breathing
   m_TagString: Untagged
@@ -278,6 +279,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &272405195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272405193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03cc33c3fa1b484e84c65d18164274b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &322521137
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,8 +798,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1157625461}
-  - component: {fileID: 1157625463}
   - component: {fileID: 1157625462}
+  - component: {fileID: 1157625463}
   m_Layer: 0
   m_Name: Inner Talk
   m_TagString: Untagged
@@ -1012,6 +1025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1567482928}
+  - component: {fileID: 1567482929}
   m_Layer: 0
   m_Name: Tension
   m_TagString: Untagged
@@ -1034,6 +1048,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1567482929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567482927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ab1691f89ad694d99f566ef0ad5ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1827664608
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,6 @@ public class WordsSpawner : MonoBehaviour
     public async UniTask SpawnSentence(InnerTalkData innerTalkData)
     {
         _wordCount = innerTalkData.WordPrefabs.Length;
-        print("WORDS: " + _wordCount);
         sentenceWords = new InnerTalkWord[_wordCount];
         _wordsTapped = 0;
 
