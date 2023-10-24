@@ -4,13 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrialManagerInnerTalk : MonoBehaviour
+public class TrialManagerInnerTalk
 {
     public async UniTask RunTrialFlow(InnerTalkData trialConfiguration)
     {
         CharacterController.Instance.SlideToScreenButtom();
 
-        await InnerTalkManager.Instance.SpawnSentenceAndWaitForCompletion(trialConfiguration);
+        await WordsSpawner.Instance.SpawnSentenceAndWaitForCompletion(trialConfiguration);
 
 
         // trigger character empowered animation.

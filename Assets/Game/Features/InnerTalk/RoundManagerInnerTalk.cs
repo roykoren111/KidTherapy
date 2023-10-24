@@ -9,7 +9,7 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         UIController.Instance.SetRoundInitialUI(config.RoundType);
-        await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
+       // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
 
         // TODO: Add tutorial round with tap indicator before starting trials.

@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4874378633828851930}
-  - component: {fileID: 7910576602966285005}
+  - component: {fileID: 7535887456983453198}
+  - component: {fileID: 1723268524884169265}
   m_Layer: 0
   m_Name: InnerWord  - Control
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7910576602966285005
+--- !u!114 &7535887456983453198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsTouched: 0
   wordMesh: {fileID: 6805751888243300735}
+--- !u!65 &1723268524884169265
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982128825564861327}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.76, y: 0.69, z: 1}
+  m_Center: {x: 0, y: -1.41, z: 0}
 --- !u!1 &8018636808605308705
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +71,6 @@ GameObject:
   - component: {fileID: 5784436253564929733}
   - component: {fileID: 7286354199346113669}
   - component: {fileID: 6805751888243300735}
-  - component: {fileID: 429839356060062704}
   m_Layer: 0
   m_Name: WordMesh
   m_TagString: Untagged
@@ -128,16 +141,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &429839356060062704
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8018636808605308705}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
