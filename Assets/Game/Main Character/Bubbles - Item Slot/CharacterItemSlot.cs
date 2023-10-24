@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class CharacterItemSlot : MonoBehaviour
 {
-    /*private void Start()
+    [SerializeField] GameObject _bubble;
+    private void Start()
     {
-        if (DependencyManager.GetDependency(out CharacterSlots charSlots))
-        {
-            charSlots.Test();
-        }
-    }*/
+        _bubble.SetActive(false);
+    }
 
     public void ChangeItemInSlot(ItemData itemData)
     {
+        _bubble.SetActive(true);
         GameObject createdItem = Instantiate(itemData.Prefab, transform);
     }
 }
