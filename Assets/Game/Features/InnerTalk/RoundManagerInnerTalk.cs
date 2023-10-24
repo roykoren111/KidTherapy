@@ -5,21 +5,32 @@ using UnityEngine;
 
 public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
 {
-
+    [SerializeField] private TrialInnerTalk[] _trials;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         UIController.Instance.SetRoundInitialUI(config.RoundType);
         await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
 
-        // maybe wait to start tension animation or make character go into tension state.
+        // TODO: Add tutorial round with tap indicator before starting trials.
 
+        TrialManagerInnerTalk trialManager = new TrialManagerInnerTalk();
 
-        // wait for kids to confirm they are ready to start stretching.
-        await InputManager.Instance.WaitForTapToContinue();
-
-        await CharacterController.Instance.PlayStretchingAnimation();
+        for (int i = 0; i < _trials.Length; i++)
+        {
+            await trialManager.RunTrialFlow(_trials[i]);
+            await UniTask.Yield();
+        }
 
         // End
+    }
+
+    private async UniTask RunTutorialTrial()
+    {
+        await InnerTalkManager.Instance.SpawnSentence(_trials[0]);
+
+        // spawn tap indicator
+
+
     }
 }
