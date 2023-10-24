@@ -40,16 +40,17 @@ public class InputManager : MonoBehaviour
     {
     }
 
-    void Update()
+    public void OnFingerDown()
     {
-        isPlayerTapping = Input.GetMouseButtonDown(0);
-        if (isPlayerTapping)
-        {
-            DetectTappedObject();
-        }
+        isPlayerTapping = true;
     }
 
-    private void DetectTappedObject()
+    public void OnFingerUp()
+    {
+        isPlayerTapping = false;
+    }
+
+    public void DetectTappedObject()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
