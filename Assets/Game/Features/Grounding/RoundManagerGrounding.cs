@@ -10,7 +10,7 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         UIController.Instance.SetRoundInitialUI(config.RoundType);
-        await CameraController.Instance.MoveToTransform(config.CameraTransform);
+     //   await CameraController.Instance.MoveToTransform(config.CameraTransform);
 
         // wait for confirmation on round instructions.
         await InputManager.Instance.WaitForTapToContinue();

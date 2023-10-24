@@ -8,7 +8,7 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         UIController.Instance.SetRoundInitialUI(config.RoundType);
-        await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
+        //await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
 
         // maybe wait to start breathing animation or make character go into breathing state.

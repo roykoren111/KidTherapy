@@ -746,10 +746,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rounds:
+  - RoundType: 0
+    UIPrefab: {fileID: 0}
+  - RoundType: 1
+    UIPrefab: {fileID: 0}
+  - RoundType: 3
+    UIPrefab: {fileID: 0}
+  - RoundType: 4
+    UIPrefab: {fileID: 0}
   - RoundType: 5
     UIPrefab: {fileID: 0}
-    CameraTransform: {fileID: 1511124456718751065}
-    CameraLerpDuration: 0
+  roundManagerIntro: {fileID: 1262843733}
+  roundManagerGrounding: {fileID: 640326467}
+  roundManagerBreathing: {fileID: 272405195}
+  roundManagerTension: {fileID: 1567482929}
   roundManagerInnerTalk: {fileID: 1157625462}
 --- !u!4 &988128626
 Transform:

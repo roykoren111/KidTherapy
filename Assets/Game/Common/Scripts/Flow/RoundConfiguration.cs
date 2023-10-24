@@ -9,8 +9,8 @@ public class RoundConfiguration
 {
     public RoundType RoundType;
     public GameObject UIPrefab;
-    public Transform CameraTransform;
-    public int CameraLerpDuration;
+    //    public Transform CameraTransform;
+    //  public int CameraLerpDuration;
 }
 
 public interface RoundManager

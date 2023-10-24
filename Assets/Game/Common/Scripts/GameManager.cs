@@ -8,7 +8,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] RoundConfiguration[] _rounds;
 
     RoundManager _roundManager;
+
+    [SerializeField] RoundManagerIntro roundManagerIntro;
+    [SerializeField] RoundManagerGrounding roundManagerGrounding;
+    [SerializeField] RoundManagerBreathing roundManagerBreathing;
+    [SerializeField] RoundManagerTension roundManagerTension;
     [SerializeField] RoundManagerInnerTalk roundManagerInnerTalk;
+
     void Start()
     {
         RunGameLoop().Forget();
@@ -30,16 +36,18 @@ public class GameManager : MonoBehaviour
         switch (roundConfiguration.RoundType)
         {
             case RoundType.Intro:
-                _roundManager = new RoundManagerIntro();
+                _roundManager = roundManagerIntro;
                 break;
             case RoundType.Grounding:
-                _roundManager = new RoundManagerGrounding();
+                _roundManager = roundManagerGrounding;
                 break;
             case RoundType.NameSelection:
                 break;
             case RoundType.Breathing:
+                _roundManager = roundManagerBreathing;
                 break;
             case RoundType.Tension:
+                _roundManager = roundManagerTension;
                 break;
             case RoundType.InnerTalk:
                 _roundManager = roundManagerInnerTalk;
