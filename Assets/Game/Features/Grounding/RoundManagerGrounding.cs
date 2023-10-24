@@ -17,6 +17,7 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
 
         TrialManagerGrounding trialManager = new TrialManagerGrounding();
         // Start Trials
+        Debug.Log(trials.Length);
         for (int i = 0; i < trials.Length; i++)
         {
             await trialManager.RunTrialFlow(trials[i]);
@@ -25,5 +26,4 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
 
         // End
     }
-
 }

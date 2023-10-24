@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: French fries
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6299937771590182013, guid: 6300a0bd0d8f885429d361514c92a0d7, type: 3}
+  Prefab: {fileID: 6299937771590182013, guid: cf67bc68c8683634db785c578f0f3817, type: 3}
   Name: French fries
   Categorey: 1

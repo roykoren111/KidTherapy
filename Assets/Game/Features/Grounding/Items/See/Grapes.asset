@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: Grapes
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 3871398754206846280, guid: 4ae587ad3d658fe42af86abd5d8c687a, type: 3}
-  ItemName: Grapes
+  Prefab: {fileID: 3871398754206846280, guid: e10b8d0b876c8e146bc8f440a06268c1, type: 3}
+  Name: Grapes
+  Categorey: 0

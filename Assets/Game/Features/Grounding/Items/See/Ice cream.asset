@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: Ice cream
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 7743622233244856429, guid: 26c1772d4094e8947b1330fabad68618, type: 3}
-  ItemName: Ice cream
+  Prefab: {fileID: 7743622233244856429, guid: f9ad65bc871f51547b7edee0dde8acaa, type: 3}
+  Name: Ice cream
+  Categorey: 0

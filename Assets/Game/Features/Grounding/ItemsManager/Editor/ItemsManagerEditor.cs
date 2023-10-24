@@ -16,12 +16,12 @@ public class ItemsManagerEditor : Editor
         {
             itemsManager.PopulateItemsDataList();
         }
-
-        GUILayout.Space(10);
-        GUILayout.Label("Play mode utilities:");
-        if (GUILayout.Button("Skip to next trial"))
-        {
-            itemsManager.SkipToNextTrial();
-        }
+        //
+        // GUILayout.Space(10);
+        // GUILayout.Label("Play mode utilities:");
+        // if (GUILayout.Button("Skip to next trial"))
+        // {
+        //     itemsManager.SkipToNextTrial();
+        // }
     }
 }

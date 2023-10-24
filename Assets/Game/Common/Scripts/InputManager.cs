@@ -38,12 +38,11 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
     {
-        isPlayerTapping = Input.GetMouseButton(0);
+        isPlayerTapping = Input.GetMouseButtonDown(0);
         if (isPlayerTapping)
         {
             DetectTappedObject();

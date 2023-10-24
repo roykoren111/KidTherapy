@@ -7,7 +7,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] RoundConfiguration[] _rounds;
 
+    [SerializeField] private RoundManagerGrounding _roundManagerGrounding;
+
     RoundManager _roundManager;
+
     void Start()
     {
         RunGameLoop().Forget();
@@ -31,7 +34,7 @@ public class GameManager : MonoBehaviour
                 _roundManager = new RoundManagerIntro();
                 break;
             case RoundType.Grounding:
-                _roundManager = new RoundManagerGrounding();
+                _roundManager = _roundManagerGrounding;
                 break;
             case RoundType.NameSelection:
                 break;
@@ -43,7 +46,6 @@ public class GameManager : MonoBehaviour
                 break;
             case RoundType.Ending:
                 break;
-
         }
     }
 }

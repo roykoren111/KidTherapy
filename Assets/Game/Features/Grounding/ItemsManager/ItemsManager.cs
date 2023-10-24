@@ -11,15 +11,11 @@ using Random = UnityEngine.Random;
 
 public class ItemsManager : MonoBehaviour
 {
-    [SerializeField] private LayerMask _selectableLayerMask;
-
     [SerializeField] private List<ItemData> _itemsData;
 
-    [Space(10)] [SerializeField] private List<EItemCategory> _itemCategories;
     [SerializeField] private GameObject _itemLocationsParent;
 
     private EItemCategory _currentItemCategory;
-    public ItemData _collectedItem;
 
     private readonly Dictionary<GameObject, ItemData> _itemsOnScreen = new Dictionary<GameObject, ItemData>();
 
@@ -44,6 +40,7 @@ public class ItemsManager : MonoBehaviour
         List<Transform> possibleItemLocations = GetPossibleItemLocations();
         int numberOfItemsToSpawn = _numberOfItemsToSpawnByCategory[itemCategory];
         List<ItemData> itemsToSelectFrom = GetItemsDataByCategory(itemCategory);
+        Debug.Log(itemsToSelectFrom[0].Categorey);
         while (numberOfItemsToSpawn > 0)
         {
             SpawnItem(itemsToSelectFrom, possibleItemLocations);
@@ -86,7 +83,7 @@ public class ItemsManager : MonoBehaviour
         return _numberOfItemsToSelectByCategory[itemCategory];
     }
 
-    public Action ItemCollected; // invoke when Item is collected
+    public Action<ItemData> ItemCollected; // invoke when Item is collected
 
     public async UniTask DestroyRemainingItems()
     {
@@ -117,82 +114,29 @@ public class ItemsManager : MonoBehaviour
         }
     }
 
+    public void CollectItem(GameObject collectedItem)
+    {
+        ItemData collectedItemData = _itemsOnScreen[collectedItem];
+
+        _itemsOnScreen.Remove(collectedItem);
+        Destroy(collectedItem);
+
+        ItemCollected?.Invoke(collectedItemData);
+    }
+
     //TODO: remove when integrating with full project, start round in relevant place in flow.
     private void Start()
     {
         // RoundManagerGrounding roundManagerGrounding = gameObject.AddComponent<RoundManagerGrounding>();
         // roundManagerGrounding.RunRoundFlow();
-        RunGroundedRound().Forget();
-    }
-
-    //TODO: remove when integrating with full project.
-    private async UniTask RunGroundedRound()
-    {
-        // gameStateController.SetGameState(GameState.Grounding);
-
-        while (_itemCategories.Count > 0)
-        {
-            await RunNextTrial();
-        }
-
-        Debug.Log("Finished Grounded round");
-    }
-
-    //TODO: remove when integrating with full project.
-    private async UniTask RunNextTrial()
-    {
-        DestroyRemainingItems().Forget();
-
-        _currentItemCategory = GetNextItemCategory();
-        SpawnItems(_currentItemCategory);
-
-        // await UniTask.WaitUntil(FinishedSelectingItems);
-
-        Debug.Log("Finished " + _currentItemCategory + " category");
-    }
-
-    public async UniTask<ItemData> WaitForItemCollection()
-    {
-        while (true)
-        {
-            if (!Input.GetMouseButtonDown(0)) continue;
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit, 100f, _selectableLayerMask))
-            {
-                GameObject collectedItem = raycastHit.transform.gameObject;
-                ItemData collectedItemData = _itemsOnScreen[collectedItem];
-
-                _itemsOnScreen.Remove(collectedItem);
-                Destroy(collectedItem);
-
-                return _itemsOnScreen[raycastHit.transform.gameObject];
-            }
-
-            await UniTask.Yield();
-        }
-    }
-
-    private void SelectItem(GameObject item)
-    {
-        DependencyManager.GetDependency(out CharacterSlots characterSlots);
-        characterSlots.AddItemToRandomSlot(_itemsOnScreen[item]);
-        Destroy(item);
-    }
-
-    private EItemCategory GetNextItemCategory()
-    {
-        int itemCategoryIndex = Random.Range(0, _itemCategories.Count);
-        EItemCategory itemCategory = _itemCategories[itemCategoryIndex];
-        _itemCategories.Remove(itemCategory);
-        return itemCategory;
     }
 
 
 #if UNITY_EDITOR
+    //TODO: move this to grounded round manager
     public void SkipToNextTrial()
     {
-        RunNextTrial().Forget();
+        // RunNextTrial().Forget();
     }
 
     public void PopulateItemsDataList()

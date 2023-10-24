@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
   m_Name: Pizza
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 2498057154628370116, guid: 5574a2a15e492d1468fa6ee80c6af48c, type: 3}
+  Prefab: {fileID: 2498057154628370116, guid: b3109e92957e02040b07aaf26d8deac5, type: 3}
   Name: Pizza
   Categorey: 1
