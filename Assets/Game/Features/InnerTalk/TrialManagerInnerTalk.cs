@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class TrialManagerInnerTalk : MonoBehaviour
 {
-    public async UniTask RunTrialFlow(TrialInnerTalk trialConfiguration)
+    public async UniTask RunTrialFlow(InnerTalkData trialConfiguration)
     {
         CharacterController.Instance.SlideToScreenButtom();
 
-        await InnerTalkManager.Instance.SpawnSentenceAndWaitForCompletion();
+        await InnerTalkManager.Instance.SpawnSentenceAndWaitForCompletion(trialConfiguration);
 
 
         // trigger character empowered animation.
         CharacterController.Instance.OnInnerTalkSentenceComplete();
 
-        
+
 
         // wait until the whole sentence is marked.
 

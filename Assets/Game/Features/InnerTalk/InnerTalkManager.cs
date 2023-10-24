@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,25 +10,41 @@ public class InnerTalkManager : MonoBehaviour
     public static InnerTalkManager Instance;
 
     private int _wordCount = 0;
-    public async UniTask SpawnSentenceAndWaitForCompletion()
+    private int _wordsTapped = 0;
+    public async UniTask SpawnSentenceAndWaitForCompletion(InnerTalkData innerTalkData)
     {
-        // wait for whole sentence to complete.
+        await SpawnSentence(innerTalkData);
 
-        // trigger sentence disappear animation
+        while (_wordCount > _wordsTapped)
+        {
+            await UniTask.Yield();
+        }
+
+        foreach (var word in innerTalkData.Words)
+        {
+            word.Remove(3f);
+        }
+        await UniTask.Delay(TimeSpan.FromSeconds(3f));
     }
 
-    public async UniTask SpawnSentence(TrialInnerTalk trialConfiguration)
+    public async UniTask SpawnSentence(InnerTalkData innerTalkData)
     {
-        _wordCount = trialConfiguration.Words.Length;
-        foreach(var word in trialConfiguration.Words)
+        _wordCount = innerTalkData.Words.Length;
+        _wordsTapped = 0;
+        foreach (var word in innerTalkData.Words)
         {
             word.Spawn();
         }
     }
 
+    public void OnWordTap(InnerTalkWord word)
+    {
+        _wordsTapped++;
+    }
+
     private void Awake()
     {
-        SingletonValidation();    
+        SingletonValidation();
     }
     private void SingletonValidation()
     {
@@ -40,5 +57,5 @@ public class InnerTalkManager : MonoBehaviour
             Instance = this;
         }
     }
-   
+
 }
