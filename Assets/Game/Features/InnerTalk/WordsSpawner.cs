@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class InnerTalkManager : MonoBehaviour
+public class WordsSpawner : MonoBehaviour
 {
-    public static InnerTalkManager Instance;
+    public static WordsSpawner Instance;
 
+    InnerTalkWord[] sentenceWords;
     private int _wordCount = 0;
     private int _wordsTapped = 0;
     public async UniTask SpawnSentenceAndWaitForCompletion(InnerTalkData innerTalkData)
@@ -18,22 +19,34 @@ public class InnerTalkManager : MonoBehaviour
         while (_wordCount > _wordsTapped)
         {
             await UniTask.Yield();
+
+            // TODO: should wait until tap animation of last word is finished.
         }
 
-        foreach (var word in innerTalkData.Words)
+        // tell all words to disappear
+        foreach (InnerTalkWord word in sentenceWords)
         {
             word.Remove(3f);
         }
-        await UniTask.Delay(TimeSpan.FromSeconds(3f));
+
+        await UniTask.Delay(TimeSpan.FromSeconds(4f));
     }
 
     public async UniTask SpawnSentence(InnerTalkData innerTalkData)
     {
-        _wordCount = innerTalkData.Words.Length;
+        _wordCount = innerTalkData.WordPrefabs.Length;
+        print("WORDS: " + _wordCount);
+        sentenceWords = new InnerTalkWord[_wordCount];
         _wordsTapped = 0;
-        foreach (var word in innerTalkData.Words)
+
+        for (int i = 0; i < innerTalkData.WordPrefabs.Length; i++)
         {
-            word.Spawn();
+            GameObject wordGO = Instantiate(innerTalkData.WordPrefabs[i]);
+            sentenceWords[i] = wordGO.GetComponent<InnerTalkWord>();
+
+            sentenceWords[i].Spawn(); // will be awaitable when spawning is an animation.
+
+            await UniTask.Yield();
         }
     }
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc5d42e80b99ad64eb61f56a9b4916a1, type: 3}
-  m_Name: I Have Control
+  m_Name: I am calm
   m_EditorClassIdentifier: 
   WordPrefabs:
   - {fileID: 5255112700556887074, guid: fcad6d6c4546e5241934446520c69eea, type: 3}

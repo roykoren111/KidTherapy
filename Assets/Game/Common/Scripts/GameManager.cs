@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] RoundConfiguration[] _rounds;
 
     RoundManager _roundManager;
+    [SerializeField] RoundManagerInnerTalk roundManagerInnerTalk;
     void Start()
     {
         RunGameLoop().Forget();
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
             InitRoundManager(_rounds[i]);
             await _roundManager.RunRoundFlow(_rounds[i]);
         }
+        Debug.Log("Game Ends");
     }
 
     private void InitRoundManager(RoundConfiguration roundConfiguration)
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
             case RoundType.Tension:
                 break;
             case RoundType.InnerTalk:
+                _roundManager = roundManagerInnerTalk;
                 break;
             case RoundType.Ending:
                 break;
