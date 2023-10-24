@@ -14,6 +14,7 @@ public class RoundManagerIntro : MonoBehaviour, RoundManager
 
         await InputManager.Instance.WaitForTapToContinue();
 
+        Debug.Log("Intro round ended");
         // End
     }
 

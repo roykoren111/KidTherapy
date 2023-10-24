@@ -10,7 +10,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private List<CharacterItemSlot> _slots;
     private int _nextFreeSlotIndex = 0;
 
-
     public void InitCharacterToRound(RoundType roundType)
     {
         switch (roundType)

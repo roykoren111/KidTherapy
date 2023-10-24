@@ -24,6 +24,7 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
             await UniTask.Yield();
         }
 
+        Debug.Log("Grounding round ended");
         // End
     }
 }

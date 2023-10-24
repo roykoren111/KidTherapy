@@ -18,6 +18,9 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
 
         await CharacterController.Instance.PlayBreathingAnimation();
 
+        Debug.Log("Breathing round ended");
+
+
         // End
     }
 }

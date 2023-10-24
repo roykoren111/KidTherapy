@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class CharacterItemSlot : MonoBehaviour
 {
-    private void Start()
+    /*private void Start()
     {
         if (DependencyManager.GetDependency(out CharacterSlots charSlots))
         {
             charSlots.Test();
         }
-    }
+    }*/
 
     public void ChangeItemInSlot(ItemData itemData)
     {
         GameObject createdItem = Instantiate(itemData.Prefab, transform);
-        createdItem.layer = 0;
     }
 }
