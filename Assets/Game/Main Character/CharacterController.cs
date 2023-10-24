@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public static CharacterController Instance;
-
+    [SerializeField] private Animator animator;
     [SerializeField] private List<CharacterItemSlot> _slots;
     private int _nextFreeSlotIndex = 0;
 
@@ -34,6 +35,9 @@ public class CharacterController : MonoBehaviour
 
     public async UniTask PlayBreathingAnimation()
     {
+        animator.SetBool("IsBreathing", true);
+        await UniTask.Delay(TimeSpan.FromSeconds(24f));
+        animator.SetBool("IsBreathing", false);
 
     }
 
@@ -58,7 +62,7 @@ public class CharacterController : MonoBehaviour
         while (n > 1)
         {
             n--;
-            int k = Random.Range(0, n + 1);
+            int k = UnityEngine.Random.Range(0, n + 1);
             CharacterItemSlot slot = _slots[k];
             _slots[k] = _slots[n];
             _slots[n] = slot;

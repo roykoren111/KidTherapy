@@ -17,7 +17,7 @@ public class InnerTalkWord : MonoBehaviour, ITappable
 
     public void Remove(float duration)
     {
-        transform.DOMoveY(transform.position.y + 8, duration);
+        transform.DOMoveY(transform.position.y + 4, duration);
     }
 
     public void OnTap()

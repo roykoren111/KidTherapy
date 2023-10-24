@@ -57,10 +57,8 @@ public class InputManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.transform.gameObject.TryGetComponent(out ITappable tappable))
-            {
-                tappable.OnTap();
-            }
+            GameObject tappedObject = hit.transform.gameObject;
+            tappedObject.GetComponentInParent<ITappable>()?.OnTap();    // works if the component is on object not on its parent
         }
     }
 }
