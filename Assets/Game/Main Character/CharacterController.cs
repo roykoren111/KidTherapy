@@ -43,6 +43,16 @@ public class CharacterController : MonoBehaviour
 
     }
 
+    public void SlideToScreenButtom()
+    {
+
+    }
+
+    public void OnInnerTalkSentenceComplete()
+    {
+
+    }
+
     private void RandomizeSlotsIndexes()
     {
         int n = _slots.Count;
