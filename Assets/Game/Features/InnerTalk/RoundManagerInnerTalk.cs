@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
 {
-    [SerializeField] private TrialInnerTalk[] _trials;
+    [SerializeField] private InnerTalkData[] _trials;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         UIController.Instance.SetRoundInitialUI(config.RoundType);
@@ -23,14 +23,5 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
         }
 
         // End
-    }
-
-    private async UniTask RunTutorialTrial()
-    {
-        await InnerTalkManager.Instance.SpawnSentence(_trials[0]);
-
-        // spawn tap indicator
-
-
     }
 }
