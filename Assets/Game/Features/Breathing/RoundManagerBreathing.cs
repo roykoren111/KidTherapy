@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RoundManagerBreathing : MonoBehaviour, RoundManager
 {
+    [SerializeField] private int _breathingCycles = 2;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         UIController.Instance.SetRoundInitialUI(config);
@@ -16,7 +17,7 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
         // wait for kids to confirm they are ready to start breathings.
         await InputManager.Instance.WaitForTapToContinue();
 
-        await CharacterController.Instance.PlayBreathingAnimation();
+        await CharacterController.Instance.PlayBreathingAnimation(_breathingCycles);
 
         Debug.Log("Breathing round ended");
 

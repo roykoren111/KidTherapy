@@ -3,16 +3,21 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
-    
+
     private GameObject _currentScreenInstance;
-    
+
     [SerializeField] private Transform _gameCanvasTransform;
 
+    [SerializeField] private GameObject _groundingCanvasSee;
+    [SerializeField] private GameObject _groundingCanvasHear;
+    [SerializeField] private GameObject _groundingCanvasTaste;
+
+    private GameObject _currentGroundingCanvas;
     private void Awake()
     {
-        SingletonValidation();    
+        SingletonValidation();
     }
-    
+
     private void SingletonValidation()
     {
         if (Instance != null && Instance != this)
@@ -31,7 +36,7 @@ public class UIController : MonoBehaviour
         {
             Destroy(_currentScreenInstance);
         }
-        
+
         if (roundConfiguration?.UIPrefab != null)
         {
             _currentScreenInstance = Instantiate(roundConfiguration.UIPrefab, _gameCanvasTransform);
@@ -40,10 +45,38 @@ public class UIController : MonoBehaviour
 
     public void ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount)
     {
+        if (_currentGroundingCanvas != null)
+        {
+            Destroy(_currentGroundingCanvas);
+        }
+
+        GameObject newGroundingCanvas = null;
         // Set category title
-        
-        
+        switch (itemCategory)
+        {
+            case EItemCategory.See:
+                newGroundingCanvas = _groundingCanvasSee;
+                break;
+            case EItemCategory.Hear:
+                newGroundingCanvas = _groundingCanvasHear;
+                break;
+            case EItemCategory.Taste:
+                newGroundingCanvas = _groundingCanvasTaste;
+                break;
+        }
+
+        if (newGroundingCanvas != null)
+        {
+            _currentGroundingCanvas = Instantiate(newGroundingCanvas, _gameCanvasTransform);
+        }
+
         // Reset items collected counter.
+
+    }
+
+    public void ClearGroundingUI()
+    {
+        Destroy(_currentGroundingCanvas);
     }
 
     public void UpdateCollectedItems(int collectedItems)
