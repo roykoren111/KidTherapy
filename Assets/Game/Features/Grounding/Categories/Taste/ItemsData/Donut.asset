@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 6468116998238738388, guid: d46ee15391214354894aeb204dc336b1, type: 3}
   Name: Donut
   Categorey: 3
+  IsWrongPick: 0

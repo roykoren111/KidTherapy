@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 5474140052504510616, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
   Name: Octopus
   Categorey: 0
-  IsWrongPick: 1
+  IsWrongPick: 0

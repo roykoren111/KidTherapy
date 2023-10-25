@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 5108077112104550864, guid: f3bddf58fda52664bbb5419d7c944399, type: 3}
   Name: Pineapple
   Categorey: 3
+  IsWrongPick: 0

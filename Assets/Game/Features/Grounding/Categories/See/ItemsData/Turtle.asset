@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 2203693595463109463, guid: 1b131c2fdb07f0b4c93cce677469e027, type: 3}
   Name: Turtle
   Categorey: 0
-  IsWrongPick: 1
+  IsWrongPick: 0

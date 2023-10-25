@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 1212958943276930770, guid: 3921c748afcce6a498acacd149d480b2, type: 3}
   Name: LoafOfBread
   Categorey: 3
-  IsWrongPick: 1
+  IsWrongPick: 0

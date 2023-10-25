@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 3077320331531757151, guid: dab82dda82570634f9b71bccc45d05ac, type: 3}
   Name: Pumpkin
   Categorey: 3
+  IsWrongPick: 0

@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 5480378009674326284, guid: 9bde30aec2ee91349adfa97512e7cfee, type: 3}
   Name: SliceOfCake
   Categorey: 3
+  IsWrongPick: 0

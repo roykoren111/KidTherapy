@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 3509172582149382295, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
   Name: Prawn
   Categorey: 0
+  IsWrongPick: 0

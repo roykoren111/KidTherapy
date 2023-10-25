@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 6114102098641463658, guid: 7250190717c02654cb5550eb0913950e, type: 3}
   Name: WatermelonSlice
   Categorey: 3
+  IsWrongPick: 0

@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 3974052641194081974, guid: 1beb41e0250e4614083647926ced612e, type: 3}
   Name: Salmon
   Categorey: 0
+  IsWrongPick: 0

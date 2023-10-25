@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 3823104636625728704, guid: 9c8e7f8427b29574cbf49bb78dcf5db9, type: 3}
   Name: Lemon
   Categorey: 3
-  IsWrongPick: 1
+  IsWrongPick: 0

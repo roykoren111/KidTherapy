@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 8958741064262918548, guid: 5f5059b627b164d4082243d35a6969da, type: 3}
   Name: Milk
   Categorey: 3
-  IsWrongPick: 1
+  IsWrongPick: 0

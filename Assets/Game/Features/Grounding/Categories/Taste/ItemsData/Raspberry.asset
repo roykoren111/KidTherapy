@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 4370970734624475192, guid: b6fd9e86a5f49cd4981849667a6b81e2, type: 3}
   Name: Raspberry
   Categorey: 3
+  IsWrongPick: 0

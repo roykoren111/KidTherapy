@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 8088198742789767805, guid: 9409ab14cd7570b40a9f599327623b85, type: 3}
   Name: Cookie
   Categorey: 3
+  IsWrongPick: 0

@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 1472400493310119863, guid: b74949451070a0240a46a45aae63e601, type: 3}
   Name: Onion
   Categorey: 3
-  IsWrongPick: 1
+  IsWrongPick: 0

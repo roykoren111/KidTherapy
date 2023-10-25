@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 2052269985550930930, guid: fc013182d2a7e67488b390d768bfddf0, type: 3}
   Name: Cherry
   Categorey: 3
+  IsWrongPick: 0

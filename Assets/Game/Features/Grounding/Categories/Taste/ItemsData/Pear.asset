@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 4191522568095393199, guid: 6048858abc8dd1347baf6c8698c95bf0, type: 3}
   Name: Pear
   Categorey: 3
+  IsWrongPick: 0

@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 9032054871072722361, guid: 7969657f27d1603488c2586b1e1a6b7a, type: 3}
   Name: Whale
   Categorey: 0
+  IsWrongPick: 0

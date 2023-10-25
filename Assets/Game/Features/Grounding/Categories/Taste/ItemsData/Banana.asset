@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 8683930698035782867, guid: e3071d77a77719f4c8a27e5797242938, type: 3}
   Name: Banana
   Categorey: 3
+  IsWrongPick: 0

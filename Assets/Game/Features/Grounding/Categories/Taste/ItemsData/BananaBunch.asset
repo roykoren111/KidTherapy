@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 7693542264103282303, guid: 9abefe4a5be7c4149abe755be5488e32, type: 3}
   Name: BananaBunch
   Categorey: 3
+  IsWrongPick: 0

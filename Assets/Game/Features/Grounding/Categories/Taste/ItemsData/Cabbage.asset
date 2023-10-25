@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 2025011917095937143, guid: 21d1b971d720d534d9afd7542a63f178, type: 3}
   Name: Cabbage
   Categorey: 3
+  IsWrongPick: 0

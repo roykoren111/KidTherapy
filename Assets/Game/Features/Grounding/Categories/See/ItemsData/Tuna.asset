@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 32239983784425599, guid: 11afbd02626cf2c40af867869ca06889, type: 3}
   Name: Tuna
   Categorey: 0
+  IsWrongPick: 0

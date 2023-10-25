@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 264876627283892101, guid: 1682689be91ca3a4fa1f466350f3109e, type: 3}
   Name: Apple.Green
   Categorey: 3
+  IsWrongPick: 0

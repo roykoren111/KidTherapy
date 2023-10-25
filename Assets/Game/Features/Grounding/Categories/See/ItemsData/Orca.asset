@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 5282283659001997933, guid: 5ed02cd5a4b54e943bd426dabbb920b6, type: 3}
   Name: Orca
   Categorey: 0
+  IsWrongPick: 0

@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 2106391670160103849, guid: 47796fd0279c88b4b8909d20f757094c, type: 3}
   Name: Lollipop1
   Categorey: 3
-  IsWrongPick: 1
+  IsWrongPick: 0

@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 8047628689421722102, guid: 20b27f90667930e41858e44166544d32, type: 3}
   Name: Lobster
   Categorey: 0
-  IsWrongPick: 1
+  IsWrongPick: 0

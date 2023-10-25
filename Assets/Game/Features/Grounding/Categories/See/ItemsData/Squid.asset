@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 7038114840533862827, guid: 38844ef9b5b2c4740aa901572445add5, type: 3}
   Name: Squid
   Categorey: 0
-  IsWrongPick: 1
+  IsWrongPick: 0

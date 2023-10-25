@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 7801725778136417976, guid: c809d830d9883fc43a0d5fb37e6bdf3c, type: 3}
   Name: Corn
   Categorey: 3
+  IsWrongPick: 0

@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 8855582772952097503, guid: 8061785aedffe6c4e831e5d774ddbd18, type: 3}
   Name: Apple.Red
   Categorey: 3
+  IsWrongPick: 0

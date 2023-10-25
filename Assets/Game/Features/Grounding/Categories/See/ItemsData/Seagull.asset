@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 5671637318396879657, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
   Name: Seagull
   Categorey: 0
+  IsWrongPick: 0

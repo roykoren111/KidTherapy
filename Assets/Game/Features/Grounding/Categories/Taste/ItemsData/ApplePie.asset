@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 2000439725326025414, guid: 90b4dce3ec0f3624990fb460804aeba3, type: 3}
   Name: ApplePie
   Categorey: 3
+  IsWrongPick: 0

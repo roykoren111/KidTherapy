@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 6802677532889087287, guid: 5fbcaa8c97da3f64695037c949ee3ff0, type: 3}
   Name: SalmonSushi
   Categorey: 3
+  IsWrongPick: 0

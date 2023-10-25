@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 2397298797375009495, guid: f74dec5d5de7a394b9719bb71a2509bc, type: 3}
   Name: Tomato
   Categorey: 3
+  IsWrongPick: 0

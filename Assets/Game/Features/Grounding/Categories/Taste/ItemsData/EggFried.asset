@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 4428463468740995657, guid: 8a7a45257630f19469e7fd3b92cadc99, type: 3}
   Name: EggFried
   Categorey: 3
-  IsWrongPick: 1
+  IsWrongPick: 0

@@ -15,4 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 5449956563642581135, guid: 8f8e50a13e743dc4991f8063543b5659, type: 3}
   Name: Eggplant
   Categorey: 3
-  IsWrongPick: 1
+  IsWrongPick: 0
