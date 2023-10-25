@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3882781840423970714}
   - component: {fileID: 3882781840423970715}
   - component: {fileID: 3882781840423970716}
-  - component: {fileID: 3882781840423970712}
   m_Layer: 0
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -100,22 +99,3 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &3882781840423970712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3882781840423970717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55c9c11d18c483492f1f176b2b66f72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _screensInfo:
-  - GameState: 0
-    ScreenPrefab: {fileID: 5902049982610772069, guid: 93e4dbaf2d97a4d2bb1e066ee55bb4d2, type: 3}
-  - GameState: 2
-    ScreenPrefab: {fileID: 5902049982610772069, guid: cfaec6fc6d2c74a608e9304147008578, type: 3}
-  - GameState: 3
-    ScreenPrefab: {fileID: 5902049982610772069, guid: 1d008bb31878e47179f50cf94535bafa, type: 3}
