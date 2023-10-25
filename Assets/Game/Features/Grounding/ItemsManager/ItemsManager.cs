@@ -117,28 +117,21 @@ public class ItemsManager : MonoBehaviour
     public void CollectItem(GameObject collectedItem)
     {
         ItemData collectedItemData = _itemsOnScreen[collectedItem];
+        if (collectedItemData.IsWrongPick)
+        {
+            GroundingAudioManager.Instance.PlayWrongPickSound(collectedItemData.Categorey);
+            return;
+        }
 
+        GroundingAudioManager.Instance.PlayRandomCorrectPickSound(collectedItemData.Categorey);
+        collectedItem.GetComponent<Item>().IsCollected = true;
         _itemsOnScreen.Remove(collectedItem);
         Destroy(collectedItem);
 
         ItemCollected?.Invoke(collectedItemData);
     }
 
-    //TODO: remove when integrating with full project, start round in relevant place in flow.
-    private void Start()
-    {
-        // RoundManagerGrounding roundManagerGrounding = gameObject.AddComponent<RoundManagerGrounding>();
-        // roundManagerGrounding.RunRoundFlow();
-    }
-
-
 #if UNITY_EDITOR
-    //TODO: move this to grounded round manager
-    public void SkipToNextTrial()
-    {
-        // RunNextTrial().Forget();
-    }
-
     public void PopulateItemsDataList()
     {
         _itemsData.Clear();
@@ -152,7 +145,8 @@ public class ItemsManager : MonoBehaviour
 
     private void AddItemsDataInCategory(string categoryFolderName)
     {
-        string[] files = Directory.GetFiles(FolderPaths.ItemsDataPath + "/" + categoryFolderName, "*.asset");
+        string[] files =
+            Directory.GetFiles(FolderPaths.CategoriesFolderPath + categoryFolderName + "/ItemsData", "*.asset");
         foreach (string file in files)
         {
             _itemsData.Add(AssetDatabase.LoadAssetAtPath(file, typeof(ItemData)) as ItemData);
