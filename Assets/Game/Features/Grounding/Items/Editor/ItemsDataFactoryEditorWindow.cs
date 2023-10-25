@@ -5,7 +5,6 @@ using System.IO;
 using Game.Common.Scripts.Data;
 using UnityEditor;
 using UnityEngine;
-using Object = System.Object;
 
 public class ItemsDataFactoryEditorWindow : EditorWindow
 {
