@@ -15,30 +15,12 @@ public class ModelResizer : MonoBehaviour
         float scaleFactor = sphereCollider.radius * 2f / meshLength;
         objectToScale.localScale *= scaleFactor;
 
-        // move to sphere center
+        // move to sphere center - currently not working.
+        /*
         Vector3 localCenter = skinnedMeshRenderer.sharedMesh.bounds.center;
         Vector3 meshCenterPoint = skinnedMeshRenderer.transform.TransformPoint(localCenter);
-        //Instantiate(sphereCollider.gameObject, meshCenterPoint, Quaternion.identity);
-        Debug.Log("test");
         Vector3 offset = sphereCollider.center - meshCenterPoint;
-        //  objectToScale.position += offset;
-    }
-
-    private float CalculateMaxDistanceFromCenter()
-    {
-        // Calculate the maximum distance from the object's pivot to any vertex in the skinned mesh.
-        Mesh skinnedMesh = skinnedMeshRenderer.sharedMesh;
-        Vector3[] vertices = skinnedMesh.vertices;
-        Vector3 objectCenter = skinnedMesh.bounds.center;
-        float maxDistance = 0f;
-
-        foreach (Vector3 vertex in vertices)
-        {
-            float distance = Vector3.Distance(objectCenter, transform.TransformPoint(vertex));
-            maxDistance = Mathf.Max(maxDistance, distance);
-        }
-
-        return maxDistance;
+        //  objectToScale.position += offset;*/
     }
 
     private float CalculateLongestDistance(SkinnedMeshRenderer smr)
@@ -62,22 +44,6 @@ public class ModelResizer : MonoBehaviour
         }
 
         return maxDistance;
-    }
-
-    private Vector3 GetSMRCenter(SkinnedMeshRenderer smr)
-    {
-        Mesh mesh = new Mesh();
-        smr.BakeMesh(mesh);
-
-        Vector3[] vertices = mesh.vertices;
-        Vector3 sum = Vector3.zero;
-
-        foreach (Vector3 vertex in vertices)
-        {
-            sum += smr.transform.TransformPoint(vertex); // Convert vertex position to world space
-        }
-
-        return sum / vertices.Length; // Return the average
     }
 }
 
