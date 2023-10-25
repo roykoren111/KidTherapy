@@ -5,22 +5,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] RoundConfiguration[] _rounds;
-
-    RoundManager _roundManager;
-
-    [SerializeField] RoundManagerIntro roundManagerIntro;
-    [SerializeField] RoundManagerGrounding roundManagerGrounding;
-    [SerializeField] RoundManagerBreathing roundManagerBreathing;
-    [SerializeField] RoundManagerTension roundManagerTension;
-    [SerializeField] RoundManagerInnerTalk roundManagerInnerTalk;
-
-    void Start()
+    [SerializeField] private RoundConfiguration[] _rounds;
+    [SerializeField] private RoundManagerIntro roundManagerIntro;
+    [SerializeField] private RoundManagerGrounding roundManagerGrounding;
+    [SerializeField] private RoundManagerBreathing roundManagerBreathing;
+    [SerializeField] private RoundManagerTension roundManagerTension;
+    [SerializeField] private RoundManagerInnerTalk roundManagerInnerTalk;
+    
+    private RoundManager _roundManager;
+    
+    private void Start()
     {
         RunGameLoop().Forget();
     }
-
-
+    
     private async UniTask RunGameLoop()
     {
         for (int i = 0; i < _rounds.Length; i++)
@@ -28,6 +26,7 @@ public class GameManager : MonoBehaviour
             InitRoundManager(_rounds[i]);
             await _roundManager.RunRoundFlow(_rounds[i]);
         }
+        
         Debug.Log("Game Ends");
     }
 

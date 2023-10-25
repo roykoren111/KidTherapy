@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+    
+    private GameObject _currentScreenInstance;
+    
+    [SerializeField] private Transform _gameCanvasTransform;
 
     private void Awake()
     {
         SingletonValidation();    
     }
+    
     private void SingletonValidation()
     {
         if (Instance != null && Instance != this)
@@ -22,31 +25,27 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void SetRoundInitialUI(RoundType roundType)
+    public void SetRoundInitialUI(RoundConfiguration roundConfiguration)
     {
-        // clear current -> spawn target
+        if (_currentScreenInstance != null)
+        {
+            Destroy(_currentScreenInstance);
+        }
+        
+        if (roundConfiguration?.UIPrefab != null)
+        {
+            _currentScreenInstance = Instantiate(roundConfiguration.UIPrefab, _gameCanvasTransform);
+        }
     }
 
     public void ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount)
     {
         // Set category title
-
         // Reset items collected counter.
     }
 
     public void UpdateCollectedItems(int collectedItems)
     {
         // update collected items amount in grounding UI
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 152846221}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589245, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276807, g: 0.21589197, b: 0.29782572, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1272,6 +1272,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2049168985425246855, guid: 9f658f59b8954b345811e0a32ec92c20, type: 3}
   m_PrefabInstance: {fileID: 898769610}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &930117306 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3882781840423970713, guid: d1bc7d7cef66e48589f999c215288721, type: 3}
+  m_PrefabInstance: {fileID: 3882781841448880871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,11 +1440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rounds:
   - RoundType: 0
-    UIPrefab: {fileID: 0}
+    UIPrefab: {fileID: 5902049982610772069, guid: 93e4dbaf2d97a4d2bb1e066ee55bb4d2, type: 3}
   - RoundType: 1
     UIPrefab: {fileID: 0}
   - RoundType: 3
-    UIPrefab: {fileID: 0}
+    UIPrefab: {fileID: 5902049982610772069, guid: 1d008bb31878e47179f50cf94535bafa, type: 3}
   - RoundType: 4
     UIPrefab: {fileID: 0}
   - RoundType: 5
@@ -1487,6 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6974494b7cf74274784964e3566b283c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameCanvasTransform: {fileID: 930117306}
 --- !u!1 &1045327670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,10 +2675,6 @@ PrefabInstance:
     - target: {fileID: 3882781840423970717, guid: d1bc7d7cef66e48589f999c215288721, type: 3}
       propertyPath: m_Name
       value: GameCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882781840423970717, guid: d1bc7d7cef66e48589f999c215288721, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1bc7d7cef66e48589f999c215288721, type: 3}

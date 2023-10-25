@@ -7,7 +7,7 @@ public class RoundManagerTension : MonoBehaviour, RoundManager
 {
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
-        UIController.Instance.SetRoundInitialUI(config.RoundType);
+        UIController.Instance.SetRoundInitialUI(config);
    //     await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
 
