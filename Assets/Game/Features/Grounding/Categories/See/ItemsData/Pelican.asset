@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: Lollipop2
+  m_Name: Pelican
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 7525013923316203573, guid: e8566c364cf073b499a1bfe5c5137bfe, type: 3}
-  Name: Lollipop2
-  Categorey: 3
+  Prefab: {fileID: 3596084938220571017, guid: 41fbcb3b00b257e46a2402b8cef5fdbb, type: 3}
+  Name: Pelican
+  Categorey: 0
+  IsWrongPick: 1

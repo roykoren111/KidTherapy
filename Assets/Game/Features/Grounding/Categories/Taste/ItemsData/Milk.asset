@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: Pelican
+  m_Name: Milk
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 3596084938220571017, guid: 41fbcb3b00b257e46a2402b8cef5fdbb, type: 3}
-  Name: Pelican
-  Categorey: 0
+  Prefab: {fileID: 8958741064262918548, guid: 5f5059b627b164d4082243d35a6969da, type: 3}
+  Name: Milk
+  Categorey: 3
+  IsWrongPick: 1

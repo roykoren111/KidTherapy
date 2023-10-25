@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: Octopus
+  m_Name: LoafOfBread
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5474140052504510616, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
-  Name: Octopus
-  Categorey: 0
+  Prefab: {fileID: 1212958943276930770, guid: 3921c748afcce6a498acacd149d480b2, type: 3}
+  Name: LoafOfBread
+  Categorey: 3
+  IsWrongPick: 1

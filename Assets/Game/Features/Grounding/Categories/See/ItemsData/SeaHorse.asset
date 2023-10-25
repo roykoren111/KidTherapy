@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: LoafOfBread
+  m_Name: SeaHorse
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 1212958943276930770, guid: 3921c748afcce6a498acacd149d480b2, type: 3}
-  Name: LoafOfBread
-  Categorey: 3
+  Prefab: {fileID: 6206218631769808173, guid: fdc81c441be24ec4bad54f3d2ba466d9, type: 3}
+  Name: SeaHorse
+  Categorey: 0
+  IsWrongPick: 1

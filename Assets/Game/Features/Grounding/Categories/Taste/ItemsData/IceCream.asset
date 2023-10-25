@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: Lemon
+  m_Name: IceCream
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 3823104636625728704, guid: 9c8e7f8427b29574cbf49bb78dcf5db9, type: 3}
-  Name: Lemon
+  Prefab: {fileID: 293516681339229004, guid: 46cce135ab5ccde4c95819c206e0bf2c, type: 3}
+  Name: IceCream
   Categorey: 3
+  IsWrongPick: 1

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: SeaHorse
+  m_Name: Egg
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6206218631769808173, guid: fdc81c441be24ec4bad54f3d2ba466d9, type: 3}
-  Name: SeaHorse
-  Categorey: 0
+  Prefab: {fileID: 307826124909647168, guid: a58060e81d0c26d41a376a8eca17ff6e, type: 3}
+  Name: Egg
+  Categorey: 3
+  IsWrongPick: 1

@@ -9,7 +9,7 @@ using UnityEngine;
 public class ItemsDataFactoryEditorWindow : EditorWindow
 {
     private string _itemPrefabsFolderName;
-    private string _itemPrefabsFolderPath => FolderPaths.ItemsFolderPath + _itemPrefabsFolderName;
+    private string _itemPrefabsFolderPath => FolderPaths.CategoriesFolderPath + _itemPrefabsFolderName;
     private bool _showFolderDoesNotExistLabel = true;
 
     private Dictionary<string, EItemCategory> _categoryByFolderName = new Dictionary<string, EItemCategory>()

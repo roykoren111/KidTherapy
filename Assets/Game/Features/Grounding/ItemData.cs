@@ -14,5 +14,7 @@ public class ItemData : ScriptableObject
     [FormerlySerializedAs("ItemCategorey")]
     public EItemCategory Categorey;
 
+    public bool IsWrongPick = false;
+
     //TODO: add more relevant data here (color, isTasty, etc.)
 }

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: Egg
+  m_Name: Lollipop1
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 307826124909647168, guid: a58060e81d0c26d41a376a8eca17ff6e, type: 3}
-  Name: Egg
+  Prefab: {fileID: 2106391670160103849, guid: 47796fd0279c88b4b8909d20f757094c, type: 3}
+  Name: Lollipop1
   Categorey: 3
+  IsWrongPick: 1

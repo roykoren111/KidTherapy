@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: EggFried
+  m_Name: Octopus
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 4428463468740995657, guid: 8a7a45257630f19469e7fd3b92cadc99, type: 3}
-  Name: EggFried
-  Categorey: 3
+  Prefab: {fileID: 5474140052504510616, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
+  Name: Octopus
+  Categorey: 0
+  IsWrongPick: 1

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ef54d28129fe3419a3f533aca28668, type: 3}
-  m_Name: Squid
+  m_Name: Lobster
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 7038114840533862827, guid: 38844ef9b5b2c4740aa901572445add5, type: 3}
-  Name: Squid
+  Prefab: {fileID: 8047628689421722102, guid: 20b27f90667930e41858e44166544d32, type: 3}
+  Name: Lobster
   Categorey: 0
+  IsWrongPick: 1
