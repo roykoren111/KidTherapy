@@ -10,12 +10,13 @@ using Object = System.Object;
 public class ItemsDataFactoryEditorWindow : EditorWindow
 {
     private string _itemPrefabsFolderName;
-    private string _itemPrefabsFolderPath => FolderPaths.ItemsDataPath + _itemPrefabsFolderName;
+    private string _itemPrefabsFolderPath => FolderPaths.ItemsFolderPath + _itemPrefabsFolderName;
     private bool _showFolderDoesNotExistLabel = true;
 
     private Dictionary<string, EItemCategory> _categoryByFolderName = new Dictionary<string, EItemCategory>()
     {
-        { "Hear", EItemCategory.Hear }, { "See", EItemCategory.See }, { "Taste", EItemCategory.Taste }, { "Smell", EItemCategory.Smell },
+        { "Hear", EItemCategory.Hear }, { "See", EItemCategory.See }, { "Taste", EItemCategory.Taste },
+        { "Smell", EItemCategory.Smell },
         { "Touch", EItemCategory.Touch }
     };
 
@@ -60,7 +61,8 @@ public class ItemsDataFactoryEditorWindow : EditorWindow
 
     private void DeleteExistingItemsData()
     {
-        string[] prefabGuids = AssetDatabase.FindAssets("t:asset", new[] { _itemPrefabsFolderPath });
+        string itemsDataDirectoryPath = _itemPrefabsFolderPath + "/ItemsData/";
+        string[] prefabGuids = AssetDatabase.FindAssets("t:asset", new[] { itemsDataDirectoryPath });
         foreach (string prefabGuid in prefabGuids)
         {
             string path = AssetDatabase.GUIDToAssetPath(prefabGuid);
@@ -91,7 +93,9 @@ public class ItemsDataFactoryEditorWindow : EditorWindow
         itemData.Name = itemPrefab.name;
         itemData.Prefab = itemPrefab;
 
-        string itemDataPath = _itemPrefabsFolderPath + "/" + itemData.Name + ".asset";
+        string itemsDataDirectoryPath = _itemPrefabsFolderPath + "/ItemsData/";
+        Directory.CreateDirectory(itemsDataDirectoryPath);
+        string itemDataPath = itemsDataDirectoryPath + itemData.Name + ".asset";
         AssetDatabase.CreateAsset(itemData, itemDataPath);
     }
 }

@@ -152,7 +152,9 @@ public class ItemsManager : MonoBehaviour
 
     private void AddItemsDataInCategory(string categoryFolderName)
     {
-        string[] files = Directory.GetFiles(FolderPaths.ItemsDataPath + "/" + categoryFolderName, "*.asset");
+        Debug.Log(FolderPaths.ItemsFolderPath + categoryFolderName + "/ItemsData");
+        string[] files =
+            Directory.GetFiles(FolderPaths.ItemsFolderPath + categoryFolderName + "/ItemsData", "*.asset");
         foreach (string file in files)
         {
             _itemsData.Add(AssetDatabase.LoadAssetAtPath(file, typeof(ItemData)) as ItemData);
