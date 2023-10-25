@@ -9,18 +9,19 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
 
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
-        UIController.Instance.SetRoundInitialUI(config);
-     //   await CameraController.Instance.MoveToTransform(config.CameraTransform);
-
+        UIController.Instance.SetRoundInitialUI(config); 
+        // await CameraController.Instance.MoveToTransform(config.CameraTransform);
+        
         // wait for confirmation on round instructions.
         await InputManager.Instance.WaitForTapToContinue();
 
-        TrialManagerGrounding trialManager = new TrialManagerGrounding();
-        // Start Trials
+        TrialManagerGrounding groundingTrialManager = new TrialManagerGrounding();
         Debug.Log(trials.Length);
+        
+        // Start Trials
         for (int i = 0; i < trials.Length; i++)
         {
-            await trialManager.RunTrialFlow(trials[i]);
+            await groundingTrialManager.RunTrialFlow(trials[i]);
             await UniTask.Yield();
         }
 

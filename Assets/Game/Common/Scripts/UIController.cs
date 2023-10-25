@@ -41,6 +41,8 @@ public class UIController : MonoBehaviour
     public void ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount)
     {
         // Set category title
+        
+        
         // Reset items collected counter.
     }
 
