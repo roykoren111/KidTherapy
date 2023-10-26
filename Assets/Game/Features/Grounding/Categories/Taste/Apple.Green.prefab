@@ -96,6 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da806c972b0e064d9a595a9f8f06afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Categorey: 3
+  IsWrongPick: 0
+  IsCollected: 0
+  IsSpawnedRightToCharacter: 0
+  bubbleMR: {fileID: 0}
 --- !u!135 &-22323072992906703
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -124,3 +129,4 @@ MonoBehaviour:
   sphereCollider: {fileID: -22323072992906703}
   skinnedMeshRenderer: {fileID: 0}
   objectToScale: {fileID: 0}
+  tempObject: {fileID: 0}

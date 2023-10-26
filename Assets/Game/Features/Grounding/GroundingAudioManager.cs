@@ -8,16 +8,13 @@ using Random = UnityEngine.Random;
 public class GroundingAudioManager : MonoBehaviour
 {
     [Header("See sounds")] public AudioSource SeeWrongPick;
+    public AudioSource[] SeeCorrectPicks;
 
-    [SerializeField] public AudioSource[] SeeCorrectPicks;
+    [Header("Hear sounds")] public AudioSource[] HearCorrectPicks;
 
-    [Header("Hear sounds")] [SerializeField]
-    public AudioSource[] HearCorrectPicks;
-
-    [Header("Taste sounds")] [SerializeField]
-    public AudioSource TasteWrongPick;
-
-    [SerializeField] public AudioSource[] TasteCorrectPicks;
+    public AudioSource[] BubblePops;
+    [Header("Taste sounds")] public AudioSource TasteWrongPick;
+    public AudioSource[] TasteCorrectPicks;
 
     public static GroundingAudioManager Instance;
 
@@ -28,11 +25,11 @@ public class GroundingAudioManager : MonoBehaviour
     {
         _correctPickSoundsByCategory = new Dictionary<EItemCategory, AudioSource[]>()
         {
-            { EItemCategory.See, SeeCorrectPicks }, { EItemCategory.Taste, TasteCorrectPicks },
+            { EItemCategory.See, SeeCorrectPicks }, { EItemCategory.Taste, SeeCorrectPicks },
             { EItemCategory.Hear, HearCorrectPicks }
         };
         _wrongPickSoundByCategory = new Dictionary<EItemCategory, AudioSource>()
-            { { EItemCategory.See, SeeWrongPick }, { EItemCategory.Taste, TasteWrongPick } };
+            { { EItemCategory.See, SeeWrongPick }, { EItemCategory.Taste, SeeWrongPick } };
     }
 
 
@@ -41,11 +38,29 @@ public class GroundingAudioManager : MonoBehaviour
         AudioSource[] pickSounds = _correctPickSoundsByCategory[category];
         int soundIndex = Random.Range(0, pickSounds.Length);
         pickSounds[soundIndex].Play();
+
+        if (category == EItemCategory.Hear)
+        {
+            PlayRandomBubblePopSound();
+        }
     }
 
     public void PlayWrongPickSound(EItemCategory category)
     {
-        _wrongPickSoundByCategory[category].Play();
+        if (category != EItemCategory.Hear)
+        {
+            _wrongPickSoundByCategory[category].Play();
+        }
+        else
+        {
+            PlayRandomBubblePopSound();
+        }
+    }
+
+    private void PlayRandomBubblePopSound()
+    {
+        int soundIndex = Random.Range(0, BubblePops.Length);
+        BubblePops[soundIndex].Play();
     }
 
     private void Awake()

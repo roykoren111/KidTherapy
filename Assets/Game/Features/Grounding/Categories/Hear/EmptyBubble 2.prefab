@@ -161,3 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da806c972b0e064d9a595a9f8f06afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Categorey: 1
+  IsWrongPick: 1
+  IsCollected: 0
+  IsSpawnedRightToCharacter: 0
+  bubbleMR: {fileID: 3001548168904263129}

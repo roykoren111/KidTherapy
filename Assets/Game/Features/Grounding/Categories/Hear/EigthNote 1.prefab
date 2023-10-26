@@ -193,6 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da806c972b0e064d9a595a9f8f06afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Categorey: 1
+  IsWrongPick: 0
+  IsCollected: 0
+  IsSpawnedRightToCharacter: 0
+  bubbleMR: {fileID: 2646747058982848390}
 --- !u!1 &4592508462819452499
 GameObject:
   m_ObjectHideFlags: 0

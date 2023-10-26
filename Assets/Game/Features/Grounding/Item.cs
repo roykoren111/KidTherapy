@@ -113,7 +113,9 @@ public class Item : MonoBehaviour, ITappable
         if (IsWrongPick)
         {
             OnWrongPick();
+            return;
         }
+
         ItemsManager.Instance.CollectItem(this);
     }
 }
