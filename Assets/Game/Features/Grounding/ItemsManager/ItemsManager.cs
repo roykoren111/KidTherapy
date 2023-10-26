@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 
 public class ItemsManager : MonoBehaviour
 {
+    [SerializeField] private float _itemAppearDuration = 5f;
+
     [SerializeField] private List<GameObject> _seeItemsPrefabs;
     [SerializeField] private List<GameObject> _hearItemsPrefabs;
     [SerializeField] private List<GameObject> _tasteItemsPrefabs;
@@ -82,11 +84,12 @@ public class ItemsManager : MonoBehaviour
         int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
         Transform itemOutsideLocation = possibleItemLocations.ElementAt(itemLocationIndex).Key;
-        GameObject selectedItem =
+        Transform innerPosition = possibleItemLocations[itemOutsideLocation];
+        GameObject spawnedItem =
             Instantiate(itemsToSelectFrom[itemIndex], itemOutsideLocation);
-        selectedItem.GetComponent<Item>()?.MoveToInnerScreenPosition(possibleItemLocations[itemOutsideLocation]);
+        spawnedItem.GetComponent<Item>()?.Spawn(itemOutsideLocation, innerPosition, _itemAppearDuration);
 
-        _itemsOnScreen.Add(selectedItem);
+        _itemsOnScreen.Add(spawnedItem);
 
         itemsToSelectFrom.RemoveAt(itemIndex);
         possibleItemLocations.Remove(itemOutsideLocation);
@@ -97,7 +100,7 @@ public class ItemsManager : MonoBehaviour
         return _numberOfItemsToSelectByCategory[itemCategory];
     }
 
-    public Action<Transform> ItemCollected; // invoke when Item is collected
+    public Action<Item> ItemCollected; // invoke when Item is collected
 
     public async UniTask DestroyRemainingItems()
     {
@@ -128,21 +131,10 @@ public class ItemsManager : MonoBehaviour
         }
     }
 
-    public void CollectItem(GameObject collectedItemGameObject)
+    public void CollectItem(Item collectedItem)
     {
-        Item collectedItem = collectedItemGameObject.GetComponent<Item>();
-        if (collectedItem.IsWrongPick)
-        {
-            GroundingAudioManager.Instance.PlayWrongPickSound(collectedItem.Categorey);
-            // TODO: call OnWrongPick on the item script.
-            return;
-        }
-
-        GroundingAudioManager.Instance.PlayRandomCorrectPickSound(collectedItem.Categorey);
-        collectedItem.GetComponent<Item>().IsCollected = true;
-
-        _itemsOnScreen.Remove(collectedItemGameObject);
-        ItemCollected?.Invoke(collectedItemGameObject.transform);
+        _itemsOnScreen.Remove(collectedItem.gameObject);
+        ItemCollected?.Invoke(collectedItem);
     }
 
 #if UNITY_EDITOR

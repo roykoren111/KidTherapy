@@ -72,11 +72,14 @@ public class Item : MonoBehaviour, ITappable
         // TODO: If bubble animation - wait for finish then go inside.
         // trigger bubble animation
 
+        Debug.Log("OnEnterToCharacter");
         GroundingAudioManager.Instance.PlayRandomCorrectPickSound(Categorey);
+        Debug.Log("Played Sound");
 
         transform.position = insideCharacterPosition.position;
-        transform.rotation = insideCharacterPosition.rotation;
         transform.localScale = insideCharacterPosition.localScale;
+        transform.parent = insideCharacterPosition;
+        Debug.Log("Moved to char");
 
         GetComponent<SphereCollider>().enabled = false;
         if (bubbleMR != null)
@@ -85,11 +88,11 @@ public class Item : MonoBehaviour, ITappable
         }
     }
 
-    public void OnWrongPick(EItemCategory itemCategory)
+    public void OnWrongPick()
     {
         GroundingAudioManager.Instance.PlayWrongPickSound(Categorey);
 
-        switch (itemCategory)
+        switch (Categorey)
         {
             case EItemCategory.Hear:
                 // TODO: Play bubble animation
@@ -107,10 +110,10 @@ public class Item : MonoBehaviour, ITappable
         if (IsCollected) return;
 
         IsCollected = true;
-        ItemsManager.Instance.CollectItem(gameObject);
-    }
-
-    public void MoveToInnerScreenPosition(Transform possibleItemLocation)
-    {
+        if (IsWrongPick)
+        {
+            OnWrongPick();
+        }
+        ItemsManager.Instance.CollectItem(this);
     }
 }

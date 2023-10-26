@@ -33,7 +33,7 @@ public class ItemSpawner : MonoBehaviour
             if (bWrongPick)
             {
                 item.IsCollected = true;
-                item.OnWrongPick(EItemCategory.See);
+                //item.OnWrongPick(EItemCategory.See);
                 return;
             }
             item.IsCollected = true;

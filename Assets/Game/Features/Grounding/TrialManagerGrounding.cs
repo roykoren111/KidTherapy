@@ -27,10 +27,10 @@ public class TrialManagerGrounding
         await _itemsManager.DestroyRemainingItems();
     }
 
-    private void OnItemCollected(Transform collectedItem)
+    private void OnItemCollected(Item collectedItem)
     {
         _collectedItemsCount++;
         UIController.Instance.UpdateCollectedItems(_collectedItemsCount);
-        CharacterController.Instance.AddItemToCharacter(collectedItem.GetComponent<Item>());
+        CharacterController.Instance.AddItemToCharacter(collectedItem);
     }
 }

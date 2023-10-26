@@ -902,8 +902,6 @@ GameObject:
   - component: {fileID: 5474140052504510615}
   - component: {fileID: 5474140052504510614}
   - component: {fileID: 5474140052504510613}
-  - component: {fileID: 2132425332990618592}
-  - component: {fileID: 4959281955418951204}
   m_Layer: 0
   m_Name: Octopus
   m_TagString: Untagged
@@ -982,31 +980,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &2132425332990618592
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5474140052504510616}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.93, z: 0.87}
-  m_Center: {x: 0, y: 0.51, z: 0.03}
---- !u!114 &4959281955418951204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5474140052504510616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da806c972b0e064d9a595a9f8f06afa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5474140052648310178
 GameObject:
   m_ObjectHideFlags: 0

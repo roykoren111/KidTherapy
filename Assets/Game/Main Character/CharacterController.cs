@@ -8,7 +8,7 @@ public class CharacterController : MonoBehaviour
 {
     public static CharacterController Instance;
     [SerializeField] private Animator animator;
-    [SerializeField] private List<CharacterItemSlot> _slots;
+    [SerializeField] private List<Transform> _slots;
     private int _nextFreeSlotIndex = 0;
 
     public void InitCharacterToRound(RoundType roundType)
@@ -23,13 +23,13 @@ public class CharacterController : MonoBehaviour
 
     public void AddItemToCharacter(Item item)
     {
-        if (_nextFreeSlotIndex == _slots.Count - 1)
+        if (_nextFreeSlotIndex == _slots.Count)
         {
             Debug.LogError("All slots full!");
             return;
         }
 
-        item.OnEnterToCharacter(_slots[_nextFreeSlotIndex].transform);
+        item.OnEnterToCharacter(_slots[_nextFreeSlotIndex]);
         _nextFreeSlotIndex++;
     }
 
@@ -86,9 +86,10 @@ public class CharacterController : MonoBehaviour
         {
             n--;
             int k = UnityEngine.Random.Range(0, n + 1);
-            CharacterItemSlot slot = _slots[k];
+            Transform slot = _slots[k];
             _slots[k] = _slots[n];
             _slots[n] = slot;
+            Debug.Log($"slot {k} to slot {n}");
         }
     }
 

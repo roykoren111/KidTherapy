@@ -476,8 +476,6 @@ GameObject:
   - component: {fileID: 2203693595463109462}
   - component: {fileID: 2203693595463109465}
   - component: {fileID: 2203693595463109464}
-  - component: {fileID: 7344816203626827065}
-  - component: {fileID: -6919217570830229753}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Untagged
@@ -556,31 +554,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &7344816203626827065
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2203693595463109463}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.21, y: 0.84, z: 1.02}
-  m_Center: {x: 0, y: 0.23, z: 0.15}
---- !u!114 &-6919217570830229753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2203693595463109463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da806c972b0e064d9a595a9f8f06afa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2203693595697495336
 GameObject:
   m_ObjectHideFlags: 0
