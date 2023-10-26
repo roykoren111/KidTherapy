@@ -633,7 +633,7 @@ Transform:
   m_Children:
   - {fileID: 585243306}
   m_Father: {fileID: 1234472694}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &272405195
 MonoBehaviour:
@@ -804,7 +804,7 @@ Transform:
   m_Children:
   - {fileID: 898769611}
   m_Father: {fileID: 1234472694}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &342519674
 GameObject:
@@ -1686,6 +1686,49 @@ Transform:
   m_Father: {fileID: 640326466}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &865064698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 865064699}
+  - component: {fileID: 865064700}
+  m_Layer: 0
+  m_Name: Name Selection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &865064699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865064698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1234472694}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &865064700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865064698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad687f16c8cf9d348a4e96b17f718151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &898769610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2073,6 +2116,7 @@ MonoBehaviour:
   - RoundType: 5
     UIPrefab: {fileID: 0}
   roundManagerIntro: {fileID: 1262843733}
+  roundManagerNameSelection: {fileID: 865064700}
   roundManagerGrounding: {fileID: 640326467}
   roundManagerBreathing: {fileID: 272405195}
   roundManagerTension: {fileID: 1567482929}
@@ -2417,7 +2461,7 @@ Transform:
   m_Children:
   - {fileID: 1270283504}
   m_Father: {fileID: 1234472694}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1157625462
 MonoBehaviour:
@@ -2763,6 +2807,7 @@ Transform:
   m_Children:
   - {fileID: 1262843732}
   - {fileID: 640326466}
+  - {fileID: 865064699}
   - {fileID: 272405194}
   - {fileID: 1567482928}
   - {fileID: 1157625461}
@@ -3333,7 +3378,7 @@ Transform:
   m_Children:
   - {fileID: 57427324}
   m_Father: {fileID: 1234472694}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1567482929
 MonoBehaviour:

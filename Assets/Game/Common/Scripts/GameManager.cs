@@ -7,18 +7,19 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private RoundConfiguration[] _rounds;
     [SerializeField] private RoundManagerIntro roundManagerIntro;
+    [SerializeField] private RoundManagerNameSelection roundManagerNameSelection;
     [SerializeField] private RoundManagerGrounding roundManagerGrounding;
     [SerializeField] private RoundManagerBreathing roundManagerBreathing;
     [SerializeField] private RoundManagerTension roundManagerTension;
     [SerializeField] private RoundManagerInnerTalk roundManagerInnerTalk;
-    
+
     private RoundManager _roundManager;
-    
+
     private void Start()
     {
         RunGameLoop().Forget();
     }
-    
+
     private async UniTask RunGameLoop()
     {
         for (int i = 0; i < _rounds.Length; i++)
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
             InitRoundManager(_rounds[i]);
             await _roundManager.RunRoundFlow(_rounds[i]);
         }
-        
+
         Debug.Log("Game Ends");
     }
 
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
                 _roundManager = roundManagerGrounding;
                 break;
             case RoundType.NameSelection:
+                _roundManager = roundManagerNameSelection;
                 break;
             case RoundType.Breathing:
                 _roundManager = roundManagerBreathing;

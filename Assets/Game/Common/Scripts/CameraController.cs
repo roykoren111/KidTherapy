@@ -42,6 +42,10 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public async UniTask MoveToKeyboardPosition(bool ToKeyboard)
+    {
+
+    }
 
     void Start()
     {

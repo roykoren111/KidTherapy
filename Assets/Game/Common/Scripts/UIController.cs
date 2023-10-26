@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
@@ -83,4 +85,26 @@ public class UIController : MonoBehaviour
     {
         // update collected items amount in grounding UI
     }
+
+    public async UniTask ListenToNameFieldClick()
+    {
+        // wait until clicking the name field to open keyboard
+    }
+
+    public async UniTask<string> GetKeyboardInput()
+    {
+        string selectedName = "";
+        // open keyboard and wait until input is recieved and done
+        return selectedName;
+    }
+
+    public async UniTask<PlayerGender> GenderSelection()
+    {
+        PlayerGender selectedGender = PlayerGender.None;
+        // display gender selection UI
+        // wait until selecting a gender
+        return selectedGender;
+    }
+    
+
 }
