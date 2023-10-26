@@ -31,6 +31,6 @@ public class TrialManagerGrounding
     {
         _collectedItemsCount++;
         UIController.Instance.UpdateCollectedItems(_collectedItemsCount);
-        // CharacterController.Instance.AddItemToCharacter(collectedItem);
+        CharacterController.Instance.AddItemToCharacter(collectedItem.GetComponent<Item>());
     }
 }

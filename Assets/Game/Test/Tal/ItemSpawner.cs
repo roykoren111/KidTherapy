@@ -10,6 +10,9 @@ public class ItemSpawner : MonoBehaviour
     public Transform charPosition;
     public float duration = 3f;
     public bool bSpawn = false;
+    public bool bTap = false;
+    public bool bWrongPick = false;
+    Item item;
     void Start()
     {
 
@@ -20,8 +23,21 @@ public class ItemSpawner : MonoBehaviour
     {
         if (bSpawn)
         {
-            Item item = Instantiate(itemPrefab, outerPosition.position, Quaternion.identity).GetComponent<Item>();
+            bSpawn = false;
+            item = Instantiate(itemPrefab, outerPosition.position, Quaternion.identity).GetComponent<Item>();
             item.Spawn(outerPosition, innerPosition, duration);
+        }
+        if (bTap)
+        {
+            bTap = false;
+            if (bWrongPick)
+            {
+                item.IsCollected = true;
+                item.OnWrongPick(EItemCategory.See);
+                return;
+            }
+            item.IsCollected = true;
+            item.OnEnterToCharacter(charPosition);
         }
     }
 }
