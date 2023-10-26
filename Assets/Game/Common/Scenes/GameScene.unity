@@ -3680,7 +3680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089e27f35ab860746a99b59613d6bb69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  __backToCenterFreq: 4
+  __backToCenterFreq: 1
   _lookSpeed: 3
   _zPosition: -4
 --- !u!1 &1595646543
