@@ -6,7 +6,6 @@ using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour, ITappable
 {
-
     public EItemCategory Categorey;
 
     public bool IsWrongPick = false;
@@ -17,6 +16,7 @@ public class Item : MonoBehaviour, ITappable
     [SerializeField] MeshRenderer bubbleMR;
     private Vector3 spawnPosition;
     private float movementDuration;
+
     public void Spawn(Transform outerPosition, Transform innerTransform, float duration)
     {
         GetComponent<MeshRenderer>().enabled = false;
@@ -99,7 +99,6 @@ public class Item : MonoBehaviour, ITappable
                 ReturnToSpawnPosition().Forget();
                 GetComponent<SphereCollider>().enabled = false;
                 break;
-
         }
     }
 
@@ -109,5 +108,9 @@ public class Item : MonoBehaviour, ITappable
 
         IsCollected = true;
         ItemsManager.Instance.CollectItem(gameObject);
+    }
+
+    public void MoveToInnerScreenPosition(Transform possibleItemLocation)
+    {
     }
 }

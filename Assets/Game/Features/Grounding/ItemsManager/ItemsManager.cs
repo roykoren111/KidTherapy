@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +6,6 @@ using Cysharp.Threading.Tasks;
 using Game.Common.Scripts.Data;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class ItemsManager : MonoBehaviour
@@ -16,8 +14,7 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] private List<GameObject> _hearItemsPrefabs;
     [SerializeField] private List<GameObject> _tasteItemsPrefabs;
 
-    [SerializeField] private GameObject _insideItemLocationsParent;
-    [SerializeField] private GameObject _outsideItemLocationsParent;
+    [SerializeField] private GameObject _itemLocationsParent;
 
     private EItemCategory _currentItemCategory;
 
@@ -58,7 +55,7 @@ public class ItemsManager : MonoBehaviour
 
     public async UniTask SpawnItems(EItemCategory itemCategory)
     {
-        List<Transform> possibleItemLocations = GetPossibleItemLocations();
+        Dictionary<Transform, Transform> possibleItemLocations = GetPossibleItemLocations();
         int numberOfItemsToSpawn = _numberOfItemsToSpawnByCategory[itemCategory];
         List<GameObject> itemsToSelectFrom = _itemPrefabsByCategory[itemCategory];
         while (numberOfItemsToSpawn > 0)
@@ -68,28 +65,31 @@ public class ItemsManager : MonoBehaviour
         }
     }
 
-    private List<Transform> GetPossibleItemLocations()
+    private Dictionary<Transform, Transform> GetPossibleItemLocations()
     {
-        List<Transform> possibleItemLocations = new List<Transform>();
-        foreach (Transform possibleItemLocation in _outsideItemLocationsParent.transform)
+        //Key is outer position, value is inner position
+        Dictionary<Transform, Transform> possibleItemLocations = new Dictionary<Transform, Transform>();
+        foreach (Transform itemLocation in _itemLocationsParent.transform)
         {
-            possibleItemLocations.Add(possibleItemLocation);
+            possibleItemLocations.Add(itemLocation.GetChild(1), itemLocation.GetChild(0));
         }
 
         return possibleItemLocations;
     }
 
-    private void SpawnItem(List<GameObject> itemsToSelectFrom, List<Transform> possibleItemLocations)
+    private void SpawnItem(List<GameObject> itemsToSelectFrom, Dictionary<Transform, Transform> possibleItemLocations)
     {
         int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
-        GameObject selectedItem = Instantiate(itemsToSelectFrom[itemIndex], possibleItemLocations[itemLocationIndex]);
-        //selectedItem.GetComponent<Item>()?.MoveToInnerScreenPosition(); -> TODO: add inner location
+        Transform itemOutsideLocation = possibleItemLocations.ElementAt(itemLocationIndex).Key;
+        GameObject selectedItem =
+            Instantiate(itemsToSelectFrom[itemIndex], itemOutsideLocation);
+        selectedItem.GetComponent<Item>()?.MoveToInnerScreenPosition(possibleItemLocations[itemOutsideLocation]);
 
         _itemsOnScreen.Add(selectedItem);
 
         itemsToSelectFrom.RemoveAt(itemIndex);
-        possibleItemLocations.RemoveAt(itemLocationIndex);
+        possibleItemLocations.Remove(itemOutsideLocation);
     }
 
     public int GetRequiredItemsCount(EItemCategory itemCategory)
