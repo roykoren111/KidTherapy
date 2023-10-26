@@ -10,6 +10,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private List<Transform> _slots;
     private int _nextFreeSlotIndex = 0;
+    [SerializeField] private Transform eyeRight;
+    [SerializeField] private Transform eyeLeft;
+    [SerializeField] private EyesTarget eyesTarget;
 
     public void InitCharacterToRound(RoundType roundType)
     {
@@ -28,6 +31,7 @@ public class CharacterController : MonoBehaviour
             Debug.LogError("All slots full!");
             return;
         }
+        SetLookTarget(item.transform.position);
 
         item.OnEnterToCharacter(_slots[_nextFreeSlotIndex]);
         _nextFreeSlotIndex++;
@@ -77,6 +81,16 @@ public class CharacterController : MonoBehaviour
     public void OnInnerTalkSentenceComplete()
     {
 
+    }
+
+    public void SetLookTarget(Vector3 targetPosition)
+    {
+        eyesTarget.SetTarget(targetPosition);
+    }
+    private void Update()
+    {
+        eyeRight.up = (eyesTarget.transform.position - eyeRight.position).normalized;
+        eyeLeft.up = (eyesTarget.transform.position - eyeLeft.position).normalized;
     }
 
     private void RandomizeSlotsIndexes()
