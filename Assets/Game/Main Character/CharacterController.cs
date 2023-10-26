@@ -21,7 +21,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void AddItemToCharacter(Transform item)
+    public void AddItemToCharacter(Item item)
     {
         if (_nextFreeSlotIndex == _slots.Count - 1)
         {
@@ -29,7 +29,7 @@ public class CharacterController : MonoBehaviour
             return;
         }
 
-        _slots[_nextFreeSlotIndex].ChangeItemInSlot(item);
+        item.OnEnterToCharacter(_slots[_nextFreeSlotIndex].transform);
         _nextFreeSlotIndex++;
     }
 

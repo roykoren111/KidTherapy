@@ -8,19 +8,20 @@ public class ModelResizer : MonoBehaviour
     [SerializeField] private SphereCollider sphereCollider;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField] Transform objectToScale;
+    [SerializeField] private Transform tempObject;
     private void Start()
     {
         // scale object to the right size
         float meshLength = CalculateLongestDistance(skinnedMeshRenderer) * 1.2f; // the 1.2f is to make it aliitle extra small
-        float scaleFactor = sphereCollider.radius * 2f / meshLength;
+        float scaleFactor = sphereCollider.radius * 2f * transform.localScale.x / meshLength;
         objectToScale.localScale *= scaleFactor;
 
         // move to sphere center - currently not working.
-        /*
+
         Vector3 localCenter = skinnedMeshRenderer.sharedMesh.bounds.center;
         Vector3 meshCenterPoint = skinnedMeshRenderer.transform.TransformPoint(localCenter);
-        Vector3 offset = sphereCollider.center - meshCenterPoint;
-        //  objectToScale.position += offset;*/
+        Vector3 offset = transform.position - meshCenterPoint;
+        objectToScale.position += offset;
     }
 
     private float CalculateLongestDistance(SkinnedMeshRenderer smr)
