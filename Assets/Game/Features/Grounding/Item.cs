@@ -12,7 +12,7 @@ public class Item : MonoBehaviour, ITappable
 
     public bool IsCollected = false;
 
-    public bool IsSpawnedRightToCharacter = false;
+    private bool isSpawnedRightToCharacter = false;
     [SerializeField] MeshRenderer bubbleMR;
     private Vector3 spawnPosition;
     private float movementDuration;
@@ -25,9 +25,9 @@ public class Item : MonoBehaviour, ITappable
         transform.localScale = outerPosition.localScale;
         movementDuration = duration;
 
-        IsSpawnedRightToCharacter = transform.position.x > CharacterController.Instance.transform.position.x;
+        isSpawnedRightToCharacter = transform.position.x > CharacterController.Instance.transform.position.x;
         // if spawned to the right- should look left
-        transform.eulerAngles = IsSpawnedRightToCharacter ? new Vector3(0, 180f, 0) : Vector3.zero;
+        transform.eulerAngles = isSpawnedRightToCharacter ? new Vector3(0, 180f, 0) : Vector3.zero;
 
         MoveToPosition(transform.position, innerTransform.position, duration).Forget();
     }

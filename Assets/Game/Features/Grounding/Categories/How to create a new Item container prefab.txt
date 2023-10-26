@@ -1,0 +1,8 @@
+1. Go to ItemContainer prefab and create a new variable of it
+2. Drag inside the model of the chosen item
+3. Scale and position it so it fits inside the ItemContainer sphere
+4. Configure its category data and whether is a wrong choice
+5. If its a Hear category, set the bubbleMR reference.
+6. Drag it to the correct folder and in ItemManager click populate
+OR
+Make sure the prefab is set in the ItemsManager reference. (dragged from the project file)

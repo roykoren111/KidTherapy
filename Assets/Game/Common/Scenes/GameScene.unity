@@ -1349,15 +1349,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemAppearDuration: 5
   _seeItemsPrefabs:
+  - {fileID: 5984145969554308706, guid: 956ba4543cea6924d93b5bf44af33122, type: 3}
+  - {fileID: 2488015865094740527, guid: d205f9acde4ea9e4e875dc6fe39f4113, type: 3}
   - {fileID: 2999391743885289012, guid: 2baea1781a5eaf24fbf4f8a014e9431c, type: 3}
+  - {fileID: 8599288975492635280, guid: 4599b3db819a1204db6b8c3bd8d4e531, type: 3}
+  - {fileID: 2279811031094052693, guid: da2374cc41925db47a452d859984ee1d, type: 3}
+  - {fileID: 6174749224453465298, guid: 3cac506b4f69f324bb837c91a6423940, type: 3}
   - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
-  - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
-  - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
-  - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
-  - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
-  - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
-  - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
-  - {fileID: 5159269844034642081, guid: 0c78bf59b51a44443ab1ad956b1cbc4f, type: 3}
+  - {fileID: 6105265180343438253, guid: cbc1ed5e33555a44095dd0f7fb221ab1, type: 3}
+  - {fileID: 8905637599288274404, guid: 86e1ce19e64142e4486ee7d58fc056cc, type: 3}
+  - {fileID: 8221775085907639918, guid: bdaf099be38f81e42b2e13e072c8e5f1, type: 3}
+  - {fileID: 139968195001068713, guid: 128024cf4ccafe3429bcea222361a9ab, type: 3}
+  - {fileID: 7542674363821567988, guid: 36c97e780cb2a1449bf44ad02d5a894f, type: 3}
+  - {fileID: 8642789786029260564, guid: 62daad9ce0c7f7240a8be139638e6dc0, type: 3}
+  - {fileID: 4865081808667213751, guid: 659bc71476c4c144591880acdea20ee7, type: 3}
+  - {fileID: 1762378515408410229, guid: 714d4b710acd75e4dbab4db164eb5422, type: 3}
+  - {fileID: 4459723094371513738, guid: b95a1fdab8c730742a1a8b2fb88568af, type: 3}
+  - {fileID: 6485312606021165760, guid: 587239a16df07034b9dbbfcc7d72cd7b, type: 3}
+  - {fileID: 3828852177971177586, guid: 0a47c66d36eae9b46ab9f4d9cfa071b8, type: 3}
   _hearItemsPrefabs:
   - {fileID: 6113483316618495074, guid: babb301b90501d147a8452565b02fa62, type: 3}
   - {fileID: 6113483316618495074, guid: 61f922bb4270c724ebbf0bc1732914a9, type: 3}
