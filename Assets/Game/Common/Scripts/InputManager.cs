@@ -36,6 +36,18 @@ public class InputManager : MonoBehaviour
         while (!isPlayerTapping) await UniTask.Yield();
     }
 
+    public async UniTask WaitForTapUpToContinue()
+    {
+        // if tap is already on screen - wait for it to disable then get another // TODO: support multi touch- doesn't matter if fingers already tap, wait for an additional. 
+        while (isPlayerTapping) await UniTask.Yield();
+
+        // now wait until recieving a new tap
+        while (!isPlayerTapping) await UniTask.Yield();
+
+        // as long as tap is happaning- wait
+        while (isPlayerTapping) await UniTask.Yield();
+    }
+
     void Start()
     {
     }

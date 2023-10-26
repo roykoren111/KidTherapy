@@ -11,7 +11,7 @@ public class RoundManagerIntro : MonoBehaviour, RoundManager
         // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         // make sure character appears in its basic form
         
-        await InputManager.Instance.WaitForTapToContinue();
+        await InputManager.Instance.WaitForTapUpToContinue();
         
         Debug.Log("Intro round ended");
         // End

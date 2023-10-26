@@ -1883,6 +1883,27 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &978356760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3882781840423970717, guid: d1bc7d7cef66e48589f999c215288721, type: 3}
+  m_PrefabInstance: {fileID: 3882781841448880871}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &978356761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978356760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6974494b7cf74274784964e3566b283c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameCanvasTransform: {fileID: 930117306}
+  _groundingCanvasSee: {fileID: 5902049982610772069, guid: ccec3e5aa0bd14718b36f251dc06f817, type: 3}
+  _groundingCanvasHear: {fileID: 5902049982610772069, guid: c7be1b128fa31433dbad611665567a60, type: 3}
+  _groundingCanvasTaste: {fileID: 5902049982610772069, guid: ea683dffd549948a4a2b6a0950983370, type: 3}
 --- !u!1 &982431522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2020,7 +2041,6 @@ GameObject:
   m_Component:
   - component: {fileID: 988128626}
   - component: {fileID: 988128625}
-  - component: {fileID: 988128628}
   - component: {fileID: 988128627}
   m_Layer: 0
   m_Name: Core Managers
@@ -2083,22 +2103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be5b7dfc53c9a44b99f6ca850a97569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &988128628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988128624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6974494b7cf74274784964e3566b283c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameCanvasTransform: {fileID: 930117306}
-  _groundingCanvasSee: {fileID: 5902049982610772069, guid: ccec3e5aa0bd14718b36f251dc06f817, type: 3}
-  _groundingCanvasHear: {fileID: 5902049982610772069, guid: c7be1b128fa31433dbad611665567a60, type: 3}
-  _groundingCanvasTaste: {fileID: 5902049982610772069, guid: ea683dffd549948a4a2b6a0950983370, type: 3}
 --- !u!1 &1045327670
 GameObject:
   m_ObjectHideFlags: 0
