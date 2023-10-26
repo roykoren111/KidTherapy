@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class TrialManagerGrounding
 {
@@ -26,10 +27,10 @@ public class TrialManagerGrounding
         await _itemsManager.DestroyRemainingItems();
     }
 
-    private void OnItemCollected(ItemData collectedItemData)
+    private void OnItemCollected(Transform collectedItem)
     {
         _collectedItemsCount++;
         UIController.Instance.UpdateCollectedItems(_collectedItemsCount);
-        CharacterController.Instance.AddItemToCharacter(collectedItemData);
+        CharacterController.Instance.AddItemToCharacter(collectedItem);
     }
 }

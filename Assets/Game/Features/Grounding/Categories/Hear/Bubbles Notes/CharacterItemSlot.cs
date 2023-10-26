@@ -10,9 +10,11 @@ public class CharacterItemSlot : MonoBehaviour
         _bubble.SetActive(false);
     }
 
-    public void ChangeItemInSlot(ItemData itemData)
+    public void ChangeItemInSlot(Transform item)
     {
-        //_bubble.SetActive(true);
-        GameObject createdItem = Instantiate(itemData.Prefab, transform);
+        item.transform.position = transform.position;
+        item.transform.rotation = transform.rotation;
+        item.transform.localScale = transform.localScale;
+        item.parent = transform;
     }
 }

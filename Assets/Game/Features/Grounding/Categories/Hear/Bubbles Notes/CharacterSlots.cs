@@ -18,7 +18,7 @@ public class CharacterSlots : MonoBehaviour
         //Debug.Log("Test");
     }
 
-    public void AddItemToRandomSlot(ItemData itemData)
+    public void AddItemToRandomSlot(Transform item)
     {
         if (_nextFreeSlotIndex == slots.Count - 1)
         {
@@ -26,7 +26,7 @@ public class CharacterSlots : MonoBehaviour
             return;
         }
 
-        slots[_nextFreeSlotIndex].ChangeItemInSlot(itemData);
+        slots[_nextFreeSlotIndex].ChangeItemInSlot(item);
         _nextFreeSlotIndex++;
     }
 }

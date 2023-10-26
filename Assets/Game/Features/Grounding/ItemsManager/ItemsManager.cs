@@ -71,6 +71,7 @@ public class ItemsManager : MonoBehaviour
 
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
         GameObject selectedItem = Instantiate(selectedItemData.Prefab, possibleItemLocations[itemLocationIndex]);
+        //selectedItem.GetComponent<Item>()?.MoveToInnerScreenPosition(); -> TODO: add inner location
 
         _itemsOnScreen.Add(selectedItem, selectedItemData);
 
@@ -83,7 +84,7 @@ public class ItemsManager : MonoBehaviour
         return _numberOfItemsToSelectByCategory[itemCategory];
     }
 
-    public Action<ItemData> ItemCollected; // invoke when Item is collected
+    public Action<Transform> ItemCollected; // invoke when Item is collected
 
     public async UniTask DestroyRemainingItems()
     {
@@ -120,6 +121,7 @@ public class ItemsManager : MonoBehaviour
         if (collectedItemData.IsWrongPick)
         {
             GroundingAudioManager.Instance.PlayWrongPickSound(collectedItemData.Categorey);
+            // TODO: call OnWrongPick on the item script.
             return;
         }
 
@@ -128,7 +130,7 @@ public class ItemsManager : MonoBehaviour
         _itemsOnScreen.Remove(collectedItem);
         Destroy(collectedItem);
 
-        ItemCollected?.Invoke(collectedItemData);
+        ItemCollected?.Invoke(collectedItem.transform);
     }
 
 #if UNITY_EDITOR
