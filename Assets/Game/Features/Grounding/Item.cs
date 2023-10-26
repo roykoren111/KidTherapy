@@ -17,17 +17,15 @@ public class Item : MonoBehaviour, ITappable
     [SerializeField] MeshRenderer bubbleMR;
     private Vector3 spawnPosition;
     private float movementDuration;
-
     public void Spawn(Transform outerPosition, Transform innerTransform, float duration)
     {
-        // TODO: make sure MR is disabled.
+        GetComponent<MeshRenderer>().enabled = false;
 
         spawnPosition = outerPosition.position;
         transform.localScale = outerPosition.localScale;
         movementDuration = duration;
 
-        // TODO: Calculate isRightToCharacter
-
+        IsSpawnedRightToCharacter = transform.position.x > CharacterController.Instance.transform.position.x;
         // if spawned to the right- should look left
         transform.eulerAngles = IsSpawnedRightToCharacter ? new Vector3(0, 180f, 0) : Vector3.zero;
 
@@ -37,7 +35,25 @@ public class Item : MonoBehaviour, ITappable
     private async UniTask MoveToPosition(Vector3 current, Vector3 target, float duration)
     {
         float lerpTime = 0;
-        // todo add cancle upon selecting
+        while (lerpTime < duration && !IsCollected)
+        {
+            lerpTime += Time.deltaTime;
+            float t = lerpTime / duration;
+            t = t * t * t * (t * (6f * t - 15f) + 10f); // very smooth and nice step function
+
+            transform.position = Vector3.Lerp(current, target, t);
+
+            await UniTask.Yield();
+        }
+    }
+
+    private async UniTask ReturnToSpawnPosition()
+    {
+        float lerpTime = 0;
+        float duration = movementDuration / 2f;
+        Vector3 current = transform.position;
+        Vector3 target = spawnPosition;
+
         while (lerpTime < duration)
         {
             lerpTime += Time.deltaTime;
@@ -56,6 +72,8 @@ public class Item : MonoBehaviour, ITappable
         // TODO: If bubble animation - wait for finish then go inside.
         // trigger bubble animation
 
+        GroundingAudioManager.Instance.PlayRandomCorrectPickSound(Categorey);
+
         transform.position = insideCharacterPosition.position;
         transform.rotation = insideCharacterPosition.rotation;
         transform.localScale = insideCharacterPosition.localScale;
@@ -69,6 +87,8 @@ public class Item : MonoBehaviour, ITappable
 
     public void OnWrongPick(EItemCategory itemCategory)
     {
+        GroundingAudioManager.Instance.PlayWrongPickSound(Categorey);
+
         switch (itemCategory)
         {
             case EItemCategory.Hear:
@@ -76,7 +96,7 @@ public class Item : MonoBehaviour, ITappable
                 Destroy(gameObject);
                 break;
             default:
-                MoveToPosition(transform.position, spawnPosition, movementDuration / 2f).Forget();
+                ReturnToSpawnPosition().Forget();
                 GetComponent<SphereCollider>().enabled = false;
                 break;
 
@@ -87,6 +107,7 @@ public class Item : MonoBehaviour, ITappable
     {
         if (IsCollected) return;
 
+        IsCollected = true;
         ItemsManager.Instance.CollectItem(gameObject);
     }
 }
