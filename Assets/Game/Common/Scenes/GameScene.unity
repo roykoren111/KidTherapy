@@ -1476,6 +1476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trials: 000000000100000003000000
+  _betweenSpawnsDelay: {x: 0, y: 0.2}
+  _itemFloatingSpeedRange: {x: 4, y: 6}
 --- !u!114 &640326468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,7 +1490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bb95444dce06d4b87621cdc2ba4089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemAppearDuration: 5
   _seeItemsPrefabs:
   - {fileID: 5984145969554308706, guid: 956ba4543cea6924d93b5bf44af33122, type: 3}
   - {fileID: 2488015865094740527, guid: d205f9acde4ea9e4e875dc6fe39f4113, type: 3}

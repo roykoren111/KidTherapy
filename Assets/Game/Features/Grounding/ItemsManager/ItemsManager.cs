@@ -10,8 +10,6 @@ using Random = UnityEngine.Random;
 
 public class ItemsManager : MonoBehaviour
 {
-    [SerializeField] private float _itemAppearDuration = 5f;
-
     [SerializeField] private List<GameObject> _seeItemsPrefabs;
     [SerializeField] private List<GameObject> _hearItemsPrefabs;
     [SerializeField] private List<GameObject> _tasteItemsPrefabs;
@@ -55,14 +53,16 @@ public class ItemsManager : MonoBehaviour
     }
 
 
-    public async UniTask SpawnItems(EItemCategory itemCategory)
+    public async UniTask SpawnItems(EItemCategory itemCategory, Vector2 betweenSpawnsDelay, Vector2 itemFloatingSpeedRange)
     {
         Dictionary<Transform, Transform> possibleItemLocations = GetPossibleItemLocations();
         int numberOfItemsToSpawn = _numberOfItemsToSpawnByCategory[itemCategory];
         List<GameObject> itemsToSelectFrom = _itemPrefabsByCategory[itemCategory];
         while (numberOfItemsToSpawn > 0)
         {
-            SpawnItem(itemsToSelectFrom, possibleItemLocations);
+            SpawnItem(itemsToSelectFrom, possibleItemLocations, itemFloatingSpeedRange);
+            float spawnDelay = Random.Range(betweenSpawnsDelay.x, betweenSpawnsDelay.y);
+            await UniTask.Delay(TimeSpan.FromSeconds(spawnDelay));
             numberOfItemsToSpawn--;
         }
     }
@@ -79,15 +79,16 @@ public class ItemsManager : MonoBehaviour
         return possibleItemLocations;
     }
 
-    private void SpawnItem(List<GameObject> itemsToSelectFrom, Dictionary<Transform, Transform> possibleItemLocations)
+    private void SpawnItem(List<GameObject> itemsToSelectFrom, Dictionary<Transform, Transform> possibleItemLocations, Vector2 floatingSpeedRange)
     {
         int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
         Transform itemOutsideLocation = possibleItemLocations.ElementAt(itemLocationIndex).Key;
         Transform innerPosition = possibleItemLocations[itemOutsideLocation];
+        float itemFloatDuration = Random.Range(floatingSpeedRange.x, floatingSpeedRange.y);
         GameObject spawnedItem =
             Instantiate(itemsToSelectFrom[itemIndex], itemOutsideLocation);
-        spawnedItem.GetComponent<Item>()?.Spawn(itemOutsideLocation, innerPosition, _itemAppearDuration);
+        spawnedItem.GetComponent<Item>()?.Spawn(itemOutsideLocation, innerPosition, itemFloatDuration);
 
         _itemsOnScreen.Add(spawnedItem);
 
