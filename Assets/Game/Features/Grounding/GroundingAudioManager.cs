@@ -20,12 +20,14 @@ public class GroundingAudioManager : MonoBehaviour
 
     private Dictionary<EItemCategory, AudioSource[]> _correctPickSoundsByCategory;
     private Dictionary<EItemCategory, AudioSource> _wrongPickSoundByCategory;
-
+    AudioSource _previousSound;
     private void Start()
     {
+        _previousSound = SeeCorrectPicks[1];
+
         _correctPickSoundsByCategory = new Dictionary<EItemCategory, AudioSource[]>()
         {
-            { EItemCategory.See, SeeCorrectPicks }, { EItemCategory.Taste, SeeCorrectPicks },
+            { EItemCategory.See, SeeCorrectPicks }, { EItemCategory.Taste, TasteCorrectPicks },
             { EItemCategory.Hear, HearCorrectPicks }
         };
         _wrongPickSoundByCategory = new Dictionary<EItemCategory, AudioSource>()
@@ -37,7 +39,13 @@ public class GroundingAudioManager : MonoBehaviour
     {
         AudioSource[] pickSounds = _correctPickSoundsByCategory[category];
         int soundIndex = Random.Range(0, pickSounds.Length);
+        while (_previousSound == pickSounds[soundIndex])
+        {
+            soundIndex = Random.Range(0, pickSounds.Length);
+        }
+
         pickSounds[soundIndex].Play();
+        _previousSound = pickSounds[soundIndex];
 
         if (category == EItemCategory.Hear)
         {
