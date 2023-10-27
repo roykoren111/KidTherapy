@@ -87,6 +87,12 @@ public class CharacterController : MonoBehaviour
     {
         eyesTarget.SetTarget(targetPosition);
     }
+
+    public void EyesToCenter()
+    {
+        eyesTarget.BackToCenter();
+    }
+
     private void Update()
     {
         eyeRight.up = (eyesTarget.transform.position - eyeRight.position).normalized;
@@ -103,7 +109,6 @@ public class CharacterController : MonoBehaviour
             Transform slot = _slots[k];
             _slots[k] = _slots[n];
             _slots[n] = slot;
-            Debug.Log($"slot {k} to slot {n}");
         }
     }
 

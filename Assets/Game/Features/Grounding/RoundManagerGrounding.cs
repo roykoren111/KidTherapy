@@ -23,7 +23,12 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
         for (int i = 0; i < trials.Length; i++)
         {
             await groundingTrialManager.RunTrialFlow(trials[i]);
+            await UniTask.Delay(1500);  // let eyes go back to center
+            CharacterController.Instance.EyesToCenter();
+            await UniTask.Delay(1500);  // let eyes go back to center
+
             await UniTask.Yield();
+
         }
         UIController.Instance.ClearGroundingUI();
         Debug.Log("Grounding round ended");

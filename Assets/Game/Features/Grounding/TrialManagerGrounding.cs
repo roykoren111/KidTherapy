@@ -23,7 +23,7 @@ public class TrialManagerGrounding
         }
 
         _itemsManager.ItemCollected -= OnItemCollected;
-
+        UIController.Instance.ClearGroundingUI();
         await _itemsManager.DestroyRemainingItems();
     }
 
