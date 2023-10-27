@@ -25,6 +25,7 @@ public class TrialManagerGrounding
 
         _itemsManager.ItemCollected -= OnItemCollected;
         UIController.Instance.ClearGroundingUI();
+        CharacterController.Instance.EyesToCenter(2f).Forget();
         await _itemsManager.DestroyRemainingItems();
     }
 

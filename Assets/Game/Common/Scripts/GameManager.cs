@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         {
             InitRoundManager(_rounds[i]);
             await _roundManager.RunRoundFlow(_rounds[i]);
-            CharacterController.Instance.EyesToCenter();
+            CharacterController.Instance.EyesToCenter(0).Forget();
         }
 
         Debug.Log("Game Ends");

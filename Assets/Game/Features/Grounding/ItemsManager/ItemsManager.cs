@@ -34,7 +34,7 @@ public class ItemsManager : MonoBehaviour
     private static readonly Dictionary<EItemCategory, int> _numberOfItemsToSpawnByCategory =
         new Dictionary<EItemCategory, int>
         {
-            { EItemCategory.See, 8 }, { EItemCategory.Hear, 8 }, { EItemCategory.Smell, 8 }, { EItemCategory.Taste, 8 },
+            { EItemCategory.See, 14 }, { EItemCategory.Hear, 12 }, { EItemCategory.Smell, 8 }, { EItemCategory.Taste, 12 },
             { EItemCategory.Touch, 8 }
         };
 
@@ -105,6 +105,16 @@ public class ItemsManager : MonoBehaviour
 
     public async UniTask DestroyRemainingItems()
     {
+        List<UniTask> returningItemsTasks = new List<UniTask>();
+        foreach (GameObject item in _itemsOnScreen)
+        {
+            UniTask returnItem = item.GetComponent<Item>().ReturnToSpawnPosition();
+            returningItemsTasks.Add(returnItem);
+            await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(0f, .3f)));
+        }
+
+        await UniTask.WhenAll(returningItemsTasks);
+
         foreach (GameObject item in _itemsOnScreen)
         {
             Destroy(item);
@@ -136,6 +146,11 @@ public class ItemsManager : MonoBehaviour
     {
         _itemsOnScreen.Remove(collectedItem.gameObject);
         ItemCollected?.Invoke(collectedItem);
+    }
+
+    public void OnItemWrongPick(Item item)
+    {
+        _itemsOnScreen.Remove(item.gameObject);
     }
 
 #if UNITY_EDITOR

@@ -1,8 +1,6 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour, ITappable
 {
@@ -21,7 +19,7 @@ public class Item : MonoBehaviour, ITappable
     {
         GetComponent<MeshRenderer>().enabled = false;
 
-        spawnPosition = outerPosition.position;
+        spawnPosition = outerPosition.position + new Vector3(0, 0, UnityEngine.Random.Range(-2f, 2f));
         transform.localScale = outerPosition.localScale;
         movementDuration = duration;
 
@@ -47,12 +45,17 @@ public class Item : MonoBehaviour, ITappable
         }
     }
 
-    private async UniTask ReturnToSpawnPosition()
+    public async UniTask ReturnToSpawnPosition()
     {
+        GetComponent<SphereCollider>().enabled = false;
+
         float lerpTime = 0;
-        float duration = movementDuration / 2f;
+        float duration = movementDuration;
         Vector3 current = transform.position;
         Vector3 target = spawnPosition;
+
+        // add delay so every animal leaves in a little different time
+        await UniTask.Delay(TimeSpan.FromSeconds(UnityEngine.Random.Range(0f, .3f)));
 
         while (lerpTime < duration)
         {
@@ -113,6 +116,7 @@ public class Item : MonoBehaviour, ITappable
         if (IsWrongPick)
         {
             OnWrongPick();
+            ItemsManager.Instance.OnItemWrongPick(this);
             return;
         }
 
