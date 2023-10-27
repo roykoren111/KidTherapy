@@ -110,7 +110,6 @@ public class ItemsManager : MonoBehaviour
         {
             UniTask returnItem = item.GetComponent<Item>().ReturnToSpawnPosition();
             returningItemsTasks.Add(returnItem);
-            await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(0f, .3f)));
         }
 
         await UniTask.WhenAll(returningItemsTasks);
