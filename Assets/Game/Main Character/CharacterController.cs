@@ -37,26 +37,17 @@ public class CharacterController : MonoBehaviour
         _nextFreeSlotIndex++;
     }
 
-    public async UniTask PlayBreathingAnimation(int breathingCycles)
+    public void SetBreathingAnimation(bool state)
     {
-        animator.SetBool("IsBreathing", true);
-
-        float inhaleDuration = 4f, holdingDuration = 2f, exhaleDuration = 6f;
-        float scaleAmount = .5f; // grow by this amount on all axis
-
-        for (int i = 0; i < breathingCycles; i++)
-        {
-            float scaleAmountThisBreath = scaleAmount / breathingCycles;
-            Vector3 targetScale = transform.localScale + Vector3.one * scaleAmountThisBreath;
-            ChangeScale(transform.localScale, targetScale, inhaleDuration).Forget();
-
-            float animationDuration = inhaleDuration + holdingDuration + exhaleDuration;
-            await UniTask.Delay(TimeSpan.FromSeconds(animationDuration));
-        }
-        animator.SetBool("IsBreathing", false);
-
+        animator.SetBool("IsBreathing", state);
     }
 
+    public void ChangeScaleInBreathing(float scaleAmount, int breathingCycles, float inhaleDuration)
+    {
+        float scaleAmountThisBreath = scaleAmount / breathingCycles;
+        Vector3 targetScale = transform.localScale + Vector3.one * scaleAmountThisBreath;
+        ChangeScale(transform.localScale, targetScale, inhaleDuration).Forget();
+    }
     private async UniTask ChangeScale(Vector3 current, Vector3 target, float duration)
     {
         float lerpTime = 0;

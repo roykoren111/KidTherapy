@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +7,29 @@ using UnityEngine;
 public class RoundManagerBreathing : MonoBehaviour, RoundManager
 {
     [SerializeField] private int _breathingCycles = 2;
+    [SerializeField] AudioSource[] _breathingSounds;
+    [SerializeField] float _characterScaleAmount = .5f;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
+        CharacterController character = CharacterController.Instance;
         UIController.Instance.SetRoundInitialUI(config);
-        //await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
-        CharacterController.Instance.InitCharacterToRound(config.RoundType);
-
-        // maybe wait to start breathing animation or make character go into breathing state.
+        character.InitCharacterToRound(config.RoundType);
 
         // wait for kids to confirm they are ready to start breathings.
         await InputManager.Instance.WaitForTapToContinue();
 
-        await CharacterController.Instance.PlayBreathingAnimation(_breathingCycles);
+        float inhaleDuration = 4f, holdingDuration = 2f, exhaleDuration = 6f;
+        character.SetBreathingAnimation(true);
+
+        for (int i = 0; i < _breathingCycles; i++)
+        {
+            character.ChangeScaleInBreathing(_characterScaleAmount, _breathingCycles, inhaleDuration);
+            _breathingSounds[i].Play();
+
+            float animationDuration = inhaleDuration + holdingDuration + exhaleDuration;
+            await UniTask.Delay(TimeSpan.FromSeconds(animationDuration));
+        }
+        character.SetBreathingAnimation(false);
 
         Debug.Log("Breathing round ended");
 
