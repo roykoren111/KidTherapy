@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
 {
-    [SerializeField] private InnerTalkData[] _trials;
+    [SerializeField] private GameObject[] _sentences;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         AudioManager.Instance.PlayInnerTalkMusic();
@@ -17,9 +17,12 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
 
         TrialManagerInnerTalk trialManager = new TrialManagerInnerTalk();
 
-        for (int i = 0; i < _trials.Length; i++)
+        for (int i = 0; i < _sentences.Length; i++)
         {
-            await trialManager.RunTrialFlow(_trials[i]);
+            InnerTalkSentence sentence = Instantiate(_sentences[i]).GetComponent<InnerTalkSentence>();
+            sentence.transform.parent = transform;
+            sentence.Hide();
+            await trialManager.RunTrialFlow(sentence);
             await UniTask.Yield();
         }
 
