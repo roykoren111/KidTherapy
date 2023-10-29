@@ -82,7 +82,7 @@ Material:
     m_Colors:
     - _Color: {r: 0.9811321, g: 0.4370735, b: 0.35635456, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Emmision1: {r: 0.8962264, g: 0.38470095, b: 0.38470095, a: 1}
+    - _Emmision1: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.6981132, g: 0.4953143, b: 0.4313812, a: 1}
     - _MainColor1: {r: 0.8396226, g: 0.30296457, b: 0.22574759, a: 1}
     - _SecondaryColor: {r: 1, g: 0.7508735, b: 0.6745283, a: 1}

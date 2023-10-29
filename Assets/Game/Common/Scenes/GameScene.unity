@@ -2422,24 +2422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad687f16c8cf9d348a4e96b17f718151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &876011296 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2519080413867153817, guid: 0017f31752abfcf4a9c329f81d46d554, type: 3}
-  m_PrefabInstance: {fileID: 1273096822}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &876011298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876011296}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95a052b57bc77ad4a9f8c298df8a036c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: -0.05
 --- !u!1001 &894478314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2900,7 +2882,7 @@ MonoBehaviour:
   roundManagerBreathing: {fileID: 272405195}
   roundManagerTension: {fileID: 1567482929}
   roundManagerInnerTalk: {fileID: 1157625462}
-  gameMusic: {fileID: 0}
+  gameMusic: {fileID: 644766117}
 --- !u!4 &988128626
 Transform:
   m_ObjectHideFlags: 0
