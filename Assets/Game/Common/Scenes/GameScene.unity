@@ -505,6 +505,25 @@ Light:
   m_CorrespondingSourceObject: {fileID: 4305499871594728309, guid: d9875e9844286e244b43cc5d5a8b23a9, type: 3}
   m_PrefabInstance: {fileID: 152846220}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &152846222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4305499871324509472, guid: d9875e9844286e244b43cc5d5a8b23a9, type: 3}
+  m_PrefabInstance: {fileID: 152846220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &152846223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152846222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec60aaeaedd82e4c89643a9c716e7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainLight: {fileID: 152846221}
+  DefaultIntensity: 0
 --- !u!1 &236925336
 GameObject:
   m_ObjectHideFlags: 0
