@@ -9,7 +9,7 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         AudioManager.Instance.PlayInnerTalkMusic();
-        UIController.Instance.SetRoundInitialUI(config);
+        await UIController.Instance.SetRoundInitialUI(config);
         // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
 

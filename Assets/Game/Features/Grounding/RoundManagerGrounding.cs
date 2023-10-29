@@ -10,7 +10,7 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
     [SerializeField] Vector2 _itemFloatingSpeedRange;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
-        UIController.Instance.SetRoundInitialUI(config);
+        await UIController.Instance.SetRoundInitialUI(config);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
         // await CameraController.Instance.MoveToTransform(config.CameraTransform);
 
@@ -27,7 +27,7 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
             await UniTask.Yield();
 
         }
-        UIController.Instance.ClearGroundingUI();
+        await UIController.Instance.ClearGroundingUI();
         Debug.Log("Grounding round ended");
         // End
     }

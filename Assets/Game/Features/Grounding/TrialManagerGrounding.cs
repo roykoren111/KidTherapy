@@ -13,9 +13,9 @@ public class TrialManagerGrounding
         _itemsManager = ItemsManager.Instance;
         int requiredItemsCount = _itemsManager.GetRequiredItemsCount(itemCategory);
 
-        UIController.Instance.ResetGroundingTrialUI(itemCategory, requiredItemsCount);
-        await _itemsManager.SpawnItems(itemCategory, spawnDelayRange, itemSpeedRange);
-
+        UniTask spawnUI = UIController.Instance.ResetGroundingTrialUI(itemCategory, requiredItemsCount);
+        UniTask spawnItems = _itemsManager.SpawnItems(itemCategory, spawnDelayRange, itemSpeedRange);
+        await UniTask.WhenAll(spawnUI, spawnItems);
         _itemsManager.ItemCollected += OnItemCollected;
 
         while (_collectedItemsCount < requiredItemsCount)
@@ -24,10 +24,11 @@ public class TrialManagerGrounding
         }
 
         _itemsManager.ItemCollected -= OnItemCollected;
-        UIController.Instance.ClearGroundingUI();
+        UniTask destroyRemainingItems = _itemsManager.DestroyRemainingItems();
+        UniTask clearUI = UIController.Instance.ClearGroundingUI();
         AudioManager.Instance.PlayScreenTransitionSound();
         CharacterController.Instance.EyesToCenter(2f).Forget();
-        await _itemsManager.DestroyRemainingItems();
+        await UniTask.WhenAll(destroyRemainingItems, clearUI);
     }
 
     private void OnItemCollected(Item collectedItem)

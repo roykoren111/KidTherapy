@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -20,8 +22,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _breathingHold;
     [SerializeField] private GameObject _breathingExhale;
 
-
-
     private GameObject _currentGroundingCanvas;
     private void Awake()
     {
@@ -40,8 +40,10 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void SetRoundInitialUI(RoundConfiguration roundConfiguration)
+    public async UniTask SetRoundInitialUI(RoundConfiguration roundConfiguration)
     {
+        await SetUIAlpha(false, 1f);
+
         if (_currentScreenInstance != null)
         {
             Destroy(_currentScreenInstance);
@@ -51,10 +53,15 @@ public class UIController : MonoBehaviour
         {
             _currentScreenInstance = Instantiate(roundConfiguration.UIPrefab, _gameCanvasTransform);
         }
+
+        await SetUIAlpha(true, 1f);
+
     }
 
-    public void ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount)
+    public async UniTask ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount)
     {
+        await SetUIAlpha(false, 1f);
+
         if (_currentGroundingCanvas != null)
         {
             Destroy(_currentGroundingCanvas);
@@ -79,13 +86,15 @@ public class UIController : MonoBehaviour
         {
             _currentGroundingCanvas = Instantiate(newGroundingCanvas, _gameCanvasTransform);
         }
+        await SetUIAlpha(true, 1f);
 
         // Reset items collected counter.
 
     }
 
-    public void SetBreathingUI(BreathingStage stage)
+    public async UniTask SetBreathingUI(BreathingStage stage)
     {
+        await SetUIAlpha(false, .5f);
         if (_currentScreenInstance != null)
         {
             Destroy(_currentScreenInstance);
@@ -109,11 +118,42 @@ public class UIController : MonoBehaviour
         {
             _currentScreenInstance = Instantiate(newBreathingCanvas, _gameCanvasTransform);
         }
-
+        await SetUIAlpha(true, .5f);
     }
 
-    public void ClearGroundingUI()
+    public async UniTask SetUIAlpha(bool shouldAppear, float duration)
     {
+        float currentAlpha = shouldAppear ? 0 : 1;
+        float targetAlpha = shouldAppear ? 1 : 0;
+        float lerpTime = 0;
+        TMP_Text[] texts = GetComponentsInChildren<TMP_Text>();
+        Image[] images = GetComponentsInChildren<Image>();
+        while (lerpTime < duration)
+        {
+            lerpTime += Time.deltaTime;
+            float t = lerpTime / duration;
+            t = t * t * t * (t * (6f * t - 15f) + 10f); // very smooth and nice step function
+
+            foreach (TMP_Text text in texts)
+            {
+                Color targetColor = text.color;
+                targetColor.a = Mathf.Lerp(currentAlpha, targetAlpha, t);
+                text.color = targetColor;
+            }
+
+            foreach (Image image in images)
+            {
+                Color targetColor = image.color;
+                targetColor.a = Mathf.Lerp(currentAlpha, targetAlpha, t);
+                image.color = targetColor;
+            }
+            await UniTask.Yield();
+        }
+    }
+
+    public async UniTask ClearGroundingUI()
+    {
+        await SetUIAlpha(false, 1f);
         Destroy(_currentGroundingCanvas);
     }
 
