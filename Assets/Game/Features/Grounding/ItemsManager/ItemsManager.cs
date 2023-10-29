@@ -57,6 +57,28 @@ public class ItemsManager : MonoBehaviour
     public async UniTask SpawnItems(EItemCategory itemCategory, Vector2 betweenSpawnsDelay,
         Vector2 itemFloatingSpeedRange, EItemColor itemsColor)
     {
+        if (itemCategory == EItemCategory.See)
+        {
+            await SpawnSeeItems(itemCategory, betweenSpawnsDelay, itemFloatingSpeedRange, itemsColor);
+            return;
+        }
+
+        Dictionary<Transform, Transform> possibleItemLocations = GetPossibleItemLocations();
+        int numberOfItemsToSpawn = _numberOfItemsToSpawnByCategory[itemCategory];
+        List<GameObject> itemsToSelectFrom = _itemPrefabsByCategory[itemCategory];
+        while (numberOfItemsToSpawn > 0)
+        {
+            SpawnItem(itemsToSelectFrom, possibleItemLocations, itemFloatingSpeedRange);
+
+            float spawnDelay = Random.Range(betweenSpawnsDelay.x, betweenSpawnsDelay.y);
+            await UniTask.Delay(TimeSpan.FromSeconds(spawnDelay));
+            numberOfItemsToSpawn--;
+        }
+    }
+
+    private async UniTask SpawnSeeItems(EItemCategory itemCategory, Vector2 betweenSpawnsDelay,
+        Vector2 itemFloatingSpeedRange, EItemColor itemsColor)
+    {
         Dictionary<Transform, Transform> possibleItemLocations = GetPossibleItemLocations();
         int numberOfItemsToSpawn = _numberOfItemsToSpawnByCategory[itemCategory];
         int numberOfItemsToSelect = _numberOfItemsToSelectByCategory[itemCategory];
@@ -171,11 +193,21 @@ public class ItemsManager : MonoBehaviour
         List<GameObject> itemsInColor = new List<GameObject>();
         foreach (GameObject item in _seeItemsPrefabs)
         {
-            if (item.GetComponent<Item>().itemColor == color)
+            Item itemComponent = item.GetComponent<Item>();
+            if (itemComponent.itemColor == color)
             {
                 itemsInColor.Add(item);
-                _seeItemsPrefabs.Remove(item);
+                itemComponent.IsWrongPick = false;
             }
+            else
+            {
+                itemComponent.IsWrongPick = true;
+            }
+        }
+
+        foreach (GameObject item in itemsInColor)
+        {
+            _seeItemsPrefabs.Remove(item);
         }
 
         return itemsInColor;
