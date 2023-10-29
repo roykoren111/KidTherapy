@@ -11,7 +11,6 @@ public class TrialManagerInnerTalk
     // sentence is instantiated on RoundManager and then passed to trial manager
     public async UniTask RunTrialFlow(InnerTalkSentence sentence)
     {
-        CharacterController.Instance.SlideToScreenButtom();
         sentence.WordTapped += OnWordTapped;
         int wordCount = sentence.WordCount;
 
@@ -25,6 +24,9 @@ public class TrialManagerInnerTalk
         // trigger character empowered animation.
         CharacterController.Instance.OnInnerTalkSentenceComplete();
         _tappedWords = 0;
+        await UniTask.Delay(500);
+        AudioManager.Instance.PlayScreenTransitionSound();
+
         await sentence.ClearSentence();
 
         // wait until the whole sentence is marked.

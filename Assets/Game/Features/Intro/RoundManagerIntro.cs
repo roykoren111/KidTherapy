@@ -7,6 +7,10 @@ public class RoundManagerIntro : MonoBehaviour, RoundManager
 {
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
+        CharacterController.Instance.MoveToBirthPosition();
+        await UniTask.Delay(1000);
+        await CharacterController.Instance.MoveToCenter(2f);
+
         await UIController.Instance.SetRoundInitialUI(config);
         // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         // make sure character appears in its basic form
