@@ -7,19 +7,20 @@ using UnityEngine.Rendering;
 
 public class EyesTarget : MonoBehaviour
 {
-    private Vector3 _spawnPosition;
+    private Vector3 _defaultPosition;
     [SerializeField] private float __backToCenterFreq = 2f;
     [SerializeField] private float _lookSpeed;
     [SerializeField] private float _zPosition;
     Vector3 targetPosition;
     private bool isOnTarget = false;
     float lastSetTargetTime = 0;
-    private void Start()
+
+    private void Awake()
     {
-        _spawnPosition = transform.position;
-        _spawnPosition.z = _zPosition;
-        targetPosition = _spawnPosition;
+        _defaultPosition = transform.position;
+        targetPosition = _defaultPosition;
     }
+
     private void Update()
     {
         if (isOnTarget)
@@ -36,7 +37,7 @@ public class EyesTarget : MonoBehaviour
 
     public void BackToCenter()
     {
-        targetPosition = _spawnPosition;
+        targetPosition = _defaultPosition;
         isOnTarget = false;
     }
     public void SetTarget(Vector3 target)

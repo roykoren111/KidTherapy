@@ -14,6 +14,14 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Transform eyeLeft;
     [SerializeField] private EyesTarget eyesTarget;
 
+    private float yPositionOnBirth = -6f;
+    private float yPositionInnerTalk = -1f;
+    private float xAngleInnerTalk = -8f;
+
+    private Vector3 centerPosition;
+    private Vector3 centerEuler;
+
+
     public void InitCharacterToRound(RoundType roundType)
     {
         switch (roundType)
@@ -64,9 +72,26 @@ public class CharacterController : MonoBehaviour
 
     }
 
-    public void SlideToScreenButtom()
+    public void MoveToInnerTalkPosition()
     {
+        Vector3 targetPosition = transform.position;
+        targetPosition.y = yPositionInnerTalk;
+        Vector3 targetEuler = transform.eulerAngles;
+        targetEuler.x = xAngleInnerTalk;
 
+        ChangeTransform(targetPosition, targetEuler, 1f).Forget();
+    }
+
+    public async UniTask MoveToCenter(float duration)
+    {
+        await ChangeTransform(centerPosition, centerEuler, duration);
+    }
+
+    public void MoveToBirthPosition()
+    {
+        Vector3 targetPosition = transform.position;
+        targetPosition.y = yPositionOnBirth;
+        transform.position = targetPosition;
     }
 
     public void OnInnerTalkSentenceComplete()
@@ -104,9 +129,30 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private async UniTask ChangeTransform(Vector3 targetPosition, Vector3 targetEuler, float duration)
+    {
+        float lerpTime = 0;
+        Vector3 currentPosition = transform.position;
+        Vector3 currentEuler = transform.eulerAngles;
+
+        while (lerpTime < duration)
+        {
+            lerpTime += Time.deltaTime;
+            float t = lerpTime / duration;
+            t = t * t * t * (t * (6f * t - 15f) + 10f); // very smooth and nice step function
+
+            transform.position = Vector3.Lerp(currentPosition, targetPosition, t);
+            transform.eulerAngles = Vector3.Lerp(currentEuler, targetEuler, t);
+
+            await UniTask.Yield();
+        }
+    }
+
     private void Awake()
     {
         SingletonValidation();
+        centerEuler = transform.eulerAngles;
+        centerPosition = transform.position;
     }
     private void SingletonValidation()
     {
