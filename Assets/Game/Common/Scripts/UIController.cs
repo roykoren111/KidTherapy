@@ -10,9 +10,17 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private Transform _gameCanvasTransform;
 
+    [Header("Grounding UI")]
     [SerializeField] private GameObject _groundingCanvasSee;
     [SerializeField] private GameObject _groundingCanvasHear;
     [SerializeField] private GameObject _groundingCanvasTaste;
+
+    [Header("Breathing UI")]
+    [SerializeField] private GameObject _breathingInhale;
+    [SerializeField] private GameObject _breathingHold;
+    [SerializeField] private GameObject _breathingExhale;
+
+
 
     private GameObject _currentGroundingCanvas;
     private void Awake()
@@ -76,6 +84,34 @@ public class UIController : MonoBehaviour
 
     }
 
+    public void SetBreathingUI(BreathingStage stage)
+    {
+        if (_currentScreenInstance != null)
+        {
+            Destroy(_currentScreenInstance);
+        }
+
+        GameObject newBreathingCanvas = null;
+        switch (stage)
+        {
+            case BreathingStage.Inhale:
+                newBreathingCanvas = _breathingInhale;
+                break;
+            case BreathingStage.Hold:
+                newBreathingCanvas = _breathingHold;
+                break;
+            case BreathingStage.Exhale:
+                newBreathingCanvas = _breathingExhale;
+                break;
+        }
+
+        if (newBreathingCanvas != null)
+        {
+            _currentScreenInstance = Instantiate(newBreathingCanvas, _gameCanvasTransform);
+        }
+
+    }
+
     public void ClearGroundingUI()
     {
         Destroy(_currentGroundingCanvas);
@@ -105,6 +141,6 @@ public class UIController : MonoBehaviour
         // wait until selecting a gender
         return selectedGender;
     }
-    
+
 
 }
