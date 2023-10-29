@@ -55,9 +55,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Fredoka-Regular_SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 2009890217
   material: {fileID: -2795764858590484922}
-  materialHashCode: 0
+  materialHashCode: -836897815
   m_Version: 1.1.0
   m_SourceFontFileGUID: 8615f8fdcc8314ba7b79d55092d64421
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 8615f8fdcc8314ba7b79d55092d64421, type: 3}
