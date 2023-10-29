@@ -8,6 +8,7 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
     [SerializeField] private EItemCategory[] trials;
     [SerializeField] Vector2 _betweenSpawnsDelay;
     [SerializeField] Vector2 _itemFloatingSpeedRange;
+
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         await UIController.Instance.SetRoundInitialUI(config);
@@ -25,8 +26,8 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
         {
             await groundingTrialManager.RunTrialFlow(trials[i], _betweenSpawnsDelay, _itemFloatingSpeedRange);
             await UniTask.Yield();
-
         }
+
         await UIController.Instance.ClearGroundingUI();
         Debug.Log("Grounding round ended");
         // End

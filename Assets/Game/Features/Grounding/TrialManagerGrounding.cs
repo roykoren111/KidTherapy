@@ -37,4 +37,12 @@ public class TrialManagerGrounding
         UIController.Instance.UpdateCollectedItems(_collectedItemsCount);
         CharacterController.Instance.AddItemToCharacter(collectedItem);
     }
+
+    private EItemColors GetRandomItemColor()
+    {
+        EItemColors[] possibleItemColors = new EItemColors[]
+            { EItemColors.Green, EItemColors.Blue, EItemColors.Orange, EItemColors.Red, EItemColors.Red };
+        int itemColorIndex = Random.Range(0, possibleItemColors.Length);
+        return possibleItemColors[itemColorIndex];
+    }
 }
