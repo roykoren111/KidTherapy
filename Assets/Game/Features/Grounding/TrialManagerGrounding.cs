@@ -13,8 +13,10 @@ public class TrialManagerGrounding
         _itemsManager = ItemsManager.Instance;
         int requiredItemsCount = _itemsManager.GetRequiredItemsCount(itemCategory);
 
-        UniTask spawnUI = UIController.Instance.ResetGroundingTrialUI(itemCategory, requiredItemsCount);
-        UniTask spawnItems = _itemsManager.SpawnItems(itemCategory, spawnDelayRange, itemSpeedRange);
+        EItemColor itemColor = GetRandomItemColor();
+
+        UniTask spawnUI = UIController.Instance.ResetGroundingTrialUI(itemCategory, requiredItemsCount, itemColor);
+        UniTask spawnItems = _itemsManager.SpawnItems(itemCategory, spawnDelayRange, itemSpeedRange, itemColor);
         await UniTask.WhenAll(spawnUI, spawnItems);
         _itemsManager.ItemCollected += OnItemCollected;
 

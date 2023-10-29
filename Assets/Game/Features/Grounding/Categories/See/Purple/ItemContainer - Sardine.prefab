@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
       value: ItemContainer - Sardine

@@ -34,7 +34,8 @@ public class ItemsManager : MonoBehaviour
     private static readonly Dictionary<EItemCategory, int> _numberOfItemsToSpawnByCategory =
         new Dictionary<EItemCategory, int>
         {
-            { EItemCategory.See, 14 }, { EItemCategory.Hear, 12 }, { EItemCategory.Smell, 8 }, { EItemCategory.Taste, 12 },
+            { EItemCategory.See, 14 }, { EItemCategory.Hear, 12 }, { EItemCategory.Smell, 8 },
+            { EItemCategory.Taste, 12 },
             { EItemCategory.Touch, 8 }
         };
 
@@ -53,14 +54,26 @@ public class ItemsManager : MonoBehaviour
     }
 
 
-    public async UniTask SpawnItems(EItemCategory itemCategory, Vector2 betweenSpawnsDelay, Vector2 itemFloatingSpeedRange)
+    public async UniTask SpawnItems(EItemCategory itemCategory, Vector2 betweenSpawnsDelay,
+        Vector2 itemFloatingSpeedRange, EItemColor itemsColor)
     {
         Dictionary<Transform, Transform> possibleItemLocations = GetPossibleItemLocations();
         int numberOfItemsToSpawn = _numberOfItemsToSpawnByCategory[itemCategory];
-        List<GameObject> itemsToSelectFrom = _itemPrefabsByCategory[itemCategory];
+        int numberOfItemsToSelect = _numberOfItemsToSelectByCategory[itemCategory];
+        List<GameObject> itemsInColor = GetItemPrefabsByColor(itemsColor);
+        List<GameObject> itemsNotInColor = _itemPrefabsByCategory[itemCategory];
         while (numberOfItemsToSpawn > 0)
         {
-            SpawnItem(itemsToSelectFrom, possibleItemLocations, itemFloatingSpeedRange);
+            if (numberOfItemsToSelect > 0)
+            {
+                SpawnItem(itemsInColor, possibleItemLocations, itemFloatingSpeedRange);
+                numberOfItemsToSelect--;
+            }
+            else
+            {
+                SpawnItem(itemsNotInColor, possibleItemLocations, itemFloatingSpeedRange);
+            }
+
             float spawnDelay = Random.Range(betweenSpawnsDelay.x, betweenSpawnsDelay.y);
             await UniTask.Delay(TimeSpan.FromSeconds(spawnDelay));
             numberOfItemsToSpawn--;
@@ -79,7 +92,8 @@ public class ItemsManager : MonoBehaviour
         return possibleItemLocations;
     }
 
-    private void SpawnItem(List<GameObject> itemsToSelectFrom, Dictionary<Transform, Transform> possibleItemLocations, Vector2 floatingSpeedRange)
+    private void SpawnItem(List<GameObject> itemsToSelectFrom, Dictionary<Transform, Transform> possibleItemLocations,
+        Vector2 floatingSpeedRange)
     {
         int itemIndex = Random.Range(0, itemsToSelectFrom.Count);
         int itemLocationIndex = Random.Range(0, possibleItemLocations.Count);
@@ -152,6 +166,21 @@ public class ItemsManager : MonoBehaviour
         _itemsOnScreen.Remove(item.gameObject);
     }
 
+    private List<GameObject> GetItemPrefabsByColor(EItemColor color)
+    {
+        List<GameObject> itemsInColor = new List<GameObject>();
+        foreach (GameObject item in _seeItemsPrefabs)
+        {
+            if (item.GetComponent<Item>().itemColor == color)
+            {
+                itemsInColor.Add(item);
+                _seeItemsPrefabs.Remove(item);
+            }
+        }
+
+        return itemsInColor;
+    }
+
 #if UNITY_EDITOR
     public void PopulateItemsDataList()
     {
@@ -161,7 +190,7 @@ public class ItemsManager : MonoBehaviour
             { "See", EItemCategory.See }, { "Hear", EItemCategory.Hear },
             { "Taste", EItemCategory.Taste },
         };
-        AddItemsDataInCategory("See", _itemPrefabsByCategory[categoryByName["See"]]);
+        AddSeeItemsData();
         AddItemsDataInCategory("Hear", _itemPrefabsByCategory[categoryByName["Hear"]]);
         AddItemsDataInCategory("Taste", _itemPrefabsByCategory[categoryByName["Taste"]]);
         EditorUtility.SetDirty(this);
@@ -175,6 +204,29 @@ public class ItemsManager : MonoBehaviour
         foreach (string file in files)
         {
             itemPrefabsList.Add(AssetDatabase.LoadAssetAtPath<GameObject>(file));
+        }
+    }
+
+    private void AddSeeItemsData()
+    {
+        string[] files =
+            Directory.GetFiles(FolderPaths.CategoriesFolderPath + "See/Blue", "*.prefab");
+        LoadFilesToList(files, _seeItemsPrefabs);
+        files = Directory.GetFiles(FolderPaths.CategoriesFolderPath + "See/Red", "*.prefab");
+        LoadFilesToList(files, _seeItemsPrefabs);
+        files = Directory.GetFiles(FolderPaths.CategoriesFolderPath + "See/Green", "*.prefab");
+        LoadFilesToList(files, _seeItemsPrefabs);
+        files = Directory.GetFiles(FolderPaths.CategoriesFolderPath + "See/Purple", "*.prefab");
+        LoadFilesToList(files, _seeItemsPrefabs);
+        files = Directory.GetFiles(FolderPaths.CategoriesFolderPath + "See/Orange", "*.prefab");
+        LoadFilesToList(files, _seeItemsPrefabs);
+    }
+
+    private void LoadFilesToList(string[] files, List<GameObject> itemPrefabs)
+    {
+        foreach (string file in files)
+        {
+            itemPrefabs.Add(AssetDatabase.LoadAssetAtPath<GameObject>(file));
         }
     }
 #endif

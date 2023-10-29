@@ -12,17 +12,20 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private Transform _gameCanvasTransform;
 
-    [Header("Grounding UI")]
-    [SerializeField] private GameObject _groundingCanvasSee;
+    [Header("Grounding UI")] [SerializeField]
+    private GameObject _groundingCanvasSee;
+
     [SerializeField] private GameObject _groundingCanvasHear;
     [SerializeField] private GameObject _groundingCanvasTaste;
 
-    [Header("Breathing UI")]
-    [SerializeField] private GameObject _breathingInhale;
+    [Header("Breathing UI")] [SerializeField]
+    private GameObject _breathingInhale;
+
     [SerializeField] private GameObject _breathingHold;
     [SerializeField] private GameObject _breathingExhale;
 
     private GameObject _currentGroundingCanvas;
+
     private void Awake()
     {
         SingletonValidation();
@@ -55,10 +58,9 @@ public class UIController : MonoBehaviour
         }
 
         await SetUIAlpha(true, 1f);
-
     }
 
-    public async UniTask ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount)
+    public async UniTask ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount, EItemColor itemColor)
     {
         await SetUIAlpha(false, 1f);
 
@@ -86,10 +88,10 @@ public class UIController : MonoBehaviour
         {
             _currentGroundingCanvas = Instantiate(newGroundingCanvas, _gameCanvasTransform);
         }
+
         await SetUIAlpha(true, 1f);
 
         // Reset items collected counter.
-
     }
 
     public async UniTask SetBreathingUI(BreathingStage stage)
@@ -118,6 +120,7 @@ public class UIController : MonoBehaviour
         {
             _currentScreenInstance = Instantiate(newBreathingCanvas, _gameCanvasTransform);
         }
+
         await SetUIAlpha(true, .5f);
     }
 
@@ -147,6 +150,7 @@ public class UIController : MonoBehaviour
                 targetColor.a = Mathf.Lerp(currentAlpha, targetAlpha, t);
                 image.color = targetColor;
             }
+
             await UniTask.Yield();
         }
     }
@@ -181,6 +185,4 @@ public class UIController : MonoBehaviour
         // wait until selecting a gender
         return selectedGender;
     }
-
-
 }
