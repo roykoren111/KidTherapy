@@ -8,8 +8,9 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
     [SerializeField] private InnerTalkData[] _trials;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
+        AudioManager.Instance.PlayInnerTalkMusic();
         UIController.Instance.SetRoundInitialUI(config);
-       // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
+        // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
 
         // TODO: Add tutorial round with tap indicator before starting trials.

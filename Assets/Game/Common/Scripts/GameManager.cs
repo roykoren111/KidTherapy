@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RoundManagerInnerTalk roundManagerInnerTalk;
 
     private RoundManager _roundManager;
-    [SerializeField] AudioSource gameMusic;
     private void Start()
     {
         RunGameLoop().Forget();
@@ -22,13 +21,14 @@ public class GameManager : MonoBehaviour
 
     private async UniTask RunGameLoop()
     {
-        gameMusic.Play();
+        AudioManager.Instance.PlayMainMusic();
 
         for (int i = 0; i < _rounds.Length; i++)
         {
             InitRoundManager(_rounds[i]);
             await _roundManager.RunRoundFlow(_rounds[i]);
             CharacterController.Instance.EyesToCenter(0).Forget();
+            //AudioManager.Instance.PlayScreenTransitionSound();
         }
 
         Debug.Log("Game Ends");

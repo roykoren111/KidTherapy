@@ -25,6 +25,7 @@ public class TrialManagerGrounding
 
         _itemsManager.ItemCollected -= OnItemCollected;
         UIController.Instance.ClearGroundingUI();
+        AudioManager.Instance.PlayScreenTransitionSound();
         CharacterController.Instance.EyesToCenter(2f).Forget();
         await _itemsManager.DestroyRemainingItems();
     }
