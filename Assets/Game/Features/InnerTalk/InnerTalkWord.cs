@@ -5,31 +5,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class InnerTalkWord : MonoBehaviour, ITappable
 {
     public bool IsTouched = false;
-    [SerializeField] MeshRenderer wordMesh;
-
-    public void Spawn()
+    MeshRenderer wordMesh;
+    InnerTalkSentence _sentence;
+    Material shader;
+    public async UniTask Spawn(InnerTalkSentence sentence)
     {
-        wordMesh.enabled = true;
+        _sentence = sentence;
+        await SetAlpha(-.32f, 2f);
     }
 
-    public void Remove(float duration)
+    private async UniTask SetAlpha(float target, float duration)
     {
-        transform.DOMoveY(transform.position.y + 4, duration);
+        float lerpTime = 0;
+        float alpha = 0;
+        while (lerpTime < duration)
+        {
+            lerpTime += Time.deltaTime;
+            float t = lerpTime / duration;
+            t = t * t * t * (t * (6f * t - 15f) + 10f); // very smooth and nice step function
+
+            alpha = Mathf.Lerp(0, target, t);
+            shader.SetFloat("_Alpha", alpha);
+
+            await UniTask.Yield();
+        }
+    }
+
+    public void Hide()
+    {
+        wordMesh = GetComponent<MeshRenderer>();
+        shader = wordMesh.material;
+        shader.SetFloat("_Alpha", 0);
+    }
+    public async UniTask Remove(float duration)
+    {
+        transform.DOMoveY(transform.position.y + 4, duration).SetEase(Ease.Flash);
+        await UniTask.Delay(TimeSpan.FromSeconds(duration));
     }
 
     public void OnTap()
     {
         if (IsTouched) return;
         IsTouched = true;
-        WordsSpawner.Instance.OnWordTap(this);
-        WordSelectedEffect();
+        _sentence.OnWordTap(this);
     }
 
-    private void WordSelectedEffect()
+    // triggered from TrialManagerInnerTalk.
+    public async UniTask SelectedEffect()
     {
-        wordMesh.material.color = Color.blue;
+        await SetAlpha(1f, 1f);
     }
+
 }

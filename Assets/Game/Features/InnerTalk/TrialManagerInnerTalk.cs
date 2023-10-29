@@ -6,25 +6,37 @@ using UnityEngine;
 
 public class TrialManagerInnerTalk
 {
-    public async UniTask RunTrialFlow(InnerTalkData trialConfiguration)
+    int _tappedWords = 0;
+
+    // sentence is instantiated on RoundManager and then passed to trial manager
+    public async UniTask RunTrialFlow(InnerTalkSentence sentence)
     {
         CharacterController.Instance.SlideToScreenButtom();
+        sentence.WordTapped += OnWordTapped;
+        int wordCount = sentence.WordCount;
 
-        await WordsSpawner.Instance.SpawnSentenceAndWaitForCompletion(trialConfiguration);
+        await sentence.SpawnSentence();
 
-
+        while (_tappedWords < wordCount)
+        {
+            await UniTask.Yield();
+        }
+        await CharacterController.Instance.EyesToCenter(2f);
         // trigger character empowered animation.
         CharacterController.Instance.OnInnerTalkSentenceComplete();
-
-
+        _tappedWords = 0;
+        await sentence.ClearSentence();
 
         // wait until the whole sentence is marked.
 
     }
-}
 
-[Serializable]
-public class TrialInnerTalk
-{
-    public InnerTalkWord[] Words;
+    private void OnWordTapped(InnerTalkWord word)
+    {
+        _tappedWords++;
+        // play sound word selection 
+        word.SelectedEffect().Forget();
+        AudioManager.Instance.PlayInnerTalkCorrectPick();
+        CharacterController.Instance.SetLookTarget(word.transform.position);
+    }
 }

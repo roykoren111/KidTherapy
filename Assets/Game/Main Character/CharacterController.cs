@@ -79,12 +79,12 @@ public class CharacterController : MonoBehaviour
         eyesTarget.SetTarget(targetPosition);
     }
 
-    public async UniTaskVoid EyesToCenter(float delay)
+    public async UniTask EyesToCenter(float delay)
     {
         await UniTask.Delay(TimeSpan.FromSeconds(delay));
         eyesTarget.BackToCenter();
     }
-    
+
     private void Update()
     {
         eyeRight.up = (eyesTarget.transform.position - eyeRight.position).normalized;

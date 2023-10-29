@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource innerTalkLoop;
     [SerializeField] private AudioSource screenTransition;
 
+    [SerializeField] private AudioSource[] _correctPick;
+    int _lastCorrectPickIndex = 0;
     public void PlayMainMusic()
     {
         PlayOpeningThenLoop().Forget();
@@ -24,6 +26,18 @@ public class AudioManager : MonoBehaviour
             openingBLoop.Stop();
         }
         innerTalkLoop.Play();
+    }
+
+    public void PlayInnerTalkCorrectPick()
+    {
+        if (_lastCorrectPickIndex == _correctPick.Length)
+        {
+            _lastCorrectPickIndex = 0;
+        }
+
+        _correctPick[_lastCorrectPickIndex].Stop();
+        _correctPick[_lastCorrectPickIndex].Play();
+        _lastCorrectPickIndex++;
     }
 
     public void PlayScreenTransitionSound()

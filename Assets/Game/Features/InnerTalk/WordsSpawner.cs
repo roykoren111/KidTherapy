@@ -43,7 +43,7 @@ public class WordsSpawner : MonoBehaviour
             GameObject wordGO = Instantiate(innerTalkData.WordPrefabs[i]);
             sentenceWords[i] = wordGO.GetComponent<InnerTalkWord>();
 
-            sentenceWords[i].Spawn(); // will be awaitable when spawning is an animation.
+            //sentenceWords[i].Spawn(); // will be awaitable when spawning is an animation.
 
             await UniTask.Yield();
         }
