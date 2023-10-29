@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour, ITappable
 {
@@ -9,6 +10,8 @@ public class Item : MonoBehaviour, ITappable
     public bool IsWrongPick = false;
 
     public bool IsCollected = false;
+
+    [FormerlySerializedAs("ItemColor")] public EItemColor itemColor;
 
     private bool isSpawnedRightToCharacter = false;
     [SerializeField] MeshRenderer bubbleMR;
@@ -121,5 +124,13 @@ public class Item : MonoBehaviour, ITappable
         }
 
         ItemsManager.Instance.CollectItem(this);
+    }
+
+    private void ChangeTexture(Texture2D texture)
+    {
+        foreach (SkinnedMeshRenderer skinnedMeshRenderer in GetComponentsInChildren<SkinnedMeshRenderer>())
+        {
+            skinnedMeshRenderer.material.mainTexture = texture;
+        }
     }
 }

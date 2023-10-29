@@ -38,10 +38,10 @@ public class TrialManagerGrounding
         CharacterController.Instance.AddItemToCharacter(collectedItem);
     }
 
-    private EItemColors GetRandomItemColor()
+    private EItemColor GetRandomItemColor()
     {
-        EItemColors[] possibleItemColors = new EItemColors[]
-            { EItemColors.Green, EItemColors.Blue, EItemColors.Orange, EItemColors.Red, EItemColors.Red };
+        EItemColor[] possibleItemColors = new EItemColor[]
+            { EItemColor.Green, EItemColor.Blue, EItemColor.Orange, EItemColor.Red, EItemColor.Red };
         int itemColorIndex = Random.Range(0, possibleItemColors.Length);
         return possibleItemColors[itemColorIndex];
     }
