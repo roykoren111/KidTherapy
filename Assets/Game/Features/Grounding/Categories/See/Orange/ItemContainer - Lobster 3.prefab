@@ -67,6 +67,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lobster
       objectReference: {fileID: 0}
+    - target: {fileID: 8047628689622576739, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0fab02c6f85f3c34ba8c893edf597584, type: 2}
+    - target: {fileID: 8047628689750770998, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0fab02c6f85f3c34ba8c893edf597584, type: 2}
+    - target: {fileID: 8047628689795896306, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0fab02c6f85f3c34ba8c893edf597584, type: 2}
+    - target: {fileID: 8047628690866110953, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0fab02c6f85f3c34ba8c893edf597584, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b27f90667930e41858e44166544d32, type: 3}
 --- !u!1001 &7641436523403963573
@@ -120,9 +136,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Lobster
+      value: ItemContainer - Lobster 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}

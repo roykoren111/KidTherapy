@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4245839901616220805}
     m_Modifications:
+    - target: {fileID: 7038114839378997546, guid: 38844ef9b5b2c4740aa901572445add5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4829f9ee4639334aa29d685037fdc95, type: 2}
+    - target: {fileID: 7038114839627189365, guid: 38844ef9b5b2c4740aa901572445add5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4829f9ee4639334aa29d685037fdc95, type: 2}
+    - target: {fileID: 7038114839681934082, guid: 38844ef9b5b2c4740aa901572445add5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4829f9ee4639334aa29d685037fdc95, type: 2}
+    - target: {fileID: 7038114840110745262, guid: 38844ef9b5b2c4740aa901572445add5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4829f9ee4639334aa29d685037fdc95, type: 2}
     - target: {fileID: 7038114840533862826, guid: 38844ef9b5b2c4740aa901572445add5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -120,9 +136,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Squid
+      value: ItemContainer - Squid 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}

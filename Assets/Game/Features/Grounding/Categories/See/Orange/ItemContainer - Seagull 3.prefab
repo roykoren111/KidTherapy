@@ -51,9 +51,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Seagull
+      value: ItemContainer - Seagull 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
@@ -69,6 +73,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5347337733171237636}
     m_Modifications:
+    - target: {fileID: 5671637317252268418, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78a8da8852f47a046ad8fbc1ff54c1d8, type: 2}
+    - target: {fileID: 5671637317331471705, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78a8da8852f47a046ad8fbc1ff54c1d8, type: 2}
+    - target: {fileID: 5671637317545258965, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78a8da8852f47a046ad8fbc1ff54c1d8, type: 2}
+    - target: {fileID: 5671637317602998377, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78a8da8852f47a046ad8fbc1ff54c1d8, type: 2}
     - target: {fileID: 5671637318396879657, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
       propertyPath: m_Name
       value: Seagull

@@ -51,9 +51,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Jellyfish
+      value: ItemContainer - Jellyfish 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
@@ -69,6 +73,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6183361792616080992}
     m_Modifications:
+    - target: {fileID: 8944570774374101422, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d2a15f2d628d05640a5b9245fe462e08, type: 2}
+    - target: {fileID: 8944570774496912846, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d2a15f2d628d05640a5b9245fe462e08, type: 2}
+    - target: {fileID: 8944570774678947490, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d2a15f2d628d05640a5b9245fe462e08, type: 2}
+    - target: {fileID: 8944570775246247156, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d2a15f2d628d05640a5b9245fe462e08, type: 2}
     - target: {fileID: 8944570775922665154, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
       propertyPath: m_RootOrder
       value: 0

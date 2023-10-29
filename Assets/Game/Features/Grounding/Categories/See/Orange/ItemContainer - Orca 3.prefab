@@ -51,9 +51,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Orca
+      value: ItemContainer - Orca 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
@@ -69,6 +73,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7277836375341177937}
     m_Modifications:
+    - target: {fileID: 5282283657814712964, guid: 5ed02cd5a4b54e943bd426dabbb920b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cc9f0df9d353bb4ab83a767234ed86f, type: 2}
+    - target: {fileID: 5282283657977940560, guid: 5ed02cd5a4b54e943bd426dabbb920b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cc9f0df9d353bb4ab83a767234ed86f, type: 2}
+    - target: {fileID: 5282283658966741124, guid: 5ed02cd5a4b54e943bd426dabbb920b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cc9f0df9d353bb4ab83a767234ed86f, type: 2}
+    - target: {fileID: 5282283658999652647, guid: 5ed02cd5a4b54e943bd426dabbb920b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1cc9f0df9d353bb4ab83a767234ed86f, type: 2}
     - target: {fileID: 5282283659001997932, guid: 5ed02cd5a4b54e943bd426dabbb920b6, type: 3}
       propertyPath: m_RootOrder
       value: 0

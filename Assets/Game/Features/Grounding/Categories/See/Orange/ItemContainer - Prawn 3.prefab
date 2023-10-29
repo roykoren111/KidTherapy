@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6417162448691908884}
     m_Modifications:
+    - target: {fileID: 3509172580118788645, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26fc05a14a4ff7d43a17053797eb63db, type: 2}
+    - target: {fileID: 3509172581096718892, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26fc05a14a4ff7d43a17053797eb63db, type: 2}
+    - target: {fileID: 3509172581620751665, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26fc05a14a4ff7d43a17053797eb63db, type: 2}
+    - target: {fileID: 3509172581839187673, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26fc05a14a4ff7d43a17053797eb63db, type: 2}
     - target: {fileID: 3509172582149382292, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -108,9 +124,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Prawn
+      value: ItemContainer - Prawn 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}

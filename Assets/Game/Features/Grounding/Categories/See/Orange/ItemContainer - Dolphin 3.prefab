@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 794467448730737348}
     m_Modifications:
+    - target: {fileID: 5206078948654113441, guid: 1b7b6463f4ce49d48b51d8b787e09980, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a372bee451df4284daea42c816b02ad8, type: 2}
+    - target: {fileID: 5206078949425501249, guid: 1b7b6463f4ce49d48b51d8b787e09980, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a372bee451df4284daea42c816b02ad8, type: 2}
     - target: {fileID: 5206078949442079778, guid: 1b7b6463f4ce49d48b51d8b787e09980, type: 3}
       propertyPath: m_Name
       value: Dolphin
@@ -67,6 +75,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5206078950054429167, guid: 1b7b6463f4ce49d48b51d8b787e09980, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a372bee451df4284daea42c816b02ad8, type: 2}
+    - target: {fileID: 5206078950212326199, guid: 1b7b6463f4ce49d48b51d8b787e09980, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a372bee451df4284daea42c816b02ad8, type: 2}
     m_RemovedComponents:
     - {fileID: -7855585169890859812, guid: 1b7b6463f4ce49d48b51d8b787e09980, type: 3}
     - {fileID: -7227846437582531505, guid: 1b7b6463f4ce49d48b51d8b787e09980, type: 3}
@@ -122,9 +138,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Dolphin
+      value: ItemContainer - Dolphin 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}

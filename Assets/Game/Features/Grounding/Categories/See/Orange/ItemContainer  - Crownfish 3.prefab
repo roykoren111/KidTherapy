@@ -51,9 +51,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: itemColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer  - Crownfish
+      value: ItemContainer  - Crownfish 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
@@ -129,5 +133,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clownfish
       objectReference: {fileID: 0}
+    - target: {fileID: 7738370524391381277, guid: ac025b10ea6ba084583ce269e3462202, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75595ce05930fd247b5e84f24366c0a8, type: 2}
+    - target: {fileID: 7738370524395783675, guid: ac025b10ea6ba084583ce269e3462202, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75595ce05930fd247b5e84f24366c0a8, type: 2}
+    - target: {fileID: 7738370524461101622, guid: ac025b10ea6ba084583ce269e3462202, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75595ce05930fd247b5e84f24366c0a8, type: 2}
+    - target: {fileID: 7738370525114923433, guid: ac025b10ea6ba084583ce269e3462202, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75595ce05930fd247b5e84f24366c0a8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac025b10ea6ba084583ce269e3462202, type: 3}
