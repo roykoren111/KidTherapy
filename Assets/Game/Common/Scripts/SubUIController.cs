@@ -1,18 +1,18 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build;
-using UnityEngine;
 using RTLTMPro;
+using UnityEngine;
 
-public class SubUIController : MonoBehaviour
+namespace Game.Common.Scripts
 {
-    private async UniTask SetAppearance(bool shouldAppear)
+    public class SubUIController : MonoBehaviour
     {
-        RTLTextMeshPro[] uiTexts = GetComponentsInChildren<RTLTextMeshPro>();
-        foreach (var txt in uiTexts)
+        private async UniTask SetAppearance(bool shouldAppear)
         {
-            //txt.mesh.SetColors(Color.white);
+            RTLTextMeshPro[] uiTexts = GetComponentsInChildren<RTLTextMeshPro>();
+            foreach (var txt in uiTexts)
+            {
+                //txt.mesh.SetColors(Color.white);
+            }
         }
     }
 }
