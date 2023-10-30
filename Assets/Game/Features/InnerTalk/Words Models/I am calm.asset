@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5d42e80b99ad64eb61f56a9b4916a1, type: 3}
+  m_Name: I am calm
+  m_EditorClassIdentifier: 
+  WordPrefabs:
+  - {fileID: 5255112700556887074, guid: fcad6d6c4546e5241934446520c69eea, type: 3}
+  - {fileID: 8840937854677534864, guid: 19583d15975c09a47a355ad850636e5d, type: 3}
+  - {fileID: 5982128825564861327, guid: f5babe0572f33254c8102b4bbac37d4c, type: 3}

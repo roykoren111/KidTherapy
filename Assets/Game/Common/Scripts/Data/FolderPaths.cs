@@ -6,6 +6,6 @@ namespace Game.Common.Scripts.Data
 {
     public static class FolderPaths
     {
-        public static string ItemsDataPath = "Assets/Game/Features/GroundedRound/Items/";
+        public static string CategoriesFolderPath = "Assets/Game/Features/Grounding/Categories/";
     }
 }

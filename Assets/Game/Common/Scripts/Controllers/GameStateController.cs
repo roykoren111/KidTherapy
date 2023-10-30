@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.Common.Scripts.Data;
-using Game.Common.Scripts.Enums;
 using UnityEngine;
 
 namespace Game.Common.Scripts.Controllers
@@ -12,22 +11,22 @@ namespace Game.Common.Scripts.Controllers
         
         private GameObject _currentScreenInstance;
         
-        public GameState CurrentGameState { get; private set; }
+        public RoundType CurrentGameState { get; private set; }
         
         private void Awake()
         {
             DependencyManager.SetDependency(this);
-            CurrentGameState = GameState.Intro;
+            CurrentGameState = RoundType.Intro;
             SetGameState(CurrentGameState);
         }
         
-        public void SetGameState(GameState newGameState)
+        public void SetGameState(RoundType newGameState)
         {
             CurrentGameState = newGameState;
             CreateScreenInstance(CurrentGameState);
         }
         
-        private void CreateScreenInstance(GameState gameState)
+        private void CreateScreenInstance(RoundType gameState)
         {
             if (_currentScreenInstance != null)
             {
