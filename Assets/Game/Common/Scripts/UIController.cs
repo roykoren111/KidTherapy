@@ -94,7 +94,7 @@ public class UIController : MonoBehaviour
 
     public async UniTask SetBreathingUI(BreathingStage stage)
     {
-        await SetUIAlpha(false, .5f);
+        await SetUIAlpha(false, .1f);
         if (_currentScreenInstance != null)
         {
             Destroy(_currentScreenInstance);

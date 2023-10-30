@@ -24,10 +24,20 @@ public class Item : MonoBehaviour, ITappable
         movementDuration = duration;
 
         isSpawnedRightToCharacter = transform.position.x > CharacterController.Instance.transform.position.x;
-        // if spawned to the right- should look left
-        transform.eulerAngles = isSpawnedRightToCharacter ? new Vector3(0, 180f, 0) : Vector3.zero;
 
         MoveToPosition(transform.position, innerTransform.position, duration).Forget();
+
+        // if spawned to the right- should look left (Hear items shouldn't because they are notes).
+        if (isSpawnedRightToCharacter || Categorey == EItemCategory.Hear)
+        {
+            transform.eulerAngles = new Vector3(0, 180f, 0);
+        }
+        else
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+
+
     }
 
     private async UniTask MoveToPosition(Vector3 current, Vector3 target, float duration)

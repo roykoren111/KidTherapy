@@ -20,7 +20,6 @@ public class EnvironmentMovement : MonoBehaviour
         {
             Vector3 targetPosition = transform.position;
             targetPosition.z = _startingZ;
-            transform.position = targetPosition;
         }
     }
 }

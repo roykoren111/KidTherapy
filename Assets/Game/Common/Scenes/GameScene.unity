@@ -439,6 +439,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4305499871299874278, guid: d9875e9844286e244b43cc5d5a8b23a9, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: a0c56f0d0efb7e047af0dbe76b573d43, type: 2}
     - target: {fileID: 4305499871299874297, guid: d9875e9844286e244b43cc5d5a8b23a9, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -497,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4305499871594728309, guid: d9875e9844286e244b43cc5d5a8b23a9, type: 3}
       propertyPath: m_Intensity
-      value: 0.53034
+      value: 0.5898531
       objectReference: {fileID: 0}
     - target: {fileID: 4305499871654323494, guid: d9875e9844286e244b43cc5d5a8b23a9, type: 3}
       propertyPath: m_IsActive
@@ -2929,10 +2933,10 @@ MonoBehaviour:
   _rounds:
   - RoundType: 0
     UIPrefab: {fileID: 5902049982610772069, guid: 93e4dbaf2d97a4d2bb1e066ee55bb4d2, type: 3}
-  - RoundType: 1
-    UIPrefab: {fileID: 0}
   - RoundType: 3
     UIPrefab: {fileID: 5902049982610772069, guid: 627fad133317d5b41a556c2c028cb065, type: 3}
+  - RoundType: 1
+    UIPrefab: {fileID: 0}
   - RoundType: 5
     UIPrefab: {fileID: 0}
   roundManagerIntro: {fileID: 1262843733}
