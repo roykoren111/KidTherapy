@@ -51,13 +51,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6282850289320056592, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7026134897863073474, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: Categorey
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8478116483850873824, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}
       propertyPath: m_Name
-      value: ItemContainer - Hear
+      value: ItemContainer - Hear Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48ec1290ca87017478639b2430b6cd73, type: 3}

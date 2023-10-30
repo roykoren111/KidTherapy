@@ -22,7 +22,6 @@ public class InnerTalkSentence : MonoBehaviour
     {
         for (int i = 0; i < _words.Length; i++)
         {
-            Debug.Log("Spwaning " + _words[i].name);
             await _words[i].Spawn(this);
         }
     }
