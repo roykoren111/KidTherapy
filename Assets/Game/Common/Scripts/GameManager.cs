@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Common.Scripts.Services.Firebase;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,10 +14,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RoundManagerTension roundManagerTension;
     [SerializeField] private RoundManagerInnerTalk roundManagerInnerTalk;
 
+    private IFirebaseService _firebaseService;
     private RoundManager _roundManager;
     private void Start()
     {
+        InitFirebase();
         RunGameLoop().Forget();
+    }
+
+    private void InitFirebase()
+    {
+        _firebaseService = new FirebaseService();
+        _firebaseService.Initialize().Forget();
     }
 
     private async UniTask RunGameLoop()
@@ -25,8 +34,11 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < _rounds.Length; i++)
         {
-            InitRoundManager(_rounds[i]);
-            await _roundManager.RunRoundFlow(_rounds[i]);
+            var round = _rounds[i];
+            InitRoundManager(round);
+            _firebaseService.SendEvent($"RoundStart_{round.RoundType.ToString()}");
+            await _roundManager.RunRoundFlow(round);
+            _firebaseService.SendEvent($"RoundEnd{round.RoundType.ToString()}");
             CharacterController.Instance.EyesToCenter(0).Forget();
             //AudioManager.Instance.PlayScreenTransitionSound();
         }
