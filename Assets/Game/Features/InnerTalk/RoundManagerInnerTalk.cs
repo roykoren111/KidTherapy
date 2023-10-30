@@ -8,8 +8,14 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
     [SerializeField] private GameObject[] _sentences;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
+
+
         AudioManager.Instance.PlayInnerTalkMusic();
         await UIController.Instance.SetRoundInitialUI(config);
+
+        // after UI is displayed, wait for confirmation.
+        await InputManager.Instance.WaitForTapUpToContinue();
+        await UIController.Instance.SetUIAlpha(false, 1f);
         // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
 

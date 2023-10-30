@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03cc33c3fa1b484e84c65d18164274b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _breathingCycles: 6
+  _breathingCycles: 2
   _breathingSounds:
   - {fileID: 1432011017}
   - {fileID: 1391221156}
@@ -2933,12 +2933,12 @@ MonoBehaviour:
   _rounds:
   - RoundType: 0
     UIPrefab: {fileID: 5902049982610772069, guid: 93e4dbaf2d97a4d2bb1e066ee55bb4d2, type: 3}
-  - RoundType: 3
-    UIPrefab: {fileID: 5902049982610772069, guid: 627fad133317d5b41a556c2c028cb065, type: 3}
   - RoundType: 1
     UIPrefab: {fileID: 0}
+  - RoundType: 3
+    UIPrefab: {fileID: 5902049982610772069, guid: 627fad133317d5b41a556c2c028cb065, type: 3}
   - RoundType: 5
-    UIPrefab: {fileID: 0}
+    UIPrefab: {fileID: 5902049982610772069, guid: 3654ff174aa567a4da47ed394afa53fe, type: 3}
   roundManagerIntro: {fileID: 1262843733}
   roundManagerNameSelection: {fileID: 865064700}
   roundManagerGrounding: {fileID: 640326467}
