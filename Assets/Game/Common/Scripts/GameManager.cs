@@ -16,7 +16,7 @@ namespace Game.Common.Scripts
 
         private IFirebaseService _firebaseService;
         private RoundManager _roundManager;
-        
+
         private void Start()
         {
             InitFirebase();
