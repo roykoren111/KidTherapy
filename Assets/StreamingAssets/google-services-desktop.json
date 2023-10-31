@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "238212696429",
+    "project_id": "kids-therapy",
+    "storage_bucket": "kids-therapy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238212696429:ios:7ad3e1c2c42666abf43264",
+        "android_client_info": {
+          "package_name": "com.ironswords.kidstherapy"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh-kQPgo4Z1WX_cJiDC4cptYUc1TjlXqM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Game.Common.Scripts.Services.Firebase
 {
-    public class FirebaseService : IFirebaseService, IDisposable
+    public class FirebaseService : IFirebaseService
     {
         public bool Initialized { get; private set; }
 
