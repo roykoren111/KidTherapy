@@ -1,8 +1,9 @@
+using System;
 using Cysharp.Threading.Tasks;
 
 namespace Game.Common.Scripts.Services.Firebase
 {
-    public interface IFirebaseService
+    public interface IFirebaseService : IDisposable
     {
         bool Initialized { get; }
         UniTask Initialize();
