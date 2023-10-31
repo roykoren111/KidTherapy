@@ -10,7 +10,7 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
     {
 
 
-        AudioManager.Instance.PlayInnerTalkMusic();
+        AudioManager.Instance.PlayInnerTalkMusic().Forget();
         await UIController.Instance.SetRoundInitialUI(config);
 
         // after UI is displayed, wait for confirmation.

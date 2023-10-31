@@ -15,7 +15,7 @@ public class InnerTalkWord : MonoBehaviour, ITappable
     public async UniTask Spawn(InnerTalkSentence sentence)
     {
         _sentence = sentence;
-        await SetAlpha(-.32f, 2f);
+        await SetAlpha(-.32f, 1f);
     }
 
     private async UniTask SetAlpha(float target, float duration)

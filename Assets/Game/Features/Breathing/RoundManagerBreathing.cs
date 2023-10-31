@@ -19,7 +19,7 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
 
         // wait for kids to confirm they are ready to start breathings.
         await InputManager.Instance.WaitForTapToContinue();
-
+        AudioManager.Instance.FadeMainMusic().Forget();
         float inhaleDuration = 4f, holdingDuration = 2f, exhaleDuration = 6f;
         character.SetBreathingAnimation(true);
 
