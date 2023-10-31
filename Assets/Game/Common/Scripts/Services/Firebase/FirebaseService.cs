@@ -31,7 +31,7 @@ namespace Game.Common.Scripts.Services.Firebase
                     if (status.Result == DependencyStatus.Available)
                     {
                         FirebaseApp.LogLevel = LogLevel.Debug;
-                        FirebaseDatabase.DefaultInstance.SetPersistenceEnabled(false);
+                        // FirebaseDatabase.DefaultInstance.SetPersistenceEnabled(false);
                         Initialized = true;
                         Debug.Log("FirebaseService.Init is successfully completed");
                     }

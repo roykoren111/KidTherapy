@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Game.Common.Scripts.Services.Firebase;
 using UnityEngine;
@@ -25,8 +26,10 @@ namespace Game.Common.Scripts
 
         private void InitFirebase()
         {
+            #if !UNITY_EDITOR
             _firebaseService = new FirebaseService();
             _firebaseService.Initialize().Forget();
+            #endif
         }
 
         private async UniTask RunGameLoop()
@@ -37,9 +40,9 @@ namespace Game.Common.Scripts
             {
                 var round = _rounds[i];
                 InitRoundManager(round);
-                _firebaseService.SendEvent($"RoundStart_{round.RoundType.ToString()}");
+                _firebaseService?.SendEvent($"RoundStart_{round.RoundType.ToString()}");
                 await _roundManager.RunRoundFlow(round);
-                _firebaseService.SendEvent($"RoundEnd_{round.RoundType.ToString()}");
+                _firebaseService?.SendEvent($"RoundEnd_{round.RoundType.ToString()}");
                 CharacterController.Instance.EyesToCenter(0).Forget();
                 //AudioManager.Instance.PlayScreenTransitionSound();
             }
