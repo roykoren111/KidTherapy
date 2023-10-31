@@ -49,23 +49,21 @@ namespace Game.Common.Scripts.Services.Firebase
 
         public void SetUserId(string id)
         {
-            SetUserIdAsync(id).Forget();   
+            SetUserIdAsync(id);
         }
 
         public void SendEvent(string eventName)
         {
-            SendEventAsync(eventName).Forget();
+            SendEventAsync(eventName);
         }
 
-        private async UniTaskVoid SetUserIdAsync(string userId)
+        private void SetUserIdAsync(string userId)
         {
-            await AwaitInitialization();
             FirebaseAnalytics.SetUserId(userId);
         }
 
-        private async UniTaskVoid SendEventAsync(string eventName)
+        private void SendEventAsync(string eventName)
         {
-            await AwaitInitialization();
             FirebaseAnalytics.LogEvent(eventName);
         }
 
