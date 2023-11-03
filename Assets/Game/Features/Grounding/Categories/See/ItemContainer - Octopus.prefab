@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8586223454290417698}
     m_Modifications:
+    - target: {fileID: 5474140050903248070, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474140051245590480, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474140051887666629, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5474140052504510615, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -66,6 +78,10 @@ PrefabInstance:
     - target: {fileID: 5474140052504510616, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
       propertyPath: m_Name
       value: Octopus
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474140052648310176, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0fc7b12bc33eef4bb002ad9ae7a7cb1, type: 3}

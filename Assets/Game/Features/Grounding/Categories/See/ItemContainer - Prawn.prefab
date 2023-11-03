@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6417162448691908884}
     m_Modifications:
+    - target: {fileID: 3509172580118788645, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509172581096718892, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509172581620751665, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509172581839187673, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3509172582149382292, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
       propertyPath: m_RootOrder
       value: 0

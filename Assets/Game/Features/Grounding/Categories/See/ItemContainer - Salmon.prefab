@@ -69,6 +69,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5800889104734290590}
     m_Modifications:
+    - target: {fileID: 3974052639694119234, guid: 1beb41e0250e4614083647926ced612e, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974052639741697068, guid: 1beb41e0250e4614083647926ced612e, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3974052641194081974, guid: 1beb41e0250e4614083647926ced612e, type: 3}
       propertyPath: m_Name
       value: Salmon
@@ -128,6 +136,14 @@ PrefabInstance:
     - target: {fileID: 3974052641194081975, guid: 1beb41e0250e4614083647926ced612e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974052641217496733, guid: 1beb41e0250e4614083647926ced612e, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974052641560731410, guid: 1beb41e0250e4614083647926ced612e, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1beb41e0250e4614083647926ced612e, type: 3}

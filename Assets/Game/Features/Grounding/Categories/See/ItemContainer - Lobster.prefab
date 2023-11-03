@@ -92,16 +92,32 @@ PrefabInstance:
       value: Lobster
       objectReference: {fileID: 0}
     - target: {fileID: 8047628689622576739, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047628689622576739, guid: 20b27f90667930e41858e44166544d32, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047628689750770998, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047628689750770998, guid: 20b27f90667930e41858e44166544d32, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 8047628689795896306, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047628689795896306, guid: 20b27f90667930e41858e44166544d32, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047628690866110953, guid: 20b27f90667930e41858e44166544d32, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047628690866110953, guid: 20b27f90667930e41858e44166544d32, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size

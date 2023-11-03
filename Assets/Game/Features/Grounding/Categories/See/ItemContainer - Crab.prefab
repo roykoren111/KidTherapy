@@ -69,6 +69,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8528046079567583}
     m_Modifications:
+    - target: {fileID: 7893974801603435886, guid: 27d6a72fdc9f82a43bf4ba0a4c1a73ba, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893974801745523948, guid: 27d6a72fdc9f82a43bf4ba0a4c1a73ba, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7893974801881764390, guid: 27d6a72fdc9f82a43bf4ba0a4c1a73ba, type: 3}
       propertyPath: m_Name
       value: Crab
@@ -128,6 +136,14 @@ PrefabInstance:
     - target: {fileID: 7893974801881764391, guid: 27d6a72fdc9f82a43bf4ba0a4c1a73ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893974801980220355, guid: 27d6a72fdc9f82a43bf4ba0a4c1a73ba, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893974802753855351, guid: 27d6a72fdc9f82a43bf4ba0a4c1a73ba, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27d6a72fdc9f82a43bf4ba0a4c1a73ba, type: 3}

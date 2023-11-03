@@ -70,16 +70,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 6183361792616080992}
     m_Modifications:
     - target: {fileID: 8944570774374101422, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944570774374101422, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944570774496912846, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8944570774496912846, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 8944570774678947490, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944570774678947490, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size
       value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944570775246247156, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8944570775246247156, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
       propertyPath: m_BlendShapeWeights.Array.size

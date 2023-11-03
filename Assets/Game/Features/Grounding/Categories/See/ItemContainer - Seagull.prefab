@@ -69,6 +69,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5347337733171237636}
     m_Modifications:
+    - target: {fileID: 5671637317252268418, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671637317331471705, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671637317545258965, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671637317602998377, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5671637318396879657, guid: 149ee12057ca19049bb96dbfe3295cd5, type: 3}
       propertyPath: m_Name
       value: Seagull
