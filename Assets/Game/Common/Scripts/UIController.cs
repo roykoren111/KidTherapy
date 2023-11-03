@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _breathingInhale;
     [SerializeField] private GameObject _breathingHold;
     [SerializeField] private GameObject _breathingExhale;
+    [SerializeField] private GameObject _endingUI;
 
     private GameObject _currentGroundingCanvas;
     private void Awake()

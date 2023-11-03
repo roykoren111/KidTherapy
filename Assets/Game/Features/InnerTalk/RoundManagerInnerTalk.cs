@@ -10,11 +10,12 @@ public class RoundManagerInnerTalk : MonoBehaviour, RoundManager
     {
 
 
-        AudioManager.Instance.PlayInnerTalkMusic().Forget();
         await UIController.Instance.SetRoundInitialUI(config);
 
         // after UI is displayed, wait for confirmation.
         await InputManager.Instance.WaitForTapUpToContinue();
+        AudioManager.Instance.PlayInnerTalkMusic().Forget();
+
         await UIController.Instance.SetUIAlpha(false, 1f);
         // await CameraController.Instance.MoveToTransform(config.CameraTransform, config.CameraLerpDuration);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);

@@ -14,6 +14,7 @@ namespace Game.Common.Scripts
         [SerializeField] private RoundManagerBreathing roundManagerBreathing;
         [SerializeField] private RoundManagerTension roundManagerTension;
         [SerializeField] private RoundManagerInnerTalk roundManagerInnerTalk;
+        [SerializeField] private RoundManagerEnd roundManagerEnd;
 
         private IFirebaseService _firebaseService;
         private RoundManager _roundManager;
@@ -73,6 +74,7 @@ namespace Game.Common.Scripts
                     _roundManager = roundManagerInnerTalk;
                     break;
                 case RoundType.Ending:
+                    _roundManager = roundManagerEnd;
                     break;
 
             }
