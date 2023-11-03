@@ -11,6 +11,7 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
     [SerializeField] private int _breathingCycles = 2;
     [SerializeField] AudioSource[] _breathingSounds;
     [SerializeField] float _characterScaleAmount = .5f;
+    [SerializeField] BreathingProgressIndicator _progressIndicator;
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
         CharacterController character = CharacterController.Instance;
@@ -19,10 +20,14 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
 
         // wait for kids to confirm they are ready to start breathings.
         await InputManager.Instance.WaitForTapToContinue();
+        //await UniTask.Delay(2000); // instead of waiting for tap.
         AudioManager.Instance.FadeMainMusic().Forget();
         float inhaleDuration = 4f, holdingDuration = 2f, exhaleDuration = 6f;
         character.SetBreathingAnimation(true);
 
+        _progressIndicator.SetActive(true).Forget();
+        float sessionDuration = (inhaleDuration + holdingDuration + exhaleDuration) * _breathingCycles;
+        _progressIndicator.LaunchProgress(sessionDuration).Forget();
         for (int i = 0; i < _breathingCycles; i++)
         {
             LightsController.Instance.SetLightIntensity(0, 1f).Forget();
@@ -41,6 +46,7 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
 
         }
         character.SetBreathingAnimation(false);
+        _progressIndicator.SetActive(false).Forget();
 
         Debug.Log("Breathing round ended");
 

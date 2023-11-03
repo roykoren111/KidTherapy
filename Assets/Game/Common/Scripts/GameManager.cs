@@ -26,10 +26,10 @@ namespace Game.Common.Scripts
 
         private void InitFirebase()
         {
-            #if !UNITY_EDITOR
+#if !UNITY_EDITOR
             _firebaseService = new FirebaseService();
             _firebaseService.Initialize().Forget();
-            #endif
+#endif
         }
 
         private async UniTask RunGameLoop()
