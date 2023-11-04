@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03cc33c3fa1b484e84c65d18164274b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _breathingCycles: 2
+  _breathingCycles: 4
   _breathingSounds:
   - {fileID: 1432011017}
   - {fileID: 1391221156}
@@ -3333,7 +3333,7 @@ MonoBehaviour:
   _breathingInhale: {fileID: 5902049982610772069, guid: 1d008bb31878e47179f50cf94535bafa, type: 3}
   _breathingHold: {fileID: 5902049982610772069, guid: 50467ac500b45514e9db70ef5f7645dc, type: 3}
   _breathingExhale: {fileID: 5902049982610772069, guid: ecf88d325599d684a8b76b3cb28170ae, type: 3}
-  _endingUI: {fileID: 0}
+  _endingUI: {fileID: 5902049982610772069, guid: 48cde03984242ea4f890c4ce69da45b8, type: 3}
 --- !u!1 &988128624
 GameObject:
   m_ObjectHideFlags: 0

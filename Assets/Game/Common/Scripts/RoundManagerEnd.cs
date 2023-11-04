@@ -7,6 +7,6 @@ public class RoundManagerEnd : MonoBehaviour, RoundManager
 {
     public async UniTask RunRoundFlow(RoundConfiguration config)
     {
-        await UIController.Instance.SetRoundInitialUI(config);
+        await UIController.Instance.SetEndingUI();
     }
 }

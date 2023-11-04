@@ -59,6 +59,18 @@ public class UIController : MonoBehaviour
 
     }
 
+    public async UniTask SetEndingUI()
+    {
+        if (_currentScreenInstance != null)
+        {
+            Destroy(_currentScreenInstance);
+        }
+
+        _currentScreenInstance = Instantiate(_endingUI, _gameCanvasTransform);
+
+        await SetUIAlpha(true, 1f);
+    }
+
     public async UniTask ResetGroundingTrialUI(EItemCategory itemCategory, int requiredItemsCount)
     {
         await SetUIAlpha(false, 1f);
