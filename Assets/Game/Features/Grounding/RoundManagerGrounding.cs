@@ -12,10 +12,6 @@ public class RoundManagerGrounding : MonoBehaviour, RoundManager
     {
         await UIController.Instance.SetRoundInitialUI(config);
         CharacterController.Instance.InitCharacterToRound(config.RoundType);
-        // await CameraController.Instance.MoveToTransform(config.CameraTransform);
-
-        // wait for confirmation on round instructions. - no need to
-        //await InputManager.Instance.WaitForTapToContinue();
 
         TrialManagerGrounding groundingTrialManager = new TrialManagerGrounding();
         Debug.Log(trials.Length);

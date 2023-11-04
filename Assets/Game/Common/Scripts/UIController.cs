@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     private GameObject _currentScreenInstance;
 
     [SerializeField] private Transform _gameCanvasTransform;
-
+    
     [Header("Grounding UI")]
     [SerializeField] private GameObject _groundingCanvasSee;
     [SerializeField] private GameObject _groundingCanvasHear;

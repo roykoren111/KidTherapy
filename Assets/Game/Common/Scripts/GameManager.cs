@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using Game.Common.Scripts.Services.Firebase;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game.Common.Scripts
 {
@@ -48,7 +49,18 @@ namespace Game.Common.Scripts
                 //AudioManager.Instance.PlayScreenTransitionSound();
             }
 
-            Debug.Log("Game Ends");
+            _firebaseService?.SendEvent("RestartButtonTapped");
+            Debug.Log("Game Ends, Restarting");
+            ReloadCurrentScene();
+        }
+
+        public void ReloadCurrentScene()
+        {
+            // Get the current scene name
+            string currentSceneName = SceneManager.GetActiveScene().name;
+
+            // Reload the current scene
+            SceneManager.LoadScene(currentSceneName);
         }
 
         private void InitRoundManager(RoundConfiguration roundConfiguration)

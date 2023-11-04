@@ -19,8 +19,10 @@ public class RoundManagerBreathing : MonoBehaviour, RoundManager
         character.InitCharacterToRound(config.RoundType);
 
         // wait for kids to confirm they are ready to start breathings.
-        await InputManager.Instance.WaitForTapToContinue();
-        //await UniTask.Delay(2000); // instead of waiting for tap.
+        UniTask waitForTap = InputManager.Instance.WaitForTapToContinue();
+        UniTask waitForTime = UniTask.Delay(3000); // instead of waiting for tap.
+        await UniTask.WhenAny(waitForTap, waitForTime);
+
         AudioManager.Instance.FadeMainMusic().Forget();
         float inhaleDuration = 4f, holdingDuration = 2f, exhaleDuration = 6f;
         character.SetBreathingAnimation(true);
