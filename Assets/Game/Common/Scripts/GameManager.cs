@@ -22,6 +22,7 @@ namespace Game.Common.Scripts
 
         private void Start()
         {
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
             InitFirebase();
             RunGameLoop().Forget();
         }
