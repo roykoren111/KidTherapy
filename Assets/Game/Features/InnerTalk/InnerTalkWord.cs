@@ -3,6 +3,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 [Serializable]
@@ -12,10 +13,17 @@ public class InnerTalkWord : MonoBehaviour, ITappable
     MeshRenderer wordMesh;
     InnerTalkSentence _sentence;
     Material shader;
+    private bool isSpawned = false;
+
+    private void Awake()
+    {
+        _sentence = transform.parent.GetComponent<InnerTalkSentence>();
+    }
+
     public async UniTask Spawn(InnerTalkSentence sentence)
     {
-        _sentence = sentence;
-        await SetAlpha(-.32f, 1f);
+        await SetAlpha(-.32f, .8f);
+        isSpawned = true;
     }
 
     private async UniTask SetAlpha(float target, float duration)
@@ -33,6 +41,7 @@ public class InnerTalkWord : MonoBehaviour, ITappable
 
             await UniTask.Yield();
         }
+
     }
 
     public void Hide()
@@ -57,7 +66,11 @@ public class InnerTalkWord : MonoBehaviour, ITappable
     // triggered from TrialManagerInnerTalk.
     public async UniTask SelectedEffect()
     {
+        while (!isSpawned)
+            await UniTask.Yield();
+
         await SetAlpha(1f, 1f);
+
     }
 
 }
