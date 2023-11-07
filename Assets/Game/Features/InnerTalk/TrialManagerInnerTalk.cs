@@ -15,7 +15,6 @@ public class TrialManagerInnerTalk
         int wordCount = sentence.WordCount;
 
         await sentence.SpawnSentence();
-        Debug.Log("Done spawning");
         while (_tappedWords < wordCount)
         {
             await UniTask.Yield();
