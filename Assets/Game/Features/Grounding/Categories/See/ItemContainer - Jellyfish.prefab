@@ -161,5 +161,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jellyfish
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8944570775922665213, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944570775922665213, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
+      propertyPath: m_AnimateCrossFading
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8944570775922665213, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9051ae33ecca64e4e8ea37a9ac9de68c, type: 3}

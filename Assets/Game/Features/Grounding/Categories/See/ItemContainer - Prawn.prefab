@@ -71,7 +71,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prawn
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3509172582149382293, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 490ddbc0ee2bfca45b4ced41e7146879, type: 3}
 --- !u!1001 &1026675800891459076
 PrefabInstance:

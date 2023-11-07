@@ -123,7 +123,8 @@ PrefabInstance:
       propertyPath: m_BlendShapeWeights.Array.size
       value: 29
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8047628689421722098, guid: 20b27f90667930e41858e44166544d32, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 20b27f90667930e41858e44166544d32, type: 3}
 --- !u!1001 &7641436523403963573
 PrefabInstance:

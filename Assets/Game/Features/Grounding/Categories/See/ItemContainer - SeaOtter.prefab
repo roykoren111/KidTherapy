@@ -145,5 +145,6 @@ PrefabInstance:
       propertyPath: m_UpdateWhenOffscreen
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6058617893201776295, guid: f8fb47cc754f19041838af3d6becc70c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f8fb47cc754f19041838af3d6becc70c, type: 3}
