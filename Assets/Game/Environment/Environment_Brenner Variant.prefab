@@ -153,11 +153,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2519080413867153817, guid: 0017f31752abfcf4a9c329f81d46d554, type: 3}
       propertyPath: m_Name
-      value: Environment_Brenner
+      value: Environment_Brenner Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2519080413867153817, guid: 0017f31752abfcf4a9c329f81d46d554, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519080414453388040, guid: 0017f31752abfcf4a9c329f81d46d554, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519080414453388041, guid: 0017f31752abfcf4a9c329f81d46d554, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3522953101735935203, guid: 0017f31752abfcf4a9c329f81d46d554, type: 3}
       propertyPath: m_LocalPosition.x
